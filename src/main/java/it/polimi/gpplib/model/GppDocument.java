@@ -8,8 +8,6 @@ import java.util.List;
  * Represents a Green Public Procurement (GPP) document from the JSON resource.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL) // Don't include fields with null values in JSON output
-// @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class) // Maps JSON
-// snake_case to Java camelCase
 public class GppDocument {
     private String name;
     private String source;
