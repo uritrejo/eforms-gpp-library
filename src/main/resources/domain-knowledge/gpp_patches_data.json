@@ -1,0 +1,138 @@
+[
+  {
+    "name": "Procurement Project",
+    "btIds": [],
+    "dependsOn": null,
+    "pathInLot": "",
+    "value": "<cac:ProcurementProject xmlns:cac=\"{cac}\"></cac:ProcurementProject>"
+  },
+  {
+    "name": "Green Public Procurement Criteria",
+    "btIds": [
+      "BT-805-Lot"
+    ],
+    "dependsOn": "Procurement Project",
+    "pathInLot": "cac:ProcurementProject",
+    "value": "<cac:ProcurementAdditionalType xmlns:cac=\"{cac}\" xmlns:cbc=\"{cbc}\">\n    <!-- Green Public Procurement Criteria (BT-805-Lot) -->\n    <cbc:ProcurementTypeCode listName=\"gpp-criteria\">{arg0}</cbc:ProcurementTypeCode>\n</cac:ProcurementAdditionalType>"
+  },
+  {
+    "name": "Green Procurement",
+    "btIds": [
+      "BT-774-Lot"
+    ],
+    "dependsOn": "Procurement Project",
+    "pathInLot": "cac:ProcurementProject",
+    "value": "<cac:ProcurementAdditionalType xmlns:cac=\"{cac}\" xmlns:cbc=\"{cbc}\">\n    <!-- Green Procurement (BT-774-Lot) -->\n    <cbc:ProcurementTypeCode listName=\"environmental-impact\">{arg0}</cbc:ProcurementTypeCode>\n</cac:ProcurementAdditionalType>"
+  },
+  {
+    "name": "Strategic Procurement: Reduction of environmental impacts",
+    "btIds": [
+      "BT-06-Lot",
+      "BT-777-Lot"
+    ],
+    "dependsOn": "Procurement Project",
+    "pathInLot": "cac:ProcurementProject",
+    "value": "<cac:ProcurementAdditionalType xmlns:cac=\"{cac}\" xmlns:cbc=\"{cbc}\">\n    <!-- Strategic Procurement (BT-06-Lot) -->\n    <cbc:ProcurementTypeCode listName=\"strategic-procurement\">env-imp</cbc:ProcurementTypeCode>\n    <!-- Strategic Procurement Description (BT-777-Lot) -->\n    <cbc:ProcurementType languageID=\"{language}\">{arg0}</cbc:ProcurementType>\n</cac:ProcurementAdditionalType>"
+  },
+  {
+    "name": "Procurement Document",
+    "btIds": [
+      "OPT-140-Lot",
+      "BT-14-Lot",
+      "BT-15-Lot"
+    ],
+    "dependsOn": "Tendering Terms",
+    "pathInLot": "cac:TenderingTerms",
+    "value": "<cac:CallForTendersDocumentReference xmlns:cac=\"{cac}\" xmlns:cbc=\"{cbc}\">\n    <!-- Procurement Documents ID (OPT-140-Lot) -->\n    <cbc:ID>{arg0}</cbc:ID>\n    <!-- Documents Restricted (BT-14-Lot) -->\n    <cbc:DocumentType>non-restricted-document</cbc:DocumentType>\n    <cac:Attachment>\n        <cac:ExternalReference>               \n            <!-- Documents URL (BT-15-Lot) -->\n            <cbc:URI>{arg1}</cbc:URI>\n        </cac:ExternalReference>\n    </cac:Attachment>\n</cac:CallForTendersDocumentReference>"
+  },
+  {
+    "name": "Tendering Terms",
+    "btIds": [],
+    "dependsOn": null,
+    "pathInLot": "",
+    "value": "<cac:TenderingTerms xmlns:cac=\"{cac}\"></cac:TenderingTerms>"
+  },
+  {
+    "name": "Tendering Terms - Eforms Extension",
+    "btIds": [],
+    "dependsOn": "Tendering Terms",
+    "pathInLot": "cac:TenderingTerms",
+    "value": "<ext:UBLExtensions xlmns:ext=\"{ext}\" xlmns:efext=\"{efext}\">\n    <ext:UBLExtension>\n        <ext:ExtensionContent>\n            <efext:EformsExtension>\n            </efext:EformsExtension>\n        </ext:ExtensionContent>\n    </ext:UBLExtension>\n</ext:UBLExtensions>"
+  },
+  {
+    "name": "Selection Criteria",
+    "btIds": [
+      "BT-809-Lot",
+      "BT-750-Lot"
+    ],
+    "dependsOn": "Tendering Terms - Eforms Extension",
+    "pathInLot": "cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension",
+    "value": "<efac:SelectionCriteria xmlns:efac=\"{efac}\" xmlns:cbc=\"{cbc}\">\n    <!-- Selection Criteria (BT-809-Lot) -->\n    <cbc:TendererRequirementTypeCode listName=\"selection-criterion\">{arg0}</cbc:TendererRequirementTypeCode>\n    <!-- Selection Criteria Description (BT-750-Lot) -->\n    <cbc:Description languageID=\"{language}\">{arg1}</cbc:Description>\n</efac:SelectionCriteria>"
+  },
+  {
+    "name": "Tenderer Qualification Request",
+    "btIds": [],
+    "dependsOn": "Tendering Terms",
+    "pathInLot": "cac:TenderingTerms",
+    "value": "<cac:TendererQualificationRequest xmlns:cac=\"{cac}\">\n</cac:TendererQualificationRequest>"
+  },
+  {
+    "name": "Selection Criteria Source",
+    "btIds": [
+      "BT-821-Lot"
+    ],
+    "dependsOn": "Tenderer Qualification Request",
+    "pathInLot": "cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='reserved-procurement'])]",
+    "value": "<cac:SpecificTendererRequirement xmlns:cac=\"{cac}\" xmlns:cbc=\"{cbc}\">\n    <!-- Selection Criteria Source (BT-821-Lot) -->\n    <cbc:TendererRequirementTypeCode listName=\"selection-criteria-source\">{arg0}</cbc:TendererRequirementTypeCode>\n</cac:SpecificTendererRequirement>"
+  },
+  {
+    "name": "Awarding Terms",
+    "btIds": [],
+    "dependsOn": "Tendering Terms",
+    "pathInLot": "cac:TenderingTerms",
+    "value": "<cac:AwardingTerms xmlns:cac=\"{cac}\">\n</cac:AwardingTerms>"
+  },
+  {
+    "name": "Award Criteria",
+    "btIds": [],
+    "dependsOn": "Awarding Terms",
+    "pathInLot": "cac:TenderingTerms/cac:AwardingTerms",
+    "value": "<cac:AwardingCriterion xmlns:cac=\"{cac}\">\n</cac:AwardingCriterion>"
+  },
+  {
+    "name": "Award Criterion",
+    "btIds": [
+      "BT-539-Lot",
+      "BT-540-Lot",
+      "BT-541-Lot",
+      "BT-543-Lot",
+      "BT-733-Lot",
+      "BT-734-Lot",
+      "BT-5421-Lot",
+      "BT-5422-Lot",
+      "BT-5423-Lot"
+    ],
+    "dependsOn": "Award Criteria",
+    "pathInLot": "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion",
+    "value": "<cac:SubordinateAwardingCriterion xmlns:cac=\"{cac}\" xmlns:cbc=\"{cbc}\" xmlns:ext=\"{ext}\" xmlns:efext=\"{efext}\" xmlns:efac=\"{efac}\" xmlns:efbc=\"{efbc}\">\n    <!-- Award Criterion Type (BT-539-Lot) -->\n    <cbc:AwardingCriterionTypeCode listName=\"award-criterion-type\">{arg0}</cbc:AwardingCriterionTypeCode>\n    <!-- Award Criterion Name (BT-734-Lot) -->\n    <cbc:Name languageID=\"{language}\">{arg1}</cbc:Name>\n    <!-- Award Criterion Description (BT-540-Lot) -->\n    <cbc:Description languageID=\"{language}\">{arg2}</cbc:Description>\n    <ext:UBLExtensions>\n        <ext:UBLExtension>\n            <ext:ExtensionContent>\n                <efext:EformsExtension>\n                    <efac:AwardCriterionParameter>\n                        <!-- Award Criterion Parameter Type (BT-5421-Lot or BT-5422-Lot or BT-5423-Lot) -->\n                        <efbc:ParameterCode listName=\"{arg3}\">{arg4}</efbc:ParameterCode>\n                        <!-- Award Criterion Number (BT-541-Lot) -->\n                        <efbc:ParameterNumeric>{arg5}</efbc:ParameterNumeric>\n                    </efac:AwardCriterionParameter>\n                </efext:EformsExtension>\n            </ext:ExtensionContent>\n        </ext:UBLExtension>\n    </ext:UBLExtensions>\n</cac:SubordinateAwardingCriterion>"
+  },
+  {
+    "name": "Award Criteria Complicated",
+    "btIds": [
+      "BT-543-Lot"
+    ],
+    "dependsOn": "Award Criteria",
+    "pathInLot": "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion[cac:SubordinateAwardingCriterion/cbc:Name='{arg0}']",
+    "value": "<!-- Award Criteria Complicated (BT-543-Lot) -->\n<cbc:CalculationExpression languageID=\"{language}\" xmlns:cbc=\"{cbc}\">{arg6}</cbc:CalculationExpression>"
+  },
+  {
+    "name": "Contract Performance Clause",
+    "btIds": [
+      "OPT-060-Lot",
+      "BT-70-Lot"
+    ],
+    "dependsOn": "Tendering Terms",
+    "pathInLot": "cac:TenderingTerms",
+    "value": "<cac:ContractExecutionRequirement xmlns:cac=\"{cac}\" xmlns:cbc=\"{cbc}\">\n   <!--OPT-060-->\n   <cbc:ExecutionRequirementCode listName=\"conditions\">performance</cbc:ExecutionRequirementCode>\n   <!--BT-70-->\n   <cbc:Description languageID=\"{language}\">{arg0}</cbc:Description>\n</cac:ContractExecutionRequirement>"
+  }
+]
