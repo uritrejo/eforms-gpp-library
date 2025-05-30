@@ -1,7 +1,4 @@
-package it.polimi.uritrejo;
-
-// ??++ reminder for assertions
-// import static org.junit.Assert.assertTrue;
+package it.polimi.gpplib;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package it.polimi.uritrejo;
+package it.polimi.gpplib;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -276,9 +276,6 @@ public class App {
         String noticePath = "examples/subco_81.xml";
         Document noticeDoc = docFromFile(noticePath);
 
-        // ??++ AQUIII TODO: copy the GPP stuff in here
-        // Create a new element <G><H></H></G>
-        // String gString = "<G><H></H></G>";
         String gppCriteriaStr = "<cac:ProcurementAdditionalType xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" "
                 +
                 "xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\">" +
