@@ -53,7 +53,7 @@ public class GppDocumentsLoader {
         }
     }
 
-    // ??++ temporary as an example on how to load the documents
+    // example on how to load the documents
     public static void main(String[] args) {
         GppDocumentsLoader loader = new GppDocumentsLoader();
         try {
