@@ -79,7 +79,7 @@ public class App {
 
         // debugNoticeRoot();
 
-        loadAndInsertNodeInNotice();
+        // loadAndInsertNodeInNotice();
     }
 
     // printDoc prints the XML document in a pretty format
