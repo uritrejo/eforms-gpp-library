@@ -23,7 +23,7 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
     }
 
     @Override
-    public String applyPatches(List<SuggestedGppPatch> patches, Notice notice) {
+    public Notice applyPatches(List<SuggestedGppPatch> patches, Notice notice) {
         // TODO: Implement patch application logic
         return null;
     }
