@@ -21,12 +21,15 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
 
     @Override
     public Notice loadNotice(String xmlString) {
-        // TODO: Implement XML parsing and Notice creation
-        return null;
+        Notice notice = new Notice(xmlString);
+
+        // TODO: add notice validation (e.g. noticeType, version, language, etc.)
+
+        return notice;
     }
 
     @Override
-    public GppAnalysisResult analyzeNotice(String xmlNoticeString) {
+    public GppAnalysisResult analyzeNotice(Notice notice) {
         // TODO: Implement notice analysis logic
         return null;
     }
@@ -42,7 +45,7 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
         DefaultGppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer();
         String sampleXml = "<notice></notice>"; // Replace with actual test XML
         Notice notice = analyzer.loadNotice(sampleXml);
-        GppAnalysisResult result = analyzer.analyzeNotice(sampleXml);
+        GppAnalysisResult result = analyzer.analyzeNotice(notice);
         System.out.println("Notice: " + notice);
         System.out.println("Analysis Result: " + result);
     }

@@ -9,7 +9,7 @@ import java.util.List;
 public interface GppNoticeAnalyzer {
     Notice loadNotice(String xmlString);
 
-    GppAnalysisResult analyzeNotice(String xmlNoticeString);
+    GppAnalysisResult analyzeNotice(Notice notice);
 
     // ??++ this could be just a wrapper for the notice.applyPatch
     Notice applyPatches(List<SuggestedGppPatch> patches, Notice notice);

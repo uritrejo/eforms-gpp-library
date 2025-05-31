@@ -219,6 +219,15 @@ public class Notice {
         return cpvs;
     }
 
+    @Override
+    public String toString() {
+        // TODO: should include a lot more later
+        return "Notice{" +
+                "mainCpv='" + getProcurementProjectMainCpv() + '\'' +
+                ", additionalCpvs=" + getProcurementProjectAdditionalCpvs() +
+                '}';
+    }
+
     // TODO: add getters and setters, not exactly patch handlers...
     // Q: for what fields?
 
