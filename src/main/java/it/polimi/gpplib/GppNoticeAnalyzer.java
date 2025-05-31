@@ -11,5 +11,6 @@ public interface GppNoticeAnalyzer {
 
     GppAnalysisResult analyzeNotice(String xmlNoticeString);
 
+    // ??++ this could be just a wrapper for the notice.applyPatch
     Notice applyPatches(List<SuggestedGppPatch> patches, Notice notice);
 }

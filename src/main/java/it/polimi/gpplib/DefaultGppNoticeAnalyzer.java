@@ -10,6 +10,15 @@ import java.util.List;
  */
 public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
 
+    /*
+     * PLAN:
+     * - load the notice from XML
+     * - follow the python notebook to get the relevant fields
+     * - requires the domain knowledge + paths to the lot
+     * - requires implementing the notice constructor from xml
+     * - and properly defining how this could work
+     */
+
     @Override
     public Notice loadNotice(String xmlString) {
         // TODO: Implement XML parsing and Notice creation
