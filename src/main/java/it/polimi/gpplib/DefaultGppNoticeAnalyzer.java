@@ -5,7 +5,6 @@ import it.polimi.gpplib.model.SuggestedGppCriterion;
 import it.polimi.gpplib.model.GppAnalysisResult;
 import it.polimi.gpplib.model.GppCriterion;
 import it.polimi.gpplib.model.GppDocument;
-import it.polimi.gpplib.model.GppPatch;
 import it.polimi.gpplib.model.SuggestedGppPatch;
 import it.polimi.gpplib.utils.GppDomainKnowledgeService;
 
@@ -23,15 +22,6 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
         domainKnowledge = new GppDomainKnowledgeService();
     }
 
-    /*
-     * PLAN:
-     * - load the notice from XML
-     * - follow the python notebook to get the relevant fields
-     * - requires the domain knowledge + paths to the lot
-     * - requires implementing the notice constructor from xml
-     * - and properly defining how this could work
-     */
-
     @Override
     public Notice loadNotice(String xmlString) {
         Notice notice = new Notice(xmlString);
@@ -45,7 +35,6 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
     public GppAnalysisResult analyzeNotice(Notice notice) {
         java.util.Set<GppDocument> allRelevantDocuments = new java.util.HashSet<>(); // to avoid duplicates
         List<SuggestedGppCriterion> allSuggestedCriteria = new java.util.ArrayList<>();
-        List<SuggestedGppPatch> allSuggestedPatches = new java.util.ArrayList<>();
 
         List<String> projectCpvs = notice.getAllProcurementProjectCpvs();
         List<String> lotIds = notice.getLotIds();
@@ -58,20 +47,21 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
             List<GppDocument> relevantDocuments = domainKnowledge.getRelevantGppDocuments(lotCpvs);
             List<GppCriterion> relevantCriteria = domainKnowledge.getRelevantGppCriteria(lotCpvs);
             List<SuggestedGppCriterion> suggestedCriteria = domainKnowledge.suggestGppCriteria(relevantCriteria);
-            List<SuggestedGppPatch> suggestedPatches = domainKnowledge.suggestGppPatches(relevantCriteria);
 
             allRelevantDocuments.addAll(relevantDocuments);
             allSuggestedCriteria.addAll(suggestedCriteria);
-            allSuggestedPatches.addAll(suggestedPatches);
         }
 
-        return new GppAnalysisResult(new java.util.ArrayList<>(allRelevantDocuments), allSuggestedCriteria,
-                allSuggestedPatches);
+        return new GppAnalysisResult(new java.util.ArrayList<>(allRelevantDocuments), allSuggestedCriteria);
+    }
+
+    @Override
+    public List<SuggestedGppPatch> suggestPatches(List<SuggestedGppCriterion> suggestedCriteria) {
+        return domainKnowledge.suggestGppPatches(suggestedCriteria);
     }
 
     @Override
     public Notice applyPatches(List<SuggestedGppPatch> patches, Notice notice) {
-        // TODO: Implement patch application logic
         return null;
     }
 

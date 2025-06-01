@@ -1,6 +1,7 @@
 package it.polimi.gpplib;
 
 import it.polimi.gpplib.model.Notice;
+import it.polimi.gpplib.model.SuggestedGppCriterion;
 import it.polimi.gpplib.model.GppAnalysisResult;
 import it.polimi.gpplib.model.SuggestedGppPatch;
 import java.util.List;
@@ -11,6 +12,7 @@ public interface GppNoticeAnalyzer {
 
     GppAnalysisResult analyzeNotice(Notice notice);
 
-    // ??++ this could be just a wrapper for the notice.applyPatch
+    List<SuggestedGppPatch> suggestPatches(List<SuggestedGppCriterion> suggestedCriteria);
+
     Notice applyPatches(List<SuggestedGppPatch> patches, Notice notice);
 }

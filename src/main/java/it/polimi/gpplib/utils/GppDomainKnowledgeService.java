@@ -24,13 +24,16 @@ public class GppDomainKnowledgeService {
         return List.of(); // Placeholder return
     }
 
+    // TODO: probably change the name (like convertToSuggestedGppCriteria or smt
+    // descriptive)
     public List<SuggestedGppCriterion> suggestGppCriteria(List<GppCriterion> criteria) {
         // ...
         return List.of(); // Placeholder return
     }
 
-    public List<SuggestedGppPatch> suggestGppPatches(List<GppCriterion> criteria) {
+    public List<SuggestedGppPatch> suggestGppPatches(List<SuggestedGppCriterion> criteria) {
         // remember to include the global patches (e.g. document, changes section)
+        // will probs need to convert he SuggestedGppCriterion to GppCriterion
         return List.of(); // Placeholder return
     }
 
