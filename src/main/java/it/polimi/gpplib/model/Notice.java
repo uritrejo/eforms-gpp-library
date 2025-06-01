@@ -185,7 +185,7 @@ public class Notice {
             for (int i = 0; i < lots.getLength(); i++) {
                 Node lot = lots.item(i);
                 Node idNode = (Node) xpath.evaluate(ID_PATH_IN_LOT, lot, XPathConstants.NODE);
-                if (idNode != null && lotId.equals(idNode.getTextContent())) {
+                if (idNode != null && lotId.equals(idNode.getTextContent().trim())) {
                     return lot;
                 }
             }
