@@ -158,6 +158,21 @@ public class Notice {
     }
 
     /**
+     * Returns a list of all CPV codes (main and additional) for the
+     * ProcurementProject.
+     * The returned list is in the order: [main, additional...].
+     */
+    public List<String> getAllProcurementProjectCpvs() {
+        List<String> cpvs = new ArrayList<>();
+        String mainCpv = getProcurementProjectMainCpv();
+        if (mainCpv != null) {
+            cpvs.add(mainCpv);
+        }
+        cpvs.addAll(getProcurementProjectAdditionalCpvs());
+        return cpvs;
+    }
+
+    /**
      * Helper: Finds the ProcurementProjectLot node for a given lot ID.
      * This version finds all lots, checks their ID child, and returns the matching
      * lot node.
@@ -178,6 +193,30 @@ public class Notice {
             System.err.println("Failed to find lot node for lotId " + lotId + ": " + e.getMessage());
         }
         return null;
+    }
+
+    /**
+     * Returns the list of lot IDs present in the notice.
+     * 
+     * @return
+     */
+    public List<String> getLotIds() {
+        List<String> lotIds = new ArrayList<>();
+        try {
+            XPath xpath = xpathFactory.newXPath();
+            xpath.setNamespaceContext(namespaceCtx);
+            NodeList lots = (NodeList) xpath.evaluate(LOT_PATH, doc.getDocumentElement(), XPathConstants.NODESET);
+            for (int i = 0; i < lots.getLength(); i++) {
+                Node lot = lots.item(i);
+                Node idNode = (Node) xpath.evaluate(ID_PATH_IN_LOT, lot, XPathConstants.NODE);
+                if (idNode != null) {
+                    lotIds.add(idNode.getTextContent());
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Failed to get lot IDs: " + e.getMessage());
+        }
+        return lotIds;
     }
 
     /**
@@ -219,13 +258,43 @@ public class Notice {
         return cpvs;
     }
 
+    /**
+     * Returns a list of all CPV codes (main and additional) for the given lot.
+     * The returned list is in the order: [main, additional...].
+     * If the lot does not exist, returns an empty list.
+     */
+    public List<String> getAllLotCpvs(String lotId) {
+        List<String> cpvs = new ArrayList<>();
+        String mainCpv = getLotMainCpv(lotId);
+        if (mainCpv != null) {
+            cpvs.add(mainCpv);
+        }
+        cpvs.addAll(getLotAdditionalCpvs(lotId));
+        return cpvs;
+    }
+
     @Override
     public String toString() {
-        // TODO: should include a lot more later
-        return "Notice{" +
-                "mainCpv='" + getProcurementProjectMainCpv() + '\'' +
-                ", additionalCpvs=" + getProcurementProjectAdditionalCpvs() +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Notice{");
+        sb.append("mainCpv='").append(getProcurementProjectMainCpv()).append('\'');
+        sb.append(", additionalCpvs=").append(getProcurementProjectAdditionalCpvs());
+
+        List<String> lotIds = getLotIds();
+        sb.append(", lots=[");
+        for (int i = 0; i < lotIds.size(); i++) {
+            String lotId = lotIds.get(i);
+            sb.append("{id='").append(lotId).append('\'');
+            sb.append(", mainCpv='").append(getLotMainCpv(lotId)).append('\'');
+            sb.append(", additionalCpvs=").append(getLotAdditionalCpvs(lotId));
+            sb.append('}');
+            if (i < lotIds.size() - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        sb.append('}');
+        return sb.toString();
     }
 
     // TODO: add getters and setters, not exactly patch handlers...
@@ -262,12 +331,6 @@ public class Notice {
                 "</ContractNotice>";
 
         Notice notice = new Notice(xml);
-
-        System.out.println("Main CPV: " + notice.getProcurementProjectMainCpv());
-        System.out.println("Additional CPVs: " + notice.getProcurementProjectAdditionalCpvs());
-
-        String lotId = "LOT1";
-        System.out.println("Lot " + lotId + " Main CPV: " + notice.getLotMainCpv(lotId));
-        System.out.println("Lot " + lotId + " Additional CPVs: " + notice.getLotAdditionalCpvs(lotId));
+        System.out.println("Notice XML:" + notice);
     }
 }
