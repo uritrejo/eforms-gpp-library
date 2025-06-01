@@ -7,7 +7,8 @@ import it.polimi.gpplib.model.GppCriterion;
 import it.polimi.gpplib.model.GppDocument;
 import it.polimi.gpplib.model.SuggestedGppPatch;
 import it.polimi.gpplib.utils.GppDomainKnowledgeService;
-import it.polimi.gpplib.utils.Utils;
+import it.polimi.gpplib.utils.GppPatchApplier;
+import it.polimi.gpplib.utils.XmlUtils;
 
 import java.util.List;
 
@@ -18,12 +19,15 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
 
     private final GppDomainKnowledgeService domainKnowledge;
 
+    private final GppPatchApplier patchApplier;
+
     // TODO: eventually, this should come from a config
     private String ambitionLevel = GppCriterion.AMBITION_LEVEL_CORE;
 
     // TODO: eventually you'll need to take in config params
     public DefaultGppNoticeAnalyzer() {
         domainKnowledge = new GppDomainKnowledgeService();
+        patchApplier = new GppPatchApplier();
     }
 
     @Override
@@ -68,8 +72,13 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
 
     @Override
     public Notice applyPatches(Notice notice, List<SuggestedGppPatch> patches) {
-        // ??++ AQUIII
-        return null;
+        for (SuggestedGppPatch patch : patches) {
+            if (patch == null) {
+                continue;
+            }
+            notice = patchApplier.applyPatch(notice, patch);
+        }
+        return notice;
     }
 
     // temporary for testing purposes
@@ -77,7 +86,7 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
         DefaultGppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer();
         // String noticePath = "notices_furniture/00155175_2025.xml";
         String noticePath = "notices_furniture/dummy.xml";
-        String noticeXml = Utils.loadXmlString(noticePath);
+        String noticeXml = XmlUtils.getAsXmlString(noticePath);
         Notice notice = analyzer.loadNotice(noticeXml);
         GppAnalysisResult result = analyzer.analyzeNotice(notice);
         System.out.println("Notice: " + notice);
@@ -85,5 +94,9 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
 
         List<SuggestedGppPatch> patches = analyzer.suggestPatches(notice, result.getSuggestedGppCriteria());
         System.out.println("Suggested Patches: " + patches);
+
+        Notice patchedNotice = analyzer.applyPatches(notice, patches);
+        noticeXml = patchedNotice.toXmlString();
+        System.out.println("Patched Notice: " + noticeXml);
     }
 }
