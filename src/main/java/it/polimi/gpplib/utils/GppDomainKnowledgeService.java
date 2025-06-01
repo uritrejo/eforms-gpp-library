@@ -81,6 +81,8 @@ public class GppDomainKnowledgeService {
     public List<SuggestedGppPatch> suggestGppPatches(List<SuggestedGppCriterion> criteria) {
         // remember to include the global patches (e.g. document, changes section)
         // will probs need to convert he SuggestedGppCriterion to GppCriterion
+
+        // ??++ AQUI
         return List.of(); // Placeholder return
     }
 
