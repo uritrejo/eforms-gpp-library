@@ -5,6 +5,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class Constants {
+    public static final String PATH_MAIN_CPV = "cac:ProcurementProject/cac:MainCommodityClassification";
+    public static final String PATH_ADDITIONAL_CPVS = "cac:ProcurementProject/cac:AdditionalCommodityClassification";
+    // ND-Lot
+    public static final String PATH_LOT = "cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']";
+    // Q? ND or BT?
+    public static final String PATH_IN_LOT_ID = "cbc:ID[@schemeName='Lot']";
+    // ND-LotMainClassification
+    public static final String PATH_IN_LOT_MAIN_CPV = "cac:ProcurementProject/cac:MainCommodityClassification";
+    // ND-LotAdditionalClassification
+    public static final String PATH_IN_LOT_ADDITIONAL_CPVS = "cac:ProcurementProject/cac:AdditionalCommodityClassification";
+
     public static final String AMBITION_LEVEL_CORE = "core";
     public static final String AMBITION_LEVEL_COMPREHENSIVE = "comprehensive";
     public static final String AMBITION_LEVEL_BOTH = "both";

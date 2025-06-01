@@ -236,9 +236,10 @@ public class GppPatchSuggester {
 
     private SuggestedGppPatch suggestStrategicProcurementPatch(String lotId,
             List<GppCriterion> lotCriteria) {
-        GppPatch envImpactPatch = findGppPatchByName(Constants.PATCH_NAME_ENVIRONMENTAL_IMPACT);
+        GppPatch envImpactPatch = findGppPatchByName(Constants.PATCH_NAME_STRATEGIC_PROCUREMENT);
         if (envImpactPatch == null) {
-            System.err.println("Strategic Procurement Patch not found: " + Constants.PATCH_NAME_ENVIRONMENTAL_IMPACT);
+            System.err.println(
+                    "Strategic Procurement Patch not found: " + Constants.PATCH_NAME_STRATEGIC_PROCUREMENT);
             return null;
         }
 
