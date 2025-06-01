@@ -61,12 +61,12 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
     }
 
     @Override
-    public List<SuggestedGppPatch> suggestPatches(List<SuggestedGppCriterion> suggestedCriteria) {
-        return domainKnowledge.suggestGppPatches(suggestedCriteria);
+    public List<SuggestedGppPatch> suggestPatches(Notice notice, List<SuggestedGppCriterion> suggestedCriteria) {
+        return domainKnowledge.suggestGppPatches(notice, suggestedCriteria);
     }
 
     @Override
-    public Notice applyPatches(List<SuggestedGppPatch> patches, Notice notice) {
+    public Notice applyPatches(Notice notice, List<SuggestedGppPatch> patches) {
         return null;
     }
 

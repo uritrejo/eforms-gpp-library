@@ -12,7 +12,7 @@ public interface GppNoticeAnalyzer {
 
     GppAnalysisResult analyzeNotice(Notice notice);
 
-    List<SuggestedGppPatch> suggestPatches(List<SuggestedGppCriterion> suggestedCriteria);
+    List<SuggestedGppPatch> suggestPatches(Notice notice, List<SuggestedGppCriterion> suggestedCriteria);
 
-    Notice applyPatches(List<SuggestedGppPatch> patches, Notice notice);
+    Notice applyPatches(Notice notice, List<SuggestedGppPatch> patches);
 }

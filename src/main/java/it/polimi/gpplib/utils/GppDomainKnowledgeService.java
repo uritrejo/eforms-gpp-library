@@ -3,6 +3,7 @@ package it.polimi.gpplib.utils;
 import it.polimi.gpplib.model.GppDocument;
 import it.polimi.gpplib.model.GppCriterion;
 import it.polimi.gpplib.model.GppPatch;
+import it.polimi.gpplib.model.Notice;
 import it.polimi.gpplib.model.SuggestedGppCriterion;
 import it.polimi.gpplib.model.SuggestedGppPatch;
 
@@ -78,15 +79,15 @@ public class GppDomainKnowledgeService {
         return suggested;
     }
 
-    public List<SuggestedGppPatch> suggestGppPatches(List<SuggestedGppCriterion> suggestedCriteria) {
-
-        // private final GppPatchesLoader patchesLoader = new GppPatchesLoader();
-
-        // remember to include the global patches (e.g. document, changes section)
-        // will probs need to convert he SuggestedGppCriterion to GppCriterion
+    public List<SuggestedGppPatch> suggestGppPatches(Notice notice, List<SuggestedGppCriterion> suggestedCriteria) {
 
         // we first need to convert the suggested criteria to GppCriteria to get the
         // internal details
+
+        // then
+
+        // remember to include the global patches (e.g. document, changes section)
+        // will probs need to convert he SuggestedGppCriterion to GppCriterion
 
         // ??++ AQUI
         return List.of(); // Placeholder return
