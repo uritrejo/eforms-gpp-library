@@ -1,5 +1,6 @@
 package it.polimi.gpplib.utils;
 
+import org.apache.commons.text.StringSubstitutor;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,27 +50,98 @@ public class GppPatchSuggester {
 
         List<SuggestedGppPatch> suggestedPatches = new java.util.ArrayList<>();
 
-        // GPP CRITERIA PATCHES
-        GppPatch gppCriteriaPatch = findGppPatchByName(Constants.PATCH_NAME_GPP_CRITERIA);
+        List<SuggestedGppPatch> gppCriteriaSourcePatches = suggestGppCriteriaSourcePatches(lotId, lotCriteria);
+        suggestedPatches.addAll(gppCriteriaSourcePatches);
+
+        List<SuggestedGppPatch> environmentalImpactPatches = suggestEnvironmentalImpactPatches(lotId, lotCriteria);
+        suggestedPatches.addAll(environmentalImpactPatches);
+
+        suggestedPatches.add(suggestStrategicProcurementPatch(lotId, lotCriteria));
+
+        return suggestedPatches;
+    }
+
+    private List<SuggestedGppPatch> suggestGppCriteriaSourcePatches(String lotId,
+            List<GppCriterion> lotCriteria) {
+        List<SuggestedGppPatch> patches = new java.util.ArrayList<>();
+        GppPatch gppCriteriaPatch = findGppPatchByName(Constants.PATCH_NAME_GPP_CRITERIA_SOURCE);
+        if (gppCriteriaPatch == null) {
+            System.err.println("GPP Criteria Patch not found: " + Constants.PATCH_NAME_GPP_CRITERIA_SOURCE);
+            return patches; // No patches to suggest
+        }
+
         List<String> gppSources = getGppSources(lotCriteria);
         for (String source : gppSources) {
-            String parsedValue = "dummy-value" + source;
-            // ??++ AQUI: parse the value from the gppCriteriaPatch
-            // Create a patch for each GPP source
-            SuggestedGppPatch gppSourcePatch = new SuggestedGppPatch(
-                    Constants.PATCH_NAME_GPP_CRITERIA,
+            Map<String, String> variables = new HashMap<>(Constants.NAMESPACE_MAP);
+            variables.put(Constants.TAG_LANGUAGE, Constants.TAG_ENGLISH);
+            variables.put(Constants.TAG_ARG0, source);
+            String parsedValue = parseValue(gppCriteriaPatch.getValue(), variables);
+
+            SuggestedGppPatch patch = new SuggestedGppPatch(
+                    Constants.PATCH_NAME_GPP_CRITERIA_SOURCE,
                     gppCriteriaPatch.getBtIds(),
                     gppCriteriaPatch.getDependsOn(),
                     gppCriteriaPatch.getPathInLot(),
                     parsedValue,
                     Constants.OP_CREATE,
-                    // TODO: should add a description to the patches sheet
-                    "Dummy Description for Green Public Procurement Criteria", // Placeholder description
+                    "Indicates the usage of GPP criteria", // Placeholder description
                     lotId);
-            suggestedPatches.add(gppSourcePatch);
+            patches.add(patch);
+        }
+        return patches;
+    }
+
+    private List<SuggestedGppPatch> suggestEnvironmentalImpactPatches(String lotId,
+            List<GppCriterion> lotCriteria) {
+        List<SuggestedGppPatch> patches = new java.util.ArrayList<>();
+        GppPatch envImpactPatch = findGppPatchByName(Constants.PATCH_NAME_ENVIRONMENTAL_IMPACT);
+        if (envImpactPatch == null) {
+            System.err.println("Green Procurement Patch not found: " + Constants.PATCH_NAME_ENVIRONMENTAL_IMPACT);
+            return patches; // No patches to suggest
         }
 
-        return suggestedPatches;
+        List<String> environmentalImpacts = getEnvironmentalImpacts(lotCriteria);
+        for (String impact : environmentalImpacts) {
+            Map<String, String> variables = new HashMap<>(Constants.NAMESPACE_MAP);
+            variables.put(Constants.TAG_LANGUAGE, Constants.TAG_ENGLISH);
+            variables.put(Constants.TAG_ARG0, impact);
+            String parsedValue = parseValue(envImpactPatch.getValue(), variables);
+            SuggestedGppPatch patch = new SuggestedGppPatch(
+                    Constants.PATCH_NAME_ENVIRONMENTAL_IMPACT,
+                    envImpactPatch.getBtIds(),
+                    envImpactPatch.getDependsOn(),
+                    envImpactPatch.getPathInLot(),
+                    parsedValue,
+                    Constants.OP_CREATE,
+                    "Indicates an approach to reducing the environmental impacts of the work, supply or service", // Placeholder
+                    lotId);
+            patches.add(patch);
+        }
+
+        return patches;
+    }
+
+    private SuggestedGppPatch suggestStrategicProcurementPatch(String lotId,
+            List<GppCriterion> lotCriteria) {
+        GppPatch envImpactPatch = findGppPatchByName(Constants.PATCH_NAME_ENVIRONMENTAL_IMPACT);
+        if (envImpactPatch == null) {
+            System.err.println("Strategic Procurement Patch not found: " + Constants.PATCH_NAME_ENVIRONMENTAL_IMPACT);
+            return null;
+        }
+
+        Map<String, String> variables = new HashMap<>(Constants.NAMESPACE_MAP);
+        variables.put(Constants.TAG_LANGUAGE, Constants.TAG_ENGLISH);
+        variables.put(Constants.TAG_ARG0, Constants.PATCH_DESCRIPTION_STRATEGIC_PROCUREMENT);
+        String parsedValue = parseValue(envImpactPatch.getValue(), variables);
+        return new SuggestedGppPatch(
+                Constants.PATCH_NAME_STRATEGIC_PROCUREMENT,
+                envImpactPatch.getBtIds(),
+                envImpactPatch.getDependsOn(),
+                envImpactPatch.getPathInLot(),
+                parsedValue,
+                Constants.OP_CREATE,
+                "Indicates a strategic procurement for the reduction of environmental impacts", // Placeholder
+                lotId);
     }
 
     private GppPatch findGppPatchByName(String name) {
@@ -90,6 +162,17 @@ public class GppPatchSuggester {
             }
         }
         return sources;
+    }
+
+    private List<String> getEnvironmentalImpacts(List<GppCriterion> criteria) {
+        List<String> environmentalImpacts = new java.util.ArrayList<>();
+        for (GppCriterion criterion : criteria) {
+            String environmentaImpact = criterion.getEnvironmentalImpactType();
+            if (environmentaImpact != null && !environmentalImpacts.contains(environmentaImpact)) {
+                environmentalImpacts.add(environmentaImpact);
+            }
+        }
+        return environmentalImpacts;
     }
 
     /**
@@ -132,6 +215,14 @@ public class GppPatchSuggester {
             criteriaPerLot.computeIfAbsent(lotId, k -> new java.util.ArrayList<>()).add(gppCriterion);
         }
         return criteriaPerLot;
+    }
+
+    private String parseValue(String value, Map<String, String> variables) {
+        if (value == null || value.isEmpty()) {
+            return value; // No parsing needed
+        }
+        StringSubstitutor sub = new StringSubstitutor(variables, "{", "}");
+        return sub.replace(value);
     }
 
 }
