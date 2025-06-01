@@ -25,8 +25,8 @@ public class Notice {
     // TODO: maybe have a file for all the path definitions?
     // TODO: eventually load them directly from the SDK somehow
     // xpaths for the notice
-    private static final String MAIN_CPV_PATH = "//*[local-name()='ProcurementProject']/*[local-name()='MainCommodityClassification']/*[local-name()='ItemClassificationCode']";
-    private static final String ADDITIONAL_CPVS_PATH = "//*[local-name()='ProcurementProject']/*[local-name()='AdditionalCommodityClassification']/*[local-name()='ItemClassificationCode']";
+    private static final String MAIN_CPV_PATH = "cac:ProcurementProject/cac:MainCommodityClassification";
+    private static final String ADDITIONAL_CPVS_PATH = "cac:ProcurementProject/cac:AdditionalCommodityClassification";
 
     // xpaths related to lots
     // ND-Lot
