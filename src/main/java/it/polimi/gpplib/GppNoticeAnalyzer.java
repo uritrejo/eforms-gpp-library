@@ -1,6 +1,7 @@
 package it.polimi.gpplib;
 
 import it.polimi.gpplib.model.Notice;
+import it.polimi.gpplib.model.SuggestedGppCriterion;
 import it.polimi.gpplib.model.GppAnalysisResult;
 import it.polimi.gpplib.model.SuggestedGppPatch;
 import java.util.List;
@@ -9,7 +10,9 @@ import java.util.List;
 public interface GppNoticeAnalyzer {
     Notice loadNotice(String xmlString);
 
-    GppAnalysisResult analyzeNotice(String xmlNoticeString);
+    GppAnalysisResult analyzeNotice(Notice notice);
+
+    List<SuggestedGppPatch> suggestPatches(List<SuggestedGppCriterion> suggestedCriteria);
 
     Notice applyPatches(List<SuggestedGppPatch> patches, Notice notice);
 }

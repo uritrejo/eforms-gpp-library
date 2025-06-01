@@ -8,18 +8,15 @@ public class GppAnalysisResult {
 
     private List<GppDocument> relevantGppDocuments;
     private List<SuggestedGppCriterion> suggestedGppCriteria;
-    private List<SuggestedGppPatch> suggestedGppPatches;
 
     public GppAnalysisResult() {
         // Default constructor for Jackson deserialization
     }
 
     public GppAnalysisResult(List<GppDocument> relevantGppDocuments,
-            List<SuggestedGppCriterion> suggestedGppCriteria,
-            List<SuggestedGppPatch> suggestedGppPatches) {
+            List<SuggestedGppCriterion> suggestedGppCriteria) {
         this.relevantGppDocuments = relevantGppDocuments;
         this.suggestedGppCriteria = suggestedGppCriteria;
-        this.suggestedGppPatches = suggestedGppPatches;
     }
 
     public List<GppDocument> getRelevantGppDocuments() {
@@ -36,13 +33,5 @@ public class GppAnalysisResult {
 
     public void setSuggestedGppCriteria(List<SuggestedGppCriterion> suggestedGppCriteria) {
         this.suggestedGppCriteria = suggestedGppCriteria;
-    }
-
-    public List<SuggestedGppPatch> getSuggestedGppPatches() {
-        return suggestedGppPatches;
-    }
-
-    public void setSuggestedGppPatches(List<SuggestedGppPatch> suggestedGppPatches) {
-        this.suggestedGppPatches = suggestedGppPatches;
     }
 }

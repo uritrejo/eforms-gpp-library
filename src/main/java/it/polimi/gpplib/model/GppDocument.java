@@ -1,6 +1,9 @@
 package it.polimi.gpplib.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+
+import it.polimi.gpplib.utils.Utils;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -78,6 +81,10 @@ public class GppDocument {
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    public boolean isApplicable(List<String> cpvCodes) {
+        return Utils.hasMatchingCpvs(cpvCodes, relevantCpvCodes);
     }
 
     @Override
