@@ -280,9 +280,9 @@ public class GppPatchSuggester {
     private List<String> getEnvironmentalImpacts(List<GppCriterion> criteria) {
         List<String> environmentalImpacts = new java.util.ArrayList<>();
         for (GppCriterion criterion : criteria) {
-            String environmentaImpact = criterion.getEnvironmentalImpactType();
-            if (environmentaImpact != null && !environmentalImpacts.contains(environmentaImpact)) {
-                environmentalImpacts.add(environmentaImpact);
+            String environmentalImpact = criterion.getEnvironmentalImpactType();
+            if (environmentalImpact != null && !environmentalImpacts.contains(environmentalImpact)) {
+                environmentalImpacts.add(environmentalImpact);
             }
         }
         return environmentalImpacts;
