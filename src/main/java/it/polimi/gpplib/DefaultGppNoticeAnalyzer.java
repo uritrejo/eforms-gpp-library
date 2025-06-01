@@ -68,6 +68,7 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
 
     @Override
     public Notice applyPatches(Notice notice, List<SuggestedGppPatch> patches) {
+        // ??++ AQUIII
         return null;
     }
 
