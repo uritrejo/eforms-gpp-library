@@ -36,4 +36,21 @@ public class Utils {
     public static boolean hasMatchingCpvs(List<String> noticeCpvs, List<String> criteriaCpvs) {
         return !matchingCpvs(noticeCpvs, criteriaCpvs).isEmpty();
     }
+
+    /**
+     * Returns the content of the XML file as a String.
+     */
+    public static String loadXmlString(String filePath) {
+        try (java.io.InputStream is = Utils.class.getClassLoader().getResourceAsStream(filePath)) {
+            if (is == null) {
+                System.err.println("Resource not found: " + filePath);
+                return null;
+            }
+            return new String(is.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+        } catch (java.io.IOException e) {
+            System.err.println("Failed to load XML from resource: " + filePath);
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

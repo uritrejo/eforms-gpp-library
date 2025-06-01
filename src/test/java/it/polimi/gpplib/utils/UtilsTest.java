@@ -52,4 +52,13 @@ public class UtilsTest {
         List<String> criteriaCpvs = List.of("2222");
         assertFalse(Utils.hasMatchingCpvs(noticeCpvs, criteriaCpvs));
     }
+
+    @Test
+    public void testLoadXmlString_notice() {
+        String resourcePath = "notices_furniture/00152724_2025.xml";
+        String xml = Utils.loadXmlString(resourcePath);
+        System.out.println(xml);
+        assertNotNull("XML string should not be null", xml);
+        assertTrue("XML string should contain ContractNotice root element", xml.contains("<ContractNotice"));
+    }
 }

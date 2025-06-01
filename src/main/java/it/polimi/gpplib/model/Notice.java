@@ -131,7 +131,7 @@ public class Notice {
             XPath xpath = xpathFactory.newXPath();
             xpath.setNamespaceContext(namespaceCtx);
             Node node = (Node) xpath.evaluate(MAIN_CPV_PATH, doc, XPathConstants.NODE);
-            return node != null ? node.getTextContent() : null;
+            return node != null ? node.getTextContent().trim() : null;
         } catch (Exception e) {
             System.err.println("Failed to get ProcurementProject main CPV: " + e.getMessage());
             return null;
@@ -149,7 +149,7 @@ public class Notice {
             NodeList nodes = (NodeList) xpath.evaluate(ADDITIONAL_CPVS_PATH, doc.getDocumentElement(),
                     XPathConstants.NODESET);
             for (int i = 0; i < nodes.getLength(); i++) {
-                cpvs.add(nodes.item(i).getTextContent());
+                cpvs.add(nodes.item(i).getTextContent().trim());
             }
         } catch (Exception e) {
             System.err.println("Failed to get ProcurementProject additional CPVs: " + e.getMessage());
@@ -230,7 +230,7 @@ public class Notice {
             XPath xpath = xpathFactory.newXPath();
             xpath.setNamespaceContext(namespaceCtx);
             Node node = (Node) xpath.evaluate(MAIN_CPV_PATH_IN_LOT, lotNode, XPathConstants.NODE);
-            return node != null ? node.getTextContent() : null;
+            return node != null ? node.getTextContent().trim() : null;
         } catch (Exception e) {
             System.err.println("Failed to get main CPV for lot " + lotId + ": " + e.getMessage());
             return null;
@@ -250,7 +250,7 @@ public class Notice {
             xpath.setNamespaceContext(namespaceCtx);
             NodeList nodes = (NodeList) xpath.evaluate(ADDITIONAL_CPVS_PATH_IN_LOT, lotNode, XPathConstants.NODESET);
             for (int i = 0; i < nodes.getLength(); i++) {
-                cpvs.add(nodes.item(i).getTextContent());
+                cpvs.add(nodes.item(i).getTextContent().trim());
             }
         } catch (Exception e) {
             System.err.println("Failed to get additional CPVs for lot " + lotId + ": " + e.getMessage());

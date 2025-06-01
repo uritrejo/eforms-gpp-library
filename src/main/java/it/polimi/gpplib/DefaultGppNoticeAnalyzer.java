@@ -7,6 +7,7 @@ import it.polimi.gpplib.model.GppCriterion;
 import it.polimi.gpplib.model.GppDocument;
 import it.polimi.gpplib.model.SuggestedGppPatch;
 import it.polimi.gpplib.utils.GppDomainKnowledgeService;
+import it.polimi.gpplib.utils.Utils;
 
 import java.util.List;
 
@@ -72,8 +73,9 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
     // temporary for testing purposes
     public static void main(String[] args) {
         DefaultGppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer();
-        String sampleXml = "<notice></notice>"; // Replace with actual test XML
-        Notice notice = analyzer.loadNotice(sampleXml);
+        String noticePath = "notices_furniture/00155175_2025.xml";
+        String noticeXml = Utils.loadXmlString(noticePath);
+        Notice notice = analyzer.loadNotice(noticeXml);
         GppAnalysisResult result = analyzer.analyzeNotice(notice);
         System.out.println("Notice: " + notice);
         System.out.println("Analysis Result: " + result);
