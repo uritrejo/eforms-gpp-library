@@ -16,12 +16,13 @@ public class SuggestedGppPatch {
     private String value;
     private String op;
     private String description;
+    private String lotId;
 
     public SuggestedGppPatch() {
     }
 
     public SuggestedGppPatch(String name, List<String> btIds, String dependsOn, String path, String value,
-            String op, String description) {
+            String op, String description, String lotId) {
         this.name = name;
         this.btIds = btIds;
         this.dependsOn = dependsOn;
@@ -29,6 +30,7 @@ public class SuggestedGppPatch {
         this.value = value;
         this.op = op;
         this.description = description;
+        this.lotId = lotId;
     }
 
     public String getName() {
@@ -87,6 +89,14 @@ public class SuggestedGppPatch {
         this.description = description;
     }
 
+    public String getLotId() {
+        return lotId;
+    }
+
+    public void setLotId(String lotId) {
+        this.lotId = lotId;
+    }
+
     @Override
     public String toString() {
         return "SuggestedGppPatch{" +
@@ -97,6 +107,46 @@ public class SuggestedGppPatch {
                 ", value='" + value + '\'' +
                 ", op='" + op + '\'' +
                 ", description='" + description + '\'' +
+                ", lotId='" + lotId + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        SuggestedGppPatch that = (SuggestedGppPatch) o;
+
+        if (name != null ? !name.equals(that.name) : that.name != null)
+            return false;
+        if (btIds != null ? !btIds.equals(that.btIds) : that.btIds != null)
+            return false;
+        if (dependsOn != null ? !dependsOn.equals(that.dependsOn) : that.dependsOn != null)
+            return false;
+        if (path != null ? !path.equals(that.path) : that.path != null)
+            return false;
+        if (value != null ? !value.equals(that.value) : that.value != null)
+            return false;
+        if (op != null ? !op.equals(that.op) : that.op != null)
+            return false;
+        if (description != null ? !description.equals(that.description) : that.description != null)
+            return false;
+        return lotId != null ? lotId.equals(that.lotId) : that.lotId == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (btIds != null ? btIds.hashCode() : 0);
+        result = 31 * result + (dependsOn != null ? dependsOn.hashCode() : 0);
+        result = 31 * result + (path != null ? path.hashCode() : 0);
+        result = 31 * result + (value != null ? value.hashCode() : 0);
+        result = 31 * result + (op != null ? op.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (lotId != null ? lotId.hashCode() : 0);
+        return result;
     }
 }

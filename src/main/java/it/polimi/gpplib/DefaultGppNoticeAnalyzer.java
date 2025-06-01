@@ -37,6 +37,7 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
 
     @Override
     public GppAnalysisResult analyzeNotice(Notice notice) {
+        // TODO: verify that the documents can't be duplicated
         java.util.Set<GppDocument> allRelevantDocuments = new java.util.HashSet<>(); // to avoid duplicates
         List<SuggestedGppCriterion> allSuggestedCriteria = new java.util.ArrayList<>();
 
@@ -61,23 +62,27 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
     }
 
     @Override
-    public List<SuggestedGppPatch> suggestPatches(List<SuggestedGppCriterion> suggestedCriteria) {
-        return domainKnowledge.suggestGppPatches(suggestedCriteria);
+    public List<SuggestedGppPatch> suggestPatches(Notice notice, List<SuggestedGppCriterion> suggestedCriteria) {
+        return domainKnowledge.suggestGppPatches(notice, suggestedCriteria);
     }
 
     @Override
-    public Notice applyPatches(List<SuggestedGppPatch> patches, Notice notice) {
+    public Notice applyPatches(Notice notice, List<SuggestedGppPatch> patches) {
         return null;
     }
 
     // temporary for testing purposes
     public static void main(String[] args) {
         DefaultGppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer();
-        String noticePath = "notices_furniture/00155175_2025.xml";
+        // String noticePath = "notices_furniture/00155175_2025.xml";
+        String noticePath = "notices_furniture/dummy.xml";
         String noticeXml = Utils.loadXmlString(noticePath);
         Notice notice = analyzer.loadNotice(noticeXml);
         GppAnalysisResult result = analyzer.analyzeNotice(notice);
         System.out.println("Notice: " + notice);
         System.out.println("Analysis Result: " + result);
+
+        List<SuggestedGppPatch> patches = analyzer.suggestPatches(notice, result.getSuggestedGppCriteria());
+        System.out.println("Suggested Patches: " + patches);
     }
 }

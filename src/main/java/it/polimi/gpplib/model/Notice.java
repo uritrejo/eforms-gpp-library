@@ -49,6 +49,7 @@ public class Notice {
     }
 
     // TODO: get this from the SDK or something
+    // TODO: you could even get it from the constants for now
     private static final NamespaceContext namespaceCtx = new NamespaceContext() {
         @Override
         public String getNamespaceURI(String prefix) {
@@ -173,7 +174,7 @@ public class Notice {
     }
 
     /**
-     * Helper: Finds the ProcurementProjectLot node for a given lot ID.
+     * Finds the ProcurementProjectLot node for a given lot ID.
      * This version finds all lots, checks their ID child, and returns the matching
      * lot node.
      */
@@ -193,6 +194,22 @@ public class Notice {
             System.err.println("Failed to find lot node for lotId " + lotId + ": " + e.getMessage());
         }
         return null;
+    }
+
+    public boolean doesPathExistInLot(String lotId, String path) {
+        Node lotNode = getLotNode(lotId);
+        if (lotNode == null) {
+            return false;
+        }
+        try {
+            XPath xpath = xpathFactory.newXPath();
+            xpath.setNamespaceContext(namespaceCtx);
+            Node node = (Node) xpath.evaluate(path, lotNode, XPathConstants.NODE);
+            return node != null;
+        } catch (Exception e) {
+            System.err.println("Failed to check path existence in lot " + lotId + ": " + e.getMessage());
+            return false;
+        }
     }
 
     /**
