@@ -37,6 +37,7 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
 
     @Override
     public GppAnalysisResult analyzeNotice(Notice notice) {
+        // TODO: verify that the documents can't be duplicated
         java.util.Set<GppDocument> allRelevantDocuments = new java.util.HashSet<>(); // to avoid duplicates
         List<SuggestedGppCriterion> allSuggestedCriteria = new java.util.ArrayList<>();
 
@@ -73,7 +74,8 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
     // temporary for testing purposes
     public static void main(String[] args) {
         DefaultGppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer();
-        String noticePath = "notices_furniture/00155175_2025.xml";
+        // String noticePath = "notices_furniture/00155175_2025.xml";
+        String noticePath = "notices_furniture/dummy.xml";
         String noticeXml = Utils.loadXmlString(noticePath);
         Notice notice = analyzer.loadNotice(noticeXml);
         GppAnalysisResult result = analyzer.analyzeNotice(notice);

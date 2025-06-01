@@ -12,11 +12,21 @@ public final class Constants {
     public static final String OP_CREATE = "create";
     public static final String OP_UPDATE = "update";
 
+    // notice these are lowercase
+    public static final String CRITERION_TYPE_AWARD_CRITERIA = "award criteria";
+    public static final String CRITERION_TYPE_SELECTION_CRITERIA = "selection criteria";
+    public static final String CRITERION_TYPE_CONTRACT_PERFORMANCE_CLAUSE = "contract performing clause";
+    public static final String CRITERION_TYPE_TECHNICAL_SPECIFICATION = "technical specification";
+
     public static final String PATCH_NAME_GPP_CRITERIA_SOURCE = "Green Public Procurement Criteria";
     // TODO: rename this one to env impact in the sheet
     public static final String PATCH_NAME_ENVIRONMENTAL_IMPACT = "Green Procurement";
     // TODO: define better the expected description for this patch
     public static final String PATCH_NAME_STRATEGIC_PROCUREMENT = "Strategic Procurement: Reduction of environmental impacts";
+
+    public static final String PATCH_NAME_AWARD_CRITERION = "Award Criterion";
+    public static final String PATCH_NAME_SELECTION_CRITERIA = "Selection Criteria";
+    public static final String PATCH_NAME_CONTRACT_PERFORMANCE_CLAUSE = "Contract Performance Clause";
 
     public static final String PATCH_DESCRIPTION_STRATEGIC_PROCUREMENT = "GPP criteria will be used to evaluate the proposals, accounting for environmental impact";
 
@@ -44,6 +54,17 @@ public final class Constants {
         map.put("xsd", "http://www.w3.org/2001/XMLSchema");
         map.put("xsi", "http://www.w3.org/2001/XMLSchema-instance");
         NAMESPACE_MAP = Collections.unmodifiableMap(map);
+    }
+
+    public static final Map<String, String> CRITERION_TYPE_TO_PATCH_NAME;
+    static {
+        Map<String, String> map = new HashMap<>();
+        map.put(CRITERION_TYPE_AWARD_CRITERIA, PATCH_NAME_AWARD_CRITERION);
+        map.put(CRITERION_TYPE_SELECTION_CRITERIA, PATCH_NAME_SELECTION_CRITERIA);
+        map.put(CRITERION_TYPE_CONTRACT_PERFORMANCE_CLAUSE, PATCH_NAME_CONTRACT_PERFORMANCE_CLAUSE);
+        // TODO: revise the logic of adding technical specifications as award criteria
+        map.put(CRITERION_TYPE_TECHNICAL_SPECIFICATION, PATCH_NAME_AWARD_CRITERION);
+        CRITERION_TYPE_TO_PATCH_NAME = Collections.unmodifiableMap(map);
     }
 
     private Constants() {

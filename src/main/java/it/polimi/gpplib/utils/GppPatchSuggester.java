@@ -58,7 +58,120 @@ public class GppPatchSuggester {
 
         suggestedPatches.add(suggestStrategicProcurementPatch(lotId, lotCriteria));
 
+        // add the direct patches for each of the criteria (e.g. AC, SC, TS, CPC)
+        for (GppCriterion criterion : lotCriteria) {
+            List<SuggestedGppPatch> criterionPatches = suggestCriterionPatches(notice, lotId, criterion);
+            for (SuggestedGppPatch patch : criterionPatches) {
+                if (!suggestedPatches.contains(patch)) {
+                    suggestedPatches.add(patch);
+                }
+            }
+        }
+
         return suggestedPatches;
+    }
+
+    /**
+     * Suggests patches to add a specific GppCriterion (AC, SC, TS, CPC).
+     *
+     * @param lotId     the ID of the lot
+     * @param criterion the GppCriterion to suggest patches for
+     * @return a list of suggested patches for the given criterion
+     */
+    private List<SuggestedGppPatch> suggestCriterionPatches(Notice notice, String lotId, GppCriterion criterion) {
+        List<SuggestedGppPatch> patches = new java.util.ArrayList<>();
+
+        String patchName = Constants.CRITERION_TYPE_TO_PATCH_NAME.get(criterion.getCriterionType().toLowerCase());
+        if (patchName == null) {
+            System.err.println("No patch name found for criterion type: " + criterion.getCriterionType());
+            return patches;
+        }
+
+        GppPatch gppPatch = findGppPatchByName(patchName);
+        if (gppPatch == null) {
+            System.err.println("GPP Patch not found: " + patchName);
+            return patches;
+        }
+
+        Map<String, String> variables = buildPatchVariables(criterion);
+
+        String parsedValue = parseValue(gppPatch.getValue(), variables);
+        String description = String.format(
+                "Adds the criterion: { Type: %s, Name: %s, ID: %s, Ambition Level: %s, Document: %s }",
+                criterion.getCriterionType(),
+                criterion.getName(),
+                criterion.getId(),
+                criterion.getAmbitionLevel(),
+                criterion.getGppDocument());
+        SuggestedGppPatch suggestedPatch = new SuggestedGppPatch(
+                criterion.getCriterionType() + " --- " + criterion.getId() + ": " + criterion.getName(),
+                gppPatch.getBtIds(),
+                gppPatch.getDependsOn(),
+                gppPatch.getPathInLot(),
+                parsedValue,
+                Constants.OP_CREATE,
+                description,
+                lotId);
+        patches.add(suggestedPatch);
+
+        // Add parent patches if needed (to build the structure)
+        List<SuggestedGppPatch> parentPatches = buildParentPatches(notice, lotId, gppPatch, variables, patchName);
+        patches.addAll(0, parentPatches);
+
+        return patches;
+    }
+
+    /**
+     * Builds the variable map for patch value substitution from a GppCriterion.
+     */
+    private Map<String, String> buildPatchVariables(GppCriterion criterion) {
+        Map<String, String> variables = new HashMap<>(Constants.NAMESPACE_MAP);
+        variables.put(Constants.TAG_LANGUAGE, Constants.TAG_ENGLISH);
+        variables.put(Constants.TAG_ARG0, criterion.getArg0());
+        variables.put(Constants.TAG_ARG1, criterion.getArg1());
+        variables.put(Constants.TAG_ARG2, criterion.getArg2());
+        variables.put(Constants.TAG_ARG3, criterion.getArg3());
+        variables.put(Constants.TAG_ARG4, criterion.getArg4());
+        variables.put(Constants.TAG_ARG5, criterion.getArg5());
+        variables.put(Constants.TAG_ARG6, criterion.getArg6());
+        return variables;
+    }
+
+    /**
+     * Builds a list of parent patches required for the given patch if the path does
+     * not exist in the notice.
+     */
+    private List<SuggestedGppPatch> buildParentPatches(Notice notice, String lotId, GppPatch gppPatch,
+            Map<String, String> variables, String patchName) {
+        List<SuggestedGppPatch> parentPatches = new java.util.ArrayList<>();
+        GppPatch currentPatch = gppPatch;
+
+        while (!notice.doesPathExistInLot(lotId, currentPatch.getPathInLot())) {
+            String parentPatchName = currentPatch.getDependsOn();
+            if (parentPatchName == null || parentPatchName.isEmpty() || parentPatchName.equals("-")) {
+                System.err.println("No parent patch defined for: " + currentPatch.getName());
+                break;
+            }
+            GppPatch parentPatch = findGppPatchByName(parentPatchName);
+            if (parentPatch == null) {
+                System.err.println("Parent Patch not found: " + parentPatchName);
+                break;
+            }
+
+            SuggestedGppPatch parentSuggestedPatch = new SuggestedGppPatch(
+                    parentPatch.getName(),
+                    parentPatch.getBtIds(),
+                    parentPatch.getDependsOn(),
+                    parentPatch.getPathInLot(),
+                    parseValue(parentPatch.getValue(), variables),
+                    Constants.OP_CREATE,
+                    "Parent structure for: " + patchName,
+                    lotId);
+            parentPatches.add(0, parentSuggestedPatch);
+            currentPatch = parentPatch;
+        }
+
+        return parentPatches;
     }
 
     private List<SuggestedGppPatch> suggestGppCriteriaSourcePatches(String lotId,
@@ -78,7 +191,7 @@ public class GppPatchSuggester {
             String parsedValue = parseValue(gppCriteriaPatch.getValue(), variables);
 
             SuggestedGppPatch patch = new SuggestedGppPatch(
-                    Constants.PATCH_NAME_GPP_CRITERIA_SOURCE,
+                    Constants.PATCH_NAME_GPP_CRITERIA_SOURCE + " - " + source,
                     gppCriteriaPatch.getBtIds(),
                     gppCriteriaPatch.getDependsOn(),
                     gppCriteriaPatch.getPathInLot(),
@@ -107,7 +220,7 @@ public class GppPatchSuggester {
             variables.put(Constants.TAG_ARG0, impact);
             String parsedValue = parseValue(envImpactPatch.getValue(), variables);
             SuggestedGppPatch patch = new SuggestedGppPatch(
-                    Constants.PATCH_NAME_ENVIRONMENTAL_IMPACT,
+                    Constants.PATCH_NAME_ENVIRONMENTAL_IMPACT + " - " + impact,
                     envImpactPatch.getBtIds(),
                     envImpactPatch.getDependsOn(),
                     envImpactPatch.getPathInLot(),
