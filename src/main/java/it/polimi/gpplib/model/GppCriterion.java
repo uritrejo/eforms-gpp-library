@@ -1,6 +1,9 @@
 package it.polimi.gpplib.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+
+import it.polimi.gpplib.utils.Utils;
+
 import java.util.List;
 
 /**
@@ -8,6 +11,10 @@ import java.util.List;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GppCriterion {
+    public static final String AMBITION_LEVEL_CORE = "core";
+    public static final String AMBITION_LEVEL_COMPREHENSIVE = "comprehensive";
+    public static final String AMBITION_LEVEL_BOTH = "both";
+
     private String gppDocument;
     private String gppSource;
     private String category;
@@ -179,6 +186,15 @@ public class GppCriterion {
 
     public void setArg6(String arg6) {
         this.arg6 = arg6;
+    }
+
+    public boolean isApplicable(List<String> cpvCodes, String ambitionLevel) {
+        // Check CPV match
+        boolean cpvMatch = Utils.hasMatchingCpvs(cpvCodes, relevantCpvCodes);
+        // Check ambition level match (case-insensitive, allow "both")
+        boolean ambitionMatch = this.ambitionLevel.toLowerCase().equals("both")
+                || this.ambitionLevel.toLowerCase().equals(ambitionLevel);
+        return cpvMatch && ambitionMatch;
     }
 
     @Override

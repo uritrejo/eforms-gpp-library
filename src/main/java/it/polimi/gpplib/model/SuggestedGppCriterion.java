@@ -22,6 +22,8 @@ public class SuggestedGppCriterion {
     public SuggestedGppCriterion() {
     }
 
+    // TODO: could later add a description maybe? would need to be in the
+    // sheets/json as well
     public SuggestedGppCriterion(String gppDocument, String category, String criterionType, String ambitionLevel,
             String id, String name, List<String> relevantCpvCodes, List<String> matchingCpvCodes, String lotId) {
         this.gppDocument = gppDocument;

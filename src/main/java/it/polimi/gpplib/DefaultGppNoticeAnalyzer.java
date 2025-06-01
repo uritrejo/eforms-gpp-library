@@ -17,6 +17,9 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
 
     private final GppDomainKnowledgeService domainKnowledge;
 
+    // TODO: eventually, this should come from a config
+    private String ambitionLevel = GppCriterion.AMBITION_LEVEL_CORE;
+
     // TODO: eventually you'll need to take in config params
     public DefaultGppNoticeAnalyzer() {
         domainKnowledge = new GppDomainKnowledgeService();
@@ -45,8 +48,9 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
             }
 
             List<GppDocument> relevantDocuments = domainKnowledge.getRelevantGppDocuments(lotCpvs);
-            List<GppCriterion> relevantCriteria = domainKnowledge.getRelevantGppCriteria(lotCpvs);
-            List<SuggestedGppCriterion> suggestedCriteria = domainKnowledge.suggestGppCriteria(relevantCriteria);
+            List<GppCriterion> relevantCriteria = domainKnowledge.getRelevantGppCriteria(lotCpvs, ambitionLevel);
+            List<SuggestedGppCriterion> suggestedCriteria = domainKnowledge
+                    .convertToSuggestedGppCriteria(relevantCriteria, lotId, lotCpvs);
 
             allRelevantDocuments.addAll(relevantDocuments);
             allSuggestedCriteria.addAll(suggestedCriteria);
