@@ -79,5 +79,8 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
         GppAnalysisResult result = analyzer.analyzeNotice(notice);
         System.out.println("Notice: " + notice);
         System.out.println("Analysis Result: " + result);
+
+        List<SuggestedGppPatch> patches = analyzer.suggestPatches(notice, result.getSuggestedGppCriteria());
+        System.out.println("Suggested Patches: " + patches);
     }
 }

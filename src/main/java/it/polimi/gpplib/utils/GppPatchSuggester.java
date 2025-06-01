@@ -49,6 +49,7 @@ public class GppPatchSuggester {
 
         List<SuggestedGppPatch> suggestedPatches = new java.util.ArrayList<>();
 
+        // GPP CRITERIA PATCHES
         GppPatch gppCriteriaPatch = findGppPatchByName(Constants.PATCH_NAME_GPP_CRITERIA);
         List<String> gppSources = getGppSources(lotCriteria);
         for (String source : gppSources) {
@@ -63,8 +64,8 @@ public class GppPatchSuggester {
                     parsedValue,
                     Constants.OP_CREATE,
                     // TODO: should add a description to the patches sheet
-                    "Dummy Description for Green Public Procurement Criteria" // Placeholder description
-            );
+                    "Dummy Description for Green Public Procurement Criteria", // Placeholder description
+                    lotId);
             suggestedPatches.add(gppSourcePatch);
         }
 

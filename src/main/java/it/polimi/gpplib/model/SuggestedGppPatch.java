@@ -16,12 +16,13 @@ public class SuggestedGppPatch {
     private String value;
     private String op;
     private String description;
+    private String lotId;
 
     public SuggestedGppPatch() {
     }
 
     public SuggestedGppPatch(String name, List<String> btIds, String dependsOn, String path, String value,
-            String op, String description) {
+            String op, String description, String lotId) {
         this.name = name;
         this.btIds = btIds;
         this.dependsOn = dependsOn;
@@ -29,6 +30,7 @@ public class SuggestedGppPatch {
         this.value = value;
         this.op = op;
         this.description = description;
+        this.lotId = lotId;
     }
 
     public String getName() {
@@ -87,6 +89,14 @@ public class SuggestedGppPatch {
         this.description = description;
     }
 
+    public String getLotId() {
+        return lotId;
+    }
+
+    public void setLotId(String lotId) {
+        this.lotId = lotId;
+    }
+
     @Override
     public String toString() {
         return "SuggestedGppPatch{" +
@@ -97,6 +107,7 @@ public class SuggestedGppPatch {
                 ", value='" + value + '\'' +
                 ", op='" + op + '\'' +
                 ", description='" + description + '\'' +
+                ", lotId='" + lotId + '\'' +
                 '}';
     }
 }

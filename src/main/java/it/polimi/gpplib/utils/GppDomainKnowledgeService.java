@@ -84,7 +84,6 @@ public class GppDomainKnowledgeService {
     }
 
     public List<SuggestedGppPatch> suggestGppPatches(Notice notice, List<SuggestedGppCriterion> suggestedCriteria) {
-        List<SuggestedGppPatch> suggestedPatches = patchSuggester.suggestGppPatches(notice, suggestedCriteria);
-        return suggestedPatches;
+        return patchSuggester.suggestGppPatches(notice, suggestedCriteria);
     }
 }
