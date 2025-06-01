@@ -8,12 +8,17 @@ import it.polimi.gpplib.model.SuggestedGppCriterion;
 import it.polimi.gpplib.model.SuggestedGppPatch;
 
 import java.util.List;
+import java.util.Map;
+
+import java.util.HashMap;
 
 public class GppDomainKnowledgeService {
 
     private List<GppDocument> gppDocs = new java.util.ArrayList<>();
     private List<GppCriterion> gppCriteria = new java.util.ArrayList<>();
     private List<GppPatch> gppPatches = new java.util.ArrayList<>();
+
+    private final GppPatchSuggester patchSuggester;
 
     public GppDomainKnowledgeService() {
         try {
@@ -29,6 +34,8 @@ public class GppDomainKnowledgeService {
             System.err.println("Failed to load GPP domain knowledge: " + e.getMessage());
             e.printStackTrace();
         }
+
+        patchSuggester = new GppPatchSuggester(gppCriteria, gppPatches);
     }
 
     // TODO: eventually, the relevant documents should only come from the relevant
@@ -61,9 +68,6 @@ public class GppDomainKnowledgeService {
             List<String> lotCpvs) {
         List<SuggestedGppCriterion> suggested = new java.util.ArrayList<>();
         for (GppCriterion criterion : criteria) {
-            // compute matching CPVs between the lot and the criterion
-            List<String> matchingCpvs = Utils.matchingCpvs(lotCpvs, criterion.getRelevantCpvCodes());
-
             SuggestedGppCriterion s = new SuggestedGppCriterion(
                     criterion.getGppDocument(),
                     criterion.getCategory(),
@@ -72,7 +76,7 @@ public class GppDomainKnowledgeService {
                     criterion.getId(),
                     criterion.getName(),
                     criterion.getRelevantCpvCodes(),
-                    matchingCpvs,
+                    Utils.matchingCpvs(lotCpvs, criterion.getRelevantCpvCodes()),
                     lotId);
             suggested.add(s);
         }
@@ -80,34 +84,7 @@ public class GppDomainKnowledgeService {
     }
 
     public List<SuggestedGppPatch> suggestGppPatches(Notice notice, List<SuggestedGppCriterion> suggestedCriteria) {
-
-        // we first need to convert the suggested criteria to GppCriteria to get the
-        // internal details
-
-        // then
-
-        // remember to include the global patches (e.g. document, changes section)
-        // will probs need to convert he SuggestedGppCriterion to GppCriterion
-
-        // ??++ AQUI
-        return List.of(); // Placeholder return
+        List<SuggestedGppPatch> suggestedPatches = patchSuggester.suggestGppPatches(notice, suggestedCriteria);
+        return suggestedPatches;
     }
-
-    private List<GppCriterion> convertToGppCriteria(List<SuggestedGppCriterion> suggestedCriteria) {
-        // List<GppCriterion> criteria = new java.util.ArrayList<>();
-        // for (SuggestedGppCriterion s : suggestedCriteria) {
-        // GppCriterion c = new GppCriterion(
-        // s.getGppDocument(),
-        // s.getCategory(),
-        // s.getCriterionType(),
-        // s.getAmbitionLevel(),
-        // s.getId(),
-        // s.getName(),
-        // s.getRelevantCpvCodes());
-        // criteria.add(c);
-        // }
-        // return criteria;
-        return List.of(); // Placeholder return
-    }
-
 }

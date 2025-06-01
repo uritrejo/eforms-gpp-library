@@ -173,7 +173,7 @@ public class Notice {
     }
 
     /**
-     * Helper: Finds the ProcurementProjectLot node for a given lot ID.
+     * Finds the ProcurementProjectLot node for a given lot ID.
      * This version finds all lots, checks their ID child, and returns the matching
      * lot node.
      */
