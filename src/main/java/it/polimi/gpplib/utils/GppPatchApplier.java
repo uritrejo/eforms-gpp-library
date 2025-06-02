@@ -17,7 +17,7 @@ public class GppPatchApplier {
             throw new IllegalArgumentException("Notice and patch must not be null");
         }
 
-        if (patch.getOp() == null || patch.getOp() != Constants.OP_CREATE) {
+        if (patch.getOp() == null || !patch.getOp().equalsIgnoreCase(Constants.OP_CREATE)) {
             System.err.println("Processing invalid patch operation: " + patch.getOp());
             return notice;
         }
