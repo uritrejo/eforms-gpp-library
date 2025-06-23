@@ -8,9 +8,6 @@ import it.polimi.gpplib.model.SuggestedGppCriterion;
 import it.polimi.gpplib.model.SuggestedGppPatch;
 
 import java.util.List;
-import java.util.Map;
-
-import java.util.HashMap;
 
 public class GppDomainKnowledgeService {
 
