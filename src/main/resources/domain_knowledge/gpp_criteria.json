@@ -11,13 +11,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS1: Refurbishment requirements, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -31,13 +26,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS1: Refurbishment requirements, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -51,13 +41,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS2: Durable upholstery coverings, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -71,13 +56,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS2: Durable upholstery coverings, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -91,13 +71,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS3: Blowing agents, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -111,13 +86,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS3: Blowing agents, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -131,13 +101,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS4: Refurbished furniture product warranty, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -151,13 +116,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS4: Refurbished furniture product warranty, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -171,13 +131,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC1: Low chemical residue upholstery coverings, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -191,13 +146,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC2: Low chemical residue padding materials, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -211,13 +161,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC3.1: Low emission latex foam padding materials, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -231,13 +176,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC3.2: Low emission polyurethane foam padding materials, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -251,13 +191,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "quality",
-    "arg1": "Extended warranty periods",
-    "arg2": "some description",
-    "arg3": "number-weight",
-    "arg4": "per-exa",
-    "arg5": null,
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC1: Extended warranty periods, a criterion of type Award criteria, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -271,13 +206,8 @@
       "50850000"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC4: Extended warranty periods, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -293,13 +223,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS1: Sourcing of legal timber for furniture production, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -315,13 +240,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS1: Sourcing of legal timber for furniture production, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -337,13 +257,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for CPC1: Sourcing of legal timber, a criterion of type Contract performing clause, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -359,13 +274,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for CPC1: Sourcing of legal timber, a criterion of type Contract performing clause, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -381,13 +291,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS2: Formaldehyde emissions from wood-based panels, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -403,13 +308,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS2: Formaldehyde emissions from wood-based panels, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -425,13 +325,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS3: Coating mixture restrictions, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -447,13 +342,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS4: Restrictions for metals, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -469,13 +359,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS3: REACH Candidate List substance reporting, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -491,13 +376,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS5: REACH Candidate List substance reporting, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -513,13 +393,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS6: Durable upholstery coverings, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -535,13 +410,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS4: Blowing agents, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -557,13 +427,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS7: Blowing agents, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -579,13 +444,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS5: Fitness for use, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -601,13 +461,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS8: Fitness for use, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -623,13 +478,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS6: Design for disassembly and repair, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -645,13 +495,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS9: Design for disassembly and repair, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -667,13 +512,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS7: Product warranty and spare parts, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -689,13 +529,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS10: Product warranty and spare parts, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -711,13 +546,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC1: Formaldehyde emissions from wood-based panels, a criterion of type Award criteria, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -733,13 +563,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC1: Formaldehyde emissions from wood-based panels, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -755,13 +580,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC2: Plastic marking, a criterion of type Award criteria, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -777,13 +597,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC2: Plastic marking, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -799,13 +614,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC3: Low chemical residue upholstery coverings, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -821,13 +631,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC4: Low VOC emission furniture, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -843,13 +648,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC3: Extended warranty periods, a criterion of type Award criteria, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -865,13 +665,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC5: Extended warranty periods, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -887,13 +682,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC6: Low chemical residue padding materials, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -909,13 +699,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC7.1: Low emission latex foam padding materials, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -931,13 +716,8 @@
       "45421153"
     ],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC7.2: Low emission polyurethane foam padding materials, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -953,13 +733,8 @@
       "45421153"
     ],
     "environmentalImpactType": "biodiv-eco",
-    "arg0": "slc-abil-mgmt-env",
-    "arg1": "999 unicorns attacked my house",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for SC1: Fake Name Unicorn, a criterion of type Selection criteria, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": "slc-abil-mgmt-env"
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -975,13 +750,8 @@
       "45421153"
     ],
     "environmentalImpactType": "clim-mitig",
-    "arg0": "slc-sche-env-cert-indep",
-    "arg1": "5 ponies defended my house",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for SC2: Fake Name Pony, a criterion of type Selection criteria, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": "slc-abil-mgmt-env"
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -993,13 +763,8 @@
     "name": "Collection and reuse of existing furniture stock",
     "relevantCpvCodes": [],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS1: Collection and reuse of existing furniture stock, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -1011,13 +776,8 @@
     "name": "Collection and reuse of existing furniture stock",
     "relevantCpvCodes": [],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for TS1: Collection and reuse of existing furniture stock, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -1029,13 +789,8 @@
     "name": "Improvement in the re-use targets",
     "relevantCpvCodes": [],
     "environmentalImpactType": "other",
-    "arg0": "le-arg0",
-    "arg1": "le-arg1",
-    "arg2": "le-arg2",
-    "arg3": "le-arg3",
-    "arg4": "le-arg4",
-    "arg5": "le-arg5",
-    "arg6": "le-arg6"
+    "description": "Temporary description for AC1: Improvement in the re-use targets, a criterion of type Award criteria, of ambition level Core, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Furniture",
@@ -1047,13 +802,8 @@
     "name": "Improvement in the re-use targets",
     "relevantCpvCodes": [],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC1: Improvement in the re-use targets, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Furniture",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1067,13 +817,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for SC1: Competences of the tenderer, a criterion of type Selection criteria, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1087,13 +832,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS1.1: Use of ecolabelled cleaning products, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1107,13 +847,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS1.1: Use of ecolabelled cleaning products, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1127,13 +862,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS1.2: Use of concentrated undiluted cleaning products, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1147,13 +877,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC1.1: Use of ecolabelled cleaning products, a criterion of type Award criteria, of ambition level Core, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1167,13 +892,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC1.2: Use of concentrated undiluted cleaning products, a criterion of type Award criteria, of ambition level Core, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1187,13 +907,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS2.1: Use of microfiber products, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1207,13 +922,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS2.1: Use of microfiber products, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1227,13 +937,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS2.2: Use of ecolabelled cleaning accessories, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1247,13 +952,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC2.1: Use of microfiber products, a criterion of type Award criteria, of ambition level Core, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1267,13 +967,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC2.2: Use of ecolabelled cleaning accessories, a criterion of type Award criteria, of ambition level Core, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1287,13 +982,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC2.2: Use of ecolabelled cleaning accessories, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1307,13 +997,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS3: Environmental management measures and practices, a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1327,13 +1012,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC3: Environmental management measures and practices, a criterion of type Award criteria, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1347,13 +1027,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS4.1: Hand soap, a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1367,13 +1042,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS4.2: Textile towels, a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1387,13 +1057,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS4.3: Tissue paper products, a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1407,13 +1072,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC4: Energy efficiency of vacuum cleaners, a criterion of type Award criteria, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1427,13 +1087,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC1.1: Cleaning products and accessories used, a criterion of type Contract performing clause, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1447,13 +1102,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC1.2: Cleaning product dosing, a criterion of type Contract performing clause, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1467,13 +1117,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC2: Staff training, a criterion of type Contract performing clause, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1487,13 +1132,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC3: Environmental management measures and practices, a criterion of type Contract performing clause, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1507,13 +1147,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC4: Consumable goods, a criterion of type Contract performing clause, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for Indoor Cleaning Services",
@@ -1527,13 +1162,8 @@
       "90910000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC5: Purchase of new vacuum cleaners, a criterion of type Contract performing clause, of ambition level Both, coming from document EU GPP Criteria for Indoor Cleaning Services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1548,13 +1178,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS1: Provision of an extended service agreement, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1569,13 +1194,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS1: Provision of an extended service agreement, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1590,13 +1210,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS2: Continued availability of spare parts , a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1611,13 +1226,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS2: Continued availability of spare parts , a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1632,13 +1242,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC1: Service agreement , a criterion of type Contract performing clause, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1653,13 +1258,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS3: Manufacturer\u2019s warranty , a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1674,13 +1274,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS3: Manufacturer\u2019s warranty , a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1695,13 +1290,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS4: Design for reparability , a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1716,13 +1306,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS4: Design for reparability , a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1737,13 +1322,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS5: Functionality for secure data deletion , a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1758,13 +1338,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS6: Rechargeable battery endurance , a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1779,13 +1354,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS6: Rechargeable battery endurance , a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1800,13 +1370,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS7: Minimum requirements for electrical performance, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1821,13 +1386,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS8: Information on battery state of health , a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1842,13 +1402,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS9: Battery protection software , a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1863,13 +1418,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS10: Intelligent charging , a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1884,13 +1434,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC1: Further rechargeable battery endurance , a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1905,13 +1450,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS11: Drop testing, a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1926,13 +1466,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS12: Temperature stress , a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1947,13 +1482,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS13: Ingress protection level \u2013 semi-rugged and rugged devices, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1968,13 +1498,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC2: Mobile equipment durability testing , a criterion of type Award criteria, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -1989,13 +1514,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC3: Ingress protection level \u2013 semi-rugged and rugged devices, a criterion of type Award criteria, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2010,13 +1530,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS14: Standardised port , a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2031,13 +1546,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS15: Standardised external power supply , a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2052,13 +1562,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS16: External power supply: detachable cables, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2073,13 +1578,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS17: Backward compatibility: adapters , a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2094,13 +1594,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC4: ICT equipment without accessories , a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2115,13 +1610,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS18: Minimum energy performance of computers, a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2136,13 +1626,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS19: Minimum energy performance of monitors, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2157,13 +1642,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS19: Minimum energy performance of monitors, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2178,13 +1658,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS20: Thin Client devices in a server-based network, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2199,13 +1674,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC5: Improvement in energy consumption above the specified threshold for computers, a criterion of type Award criteria, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2220,13 +1690,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC6: Improvement in energy consumption above the specified threshold for monitors, a criterion of type Award criteria, of ambition level Core, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2241,13 +1706,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC6: Improvement in energy consumption above the specified threshold for monitors, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2262,13 +1722,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for SC1: Restricted substance controls , a criterion of type Selection criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2283,13 +1738,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS21: Restriction of chlorinate and brominate substances in plastic parts, a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2304,13 +1754,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC7: Restriction of Substances of Very High Concern, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2325,13 +1770,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC8: Avoidance of regrettable substitution , a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2346,13 +1786,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS22: Marking of plastic casings, enclosures and bezels, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2367,13 +1802,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC9: Recyclability of plastic casings, enclosures and bezels \u2013 separable inserts and fasteners, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2388,13 +1818,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC10: Recyclability of plastic casings, enclosures and bezels \u2013 paints and coatings, a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2409,13 +1834,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS23: Secure computer collection, sanitisation, re-use and recycling, a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2430,13 +1850,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC2: Reporting on the end destination of ICT equipment, a criterion of type Contract performing clause, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2451,13 +1866,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for SC2: Quality of refurbishment/remanufacture process, a criterion of type Selection criteria, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2472,13 +1882,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS24: Provision of an extended service agreement, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2493,13 +1898,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS24: Provision of an extended service agreement, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2514,13 +1914,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS25: Refurbished/remanufactured product warranty, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2535,13 +1930,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS25: Refurbished/remanufactured product warranty, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2556,13 +1946,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS26: Information on rechargeable battery endurance, a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2577,13 +1962,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS27: Minimum requirements for electrical performance, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2598,13 +1978,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC11: Further rechargeable battery endurance , a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2619,13 +1994,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC12: Standardised external power supply , a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2640,13 +2010,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC13: External power supply: detachable cables , a criterion of type Award criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2661,13 +2026,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS28: Provision of an extended service agreement, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for computers, monitors, tablets and smartphones",
@@ -2682,13 +2042,8 @@
       "32250000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC3: Service agreement , a criterion of type Contract performing clause, of ambition level Comprehensive, coming from document EU GPP Criteria for computers, monitors, tablets and smartphones",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2703,13 +2058,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for SC1: Server utilisation, a criterion of type Selection criteria, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2724,13 +2074,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for SC2: SC2 Control of hazardous substances, a criterion of type Selection criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2745,13 +2090,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for SC3: Cooling energy management, a criterion of type Selection criteria, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2766,13 +2106,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS1: Server active state efficiency, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2787,13 +2122,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS1: Server active state efficiency, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2808,13 +2138,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS2: ICT Operating range \u2013 temperature and humidity, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2829,13 +2154,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS2: ICT Operating range \u2013 temperature and humidity, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2850,13 +2170,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS3: Design for the repair and upgrading of servers and data storage, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2871,13 +2186,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS4: End-of-life management of servers, data storage and network equipment, a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2892,13 +2202,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS5: Environmental monitoring, a criterion of type Technical specification, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2913,13 +2218,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS6: Cooling system best practices \u2013 new build or retrofit of data centres, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2934,13 +2234,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS7: Cooling system best practices \u2013 existing colocation or hosting data centres, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2955,13 +2250,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS8: Waste heat reuse readiness, a criterion of type Technical specification, of ambition level Core, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2976,13 +2266,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS8: Waste heat reuse, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -2997,13 +2282,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS9: Renewable energy factor (REF), a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3018,13 +2298,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for TS10: Global warming potential of mixture of refrigerants, a criterion of type Technical specification, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3039,13 +2314,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC1: Server idle state power, a criterion of type Award Criteria, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3060,13 +2330,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC2: Server deployed power demand, a criterion of type Award Criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3081,13 +2346,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC3: Server utilisation, a criterion of type Award Criteria, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3102,13 +2362,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC4: End-of-life management of servers, a criterion of type Award Criteria, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3123,13 +2378,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC5: Power usage effectiveness (PUE) \u2013 Designed PUE, a criterion of type Award Criteria, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3144,13 +2394,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC6: Power usage effectiveness (PUE) \u2013 PUE Improvement potential, a criterion of type Award Criteria, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3165,13 +2410,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC7: Cooling system energy consumption, a criterion of type Award Criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3186,13 +2426,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC8: Waste heat reuse (for new data centres), a criterion of type Award Criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3207,13 +2442,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC9: Waste heat reuse (for managed services), a criterion of type Award Criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3228,13 +2458,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC10: Renewable energy factor (REF), a criterion of type Award Criteria, of ambition level Core, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3249,13 +2474,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC10: Renewable energy factor (REF), a criterion of type Award Criteria, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3270,13 +2490,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for AC11: Global warming potential of mixture of refrigerants, a criterion of type Award Criteria, of ambition level Core, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3291,13 +2506,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC1: Monitoring of IT energy consumption, a criterion of type Contract performing clause, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3312,13 +2522,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC2: Monitoring of IT equipment utilisation, a criterion of type Contract performing clause, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3333,13 +2538,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC3: Reporting on the end-destination of servers, data storage and network equipment, a criterion of type Contract performing clause, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3354,13 +2554,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC4: Demonstration of power usage effectiveness (PUE) at handover, a criterion of type Contract performing clause, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3375,13 +2570,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC5: Monitoring of power usage effectiveness (PUE) input values, a criterion of type Contract performing clause, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3396,13 +2586,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC6: Implementation of best practice designs, a criterion of type Contract performing clause, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3417,13 +2602,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC7: Monitoring of cooling system\u2019s energy consumption, a criterion of type Contract performing clause, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3438,13 +2618,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC8: Monitoring of the heating supply and connection, a criterion of type Contract performing clause, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3459,13 +2634,8 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC9: Renewable energy factor (REF), a criterion of type Contract performing clause, of ambition level Both, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   },
   {
     "gppDocument": "EU GPP Criteria for data centres, server rooms and cloud services",
@@ -3480,12 +2650,7 @@
       "72317000"
     ],
     "environmentalImpactType": "other",
-    "arg0": null,
-    "arg1": null,
-    "arg2": null,
-    "arg3": null,
-    "arg4": null,
-    "arg5": null,
-    "arg6": null
+    "description": "Temporary description for CPC10: Global warming potential of mixtures of refrigerants, a criterion of type Contract performing clause, of ambition level Comprehensive, coming from document EU GPP Criteria for data centres, server rooms and cloud services",
+    "selectionCriterionType": null
   }
 ]

@@ -56,6 +56,11 @@ public final class Constants {
     public static final String TAG_LANGUAGE = "language";
     public static final String TAG_ENGLISH = "EN";
 
+    public static final String AWARD_CRITERIA_TYPE_QUALITY = "quality";
+
+    public static final String TENDERER_REQ_CODE_ENV_MANAGEMENT = "slc-abil-mgmt-env";
+    public static final String TENDERER_REQ_CODE_ENV_CERTIFICATE = "slc-sche-env-cert-indep";
+
     public static final Map<String, String> NAMESPACE_MAP;
     static {
         Map<String, String> map = new HashMap<>();
