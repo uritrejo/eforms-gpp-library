@@ -164,7 +164,7 @@ public class GppPatchSuggester {
                         "%s --- Extended Description: %s", formattedName, criterion.getDescription());
                 String tendererReqTypeCode = criterion.getSelectionCriterionType() != null
                         ? criterion.getSelectionCriterionType()
-                        : "potato";
+                        : Constants.TENDERER_REQ_CODE_ENV_MANAGEMENT;
                 variables.put(Constants.TAG_ARG0, tendererReqTypeCode);
                 variables.put(Constants.TAG_ARG1, formattedDescription);
                 break;
