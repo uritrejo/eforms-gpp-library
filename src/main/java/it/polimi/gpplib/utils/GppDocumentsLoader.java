@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule; // Important for java.time types like OffsetDateTime
 import com.fasterxml.jackson.core.type.TypeReference; // Essential for deserializing Lists
 
+import it.polimi.gpplib.model.Constants;
 import it.polimi.gpplib.model.GppDocument; // Your GppDocument POJO
 
 import java.io.IOException;
@@ -16,8 +17,6 @@ import java.util.Objects; // For Objects.requireNonNull
  * Utility class to load GPP document data from a JSON file in resources.
  */
 public class GppDocumentsLoader {
-
-    private static final String GPP_DOCS_JSON_PATH = "domain_knowledge/gpp_criteria_docs.json";
 
     private final ObjectMapper objectMapper;
 
@@ -41,9 +40,10 @@ public class GppDocumentsLoader {
     public List<GppDocument> loadGppDocuments() throws IOException {
         // Get the InputStream for the resource file from the classpath
         // The path is relative to the classpath root (src/main/resources/)
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream(GPP_DOCS_JSON_PATH)) {
+        try (InputStream is = getClass().getClassLoader()
+                .getResourceAsStream(Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH)) {
             // Ensure the resource was found; getResourceAsStream returns null if not
-            Objects.requireNonNull(is, "Resource not found on classpath: " + GPP_DOCS_JSON_PATH);
+            Objects.requireNonNull(is, "Resource not found on classpath: " + Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH);
 
             // Read the JSON array into a List of GppDocument objects
             // TypeReference is used here because of Java's type erasure;

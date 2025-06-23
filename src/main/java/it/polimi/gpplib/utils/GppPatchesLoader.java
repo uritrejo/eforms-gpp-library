@@ -3,6 +3,8 @@ package it.polimi.gpplib.utils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
+import it.polimi.gpplib.model.Constants;
 import it.polimi.gpplib.model.GppPatch;
 
 import java.io.IOException;
@@ -14,8 +16,6 @@ import java.util.Objects;
  * Utility class to load GPP patches from gpp_patches_data.json.
  */
 public class GppPatchesLoader {
-
-    private static final String GPP_PATCHES_JSON_PATH = "domain_knowledge/gpp_patches_data.json";
     private final ObjectMapper objectMapper;
 
     public GppPatchesLoader() {
@@ -24,8 +24,10 @@ public class GppPatchesLoader {
     }
 
     public List<GppPatch> loadGppPatches() throws IOException {
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream(GPP_PATCHES_JSON_PATH)) {
-            Objects.requireNonNull(is, "Resource not found on classpath: " + GPP_PATCHES_JSON_PATH);
+        try (InputStream is = getClass().getClassLoader()
+                .getResourceAsStream(Constants.DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH)) {
+            Objects.requireNonNull(is,
+                    "Resource not found on classpath: " + Constants.DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH);
             return objectMapper.readValue(is, new TypeReference<List<GppPatch>>() {
             });
         }

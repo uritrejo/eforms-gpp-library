@@ -123,17 +123,66 @@ public class GppPatchSuggester {
 
     /**
      * Builds the variable map for patch value substitution from a GppCriterion.
+     * The mapping of this depends on the arguments included in the GppPatch data
+     * domain knowledge file.
      */
     private Map<String, String> buildPatchVariables(GppCriterion criterion) {
         Map<String, String> variables = new HashMap<>(Constants.NAMESPACE_MAP);
         variables.put(Constants.TAG_LANGUAGE, Constants.TAG_ENGLISH);
-        variables.put(Constants.TAG_ARG0, criterion.getArg0());
-        variables.put(Constants.TAG_ARG1, criterion.getArg1());
-        variables.put(Constants.TAG_ARG2, criterion.getArg2());
-        variables.put(Constants.TAG_ARG3, criterion.getArg3());
-        variables.put(Constants.TAG_ARG4, criterion.getArg4());
-        variables.put(Constants.TAG_ARG5, criterion.getArg5());
-        variables.put(Constants.TAG_ARG6, criterion.getArg6());
+
+        switch (criterion.getCriterionType().toLowerCase()) {
+            case Constants.CRITERION_TYPE_TECHNICAL_SPECIFICATION:
+                // For now, technical specifications will go in the same patch as award criteria
+            case Constants.CRITERION_TYPE_AWARD_CRITERIA:
+                String formattedName = String.format(
+                        "GPP Award Criterion [ID: %s, Name: %s, Ambition Level: %s, GPP Document: %s]",
+                        criterion.getId(),
+                        criterion.getName(),
+                        criterion.getFormattedAmbitionLevel(),
+                        criterion.getGppDocument());
+                variables.put(Constants.TAG_ARG0, Constants.AWARD_CRITERIA_TYPE_QUALITY);
+                variables.put(Constants.TAG_ARG1, formattedName);
+                variables.put(Constants.TAG_ARG2, criterion.getDescription());
+
+                // TODO: this has to be dynamic according to the other award criteria in the
+                // notice!!!
+                // TODO: Maybe just remove them or add a minimum or something similar
+                // since you send the patch suggestions before even knowing how many will be
+                // added
+                variables.put(Constants.TAG_ARG3, "number-weight");
+                variables.put(Constants.TAG_ARG4, "per-exa");
+                variables.put(Constants.TAG_ARG5, "100");
+                break;
+            case Constants.CRITERION_TYPE_SELECTION_CRITERIA:
+                formattedName = String.format(
+                        "GPP Select Criterion [ID: %s, Name: %s, Ambition Level: %s, GPP Document: %s]",
+                        criterion.getId(),
+                        criterion.getName(),
+                        criterion.getFormattedAmbitionLevel(),
+                        criterion.getGppDocument());
+                String formattedDescription = String.format(
+                        "%s --- Extended Description: %s", formattedName, criterion.getDescription());
+                String tendererReqTypeCode = criterion.getSelectionCriterionType() != null
+                        ? criterion.getSelectionCriterionType()
+                        : Constants.TENDERER_REQ_CODE_ENV_MANAGEMENT;
+                variables.put(Constants.TAG_ARG0, tendererReqTypeCode);
+                variables.put(Constants.TAG_ARG1, formattedDescription);
+                break;
+            case Constants.CRITERION_TYPE_CONTRACT_PERFORMANCE_CLAUSE:
+                formattedName = String.format(
+                        "GPP Contract Performance Clause [ID: %s, Name: %s, Ambition Level: %s, GPP Document: %s]",
+                        criterion.getId(),
+                        criterion.getName(),
+                        criterion.getFormattedAmbitionLevel(),
+                        criterion.getGppDocument());
+                formattedDescription = String.format(
+                        "%s --- Extended Description: %s", formattedName, criterion.getDescription());
+                variables.put(Constants.TAG_ARG0, formattedDescription);
+                break;
+            default:
+                break;
+        }
+
         return variables;
     }
 

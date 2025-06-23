@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class Constants {
+    public static final String DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH = "domain_knowledge/gpp_criteria.json";
+    public static final String DOMAIN_KNOWLEDGE_GPP_DOCS_PATH = "domain_knowledge/gpp_criteria_docs.json";
+    public static final String DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH = "domain_knowledge/gpp_patches_data.json";
+
     public static final String PATH_MAIN_CPV = "cac:ProcurementProject/cac:MainCommodityClassification";
     public static final String PATH_ADDITIONAL_CPVS = "cac:ProcurementProject/cac:AdditionalCommodityClassification";
     // ND-Lot
@@ -51,6 +55,11 @@ public final class Constants {
 
     public static final String TAG_LANGUAGE = "language";
     public static final String TAG_ENGLISH = "EN";
+
+    public static final String AWARD_CRITERIA_TYPE_QUALITY = "quality";
+
+    public static final String TENDERER_REQ_CODE_ENV_MANAGEMENT = "slc-abil-mgmt-env";
+    public static final String TENDERER_REQ_CODE_ENV_CERTIFICATE = "slc-sche-env-cert-indep";
 
     public static final Map<String, String> NAMESPACE_MAP;
     static {

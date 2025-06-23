@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.core.type.TypeReference;
 
+import it.polimi.gpplib.model.Constants;
 import it.polimi.gpplib.model.GppCriterion;
 
 import java.io.IOException;
@@ -15,8 +16,6 @@ import java.util.Objects;
  * Utility class to load GPP criteria data from a JSON file in resources.
  */
 public class GppCriteriaLoader {
-
-    private static final String GPP_CRITERIA_JSON_PATH = "domain_knowledge/gpp_criteria.json";
 
     private final ObjectMapper objectMapper;
 
@@ -34,8 +33,10 @@ public class GppCriteriaLoader {
      *                     JSON parsing.
      */
     public List<GppCriterion> loadGppCriteria() throws IOException {
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream(GPP_CRITERIA_JSON_PATH)) {
-            Objects.requireNonNull(is, "Resource not found on classpath: " + GPP_CRITERIA_JSON_PATH);
+        try (InputStream is = getClass().getClassLoader()
+                .getResourceAsStream(Constants.DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH)) {
+            Objects.requireNonNull(is,
+                    "Resource not found on classpath: " + Constants.DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH);
             return objectMapper.readValue(is, new TypeReference<List<GppCriterion>>() {
             });
         }
