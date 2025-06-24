@@ -9,6 +9,7 @@ public final class Constants {
     public static final String DOMAIN_KNOWLEDGE_GPP_DOCS_PATH = "domain_knowledge/gpp_criteria_docs.json";
     public static final String DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH = "domain_knowledge/gpp_patches_data.json";
 
+    public static final String PATH_PROCUREMENT_PROJECT = "cac:ProcurementProject";
     public static final String PATH_MAIN_CPV = "cac:ProcurementProject/cac:MainCommodityClassification";
     public static final String PATH_ADDITIONAL_CPVS = "cac:ProcurementProject/cac:AdditionalCommodityClassification";
     // ND-Lot
