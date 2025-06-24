@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Patch1",
+        "btIds": ["BT-1"],
+        "dependsOn": null,
+        "pathInLot": "path1",
+        "value": "<xml>value1</xml>"
+    },
+    {
+        "name": "Patch2",
+        "btIds": ["BT-2", "BT-3"],
+        "dependsOn": "Patch1",
+        "pathInLot": "path2",
+        "value": "<xml>value2</xml>"
+    }
+]
