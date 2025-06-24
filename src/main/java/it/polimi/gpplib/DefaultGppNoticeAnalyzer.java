@@ -2,6 +2,7 @@ package it.polimi.gpplib;
 
 import it.polimi.gpplib.model.Notice;
 import it.polimi.gpplib.model.SuggestedGppCriterion;
+import it.polimi.gpplib.model.Constants;
 import it.polimi.gpplib.model.GppAnalysisResult;
 import it.polimi.gpplib.model.GppCriterion;
 import it.polimi.gpplib.model.GppDocument;
@@ -25,8 +26,8 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
     private String ambitionLevel = GppCriterion.AMBITION_LEVEL_CORE;
 
     // TODO: eventually you'll need to take in config params
-    public DefaultGppNoticeAnalyzer() {
-        domainKnowledge = new GppDomainKnowledgeService();
+    public DefaultGppNoticeAnalyzer(String gppDocsPath, String gppCriteriaPath, String gppPatchesPath) {
+        domainKnowledge = new GppDomainKnowledgeService(gppDocsPath, gppCriteriaPath, gppPatchesPath);
         patchApplier = new GppPatchApplier();
     }
 
@@ -84,8 +85,8 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
     // temporary for testing purposes
     public static void main(String[] args) {
         try {
-
-            DefaultGppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer();
+            DefaultGppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer(Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH,
+                    Constants.DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH, Constants.DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH);
             // String noticePath = "notices_furniture/00155175_2025.xml";
             String noticePath = "notices_furniture/dummy.xml";
             String noticeXml = XmlUtils.getAsXmlString(noticePath);

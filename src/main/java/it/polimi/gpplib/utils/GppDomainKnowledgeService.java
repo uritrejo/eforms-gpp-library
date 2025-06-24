@@ -18,19 +18,26 @@ public class GppDomainKnowledgeService {
 
     private final GppPatchSuggester patchSuggester;
 
-    public GppDomainKnowledgeService() {
+    public GppDomainKnowledgeService(String gppDocsPath, String gppCriteriaPath, String gppPatchesPath) {
         try {
-            GppDocumentsLoader docsLoader = new GppDocumentsLoader(Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH);
+            GppDocumentsLoader docsLoader = new GppDocumentsLoader(gppDocsPath);
             gppDocs = docsLoader.loadGppDocuments();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid GPP documents file path: " + gppDocsPath, e);
+        }
 
-            GppCriteriaLoader criteriaLoader = new GppCriteriaLoader(Constants.DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH);
+        try {
+            GppCriteriaLoader criteriaLoader = new GppCriteriaLoader(gppCriteriaPath);
             gppCriteria = criteriaLoader.loadGppCriteria();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid GPP criteria file path: " + gppCriteriaPath, e);
+        }
 
-            GppPatchesLoader patchesLoader = new GppPatchesLoader(Constants.DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH);
+        try {
+            GppPatchesLoader patchesLoader = new GppPatchesLoader(gppPatchesPath);
             gppPatches = patchesLoader.loadGppPatches();
         } catch (Exception e) {
-            System.err.println("Failed to load GPP domain knowledge: " + e.getMessage());
-            e.printStackTrace();
+            throw new IllegalArgumentException("Invalid GPP patches file path: " + gppPatchesPath, e);
         }
 
         patchSuggester = new GppPatchSuggester(gppCriteria, gppPatches);
