@@ -23,7 +23,7 @@ public class GppDomainKnowledgeService {
             GppDocumentsLoader docsLoader = new GppDocumentsLoader(Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH);
             gppDocs = docsLoader.loadGppDocuments();
 
-            GppCriteriaLoader criteriaLoader = new GppCriteriaLoader();
+            GppCriteriaLoader criteriaLoader = new GppCriteriaLoader(Constants.DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH);
             gppCriteria = criteriaLoader.loadGppCriteria();
 
             GppPatchesLoader patchesLoader = new GppPatchesLoader();

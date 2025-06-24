@@ -17,9 +17,11 @@ import java.util.Objects;
  */
 public class GppCriteriaLoader {
 
+    private final String filePath;
     private final ObjectMapper objectMapper;
 
-    public GppCriteriaLoader() {
+    public GppCriteriaLoader(String filePath) {
+        this.filePath = filePath;
         this.objectMapper = new ObjectMapper();
         this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         this.objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
@@ -34,9 +36,9 @@ public class GppCriteriaLoader {
      */
     public List<GppCriterion> loadGppCriteria() throws IOException {
         try (InputStream is = getClass().getClassLoader()
-                .getResourceAsStream(Constants.DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH)) {
+                .getResourceAsStream(filePath)) {
             Objects.requireNonNull(is,
-                    "Resource not found on classpath: " + Constants.DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH);
+                    "Resource not found on classpath: " + filePath);
             return objectMapper.readValue(is, new TypeReference<List<GppCriterion>>() {
             });
         }
@@ -44,7 +46,7 @@ public class GppCriteriaLoader {
 
     // Example main method for testing
     public static void main(String[] args) {
-        GppCriteriaLoader loader = new GppCriteriaLoader();
+        GppCriteriaLoader loader = new GppCriteriaLoader(Constants.DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH);
         try {
             List<GppCriterion> criteria = loader.loadGppCriteria();
             System.out.println("Successfully loaded " + criteria.size() + " GPP criteria.");
