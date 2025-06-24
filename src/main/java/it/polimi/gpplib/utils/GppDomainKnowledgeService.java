@@ -26,7 +26,7 @@ public class GppDomainKnowledgeService {
             GppCriteriaLoader criteriaLoader = new GppCriteriaLoader(Constants.DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH);
             gppCriteria = criteriaLoader.loadGppCriteria();
 
-            GppPatchesLoader patchesLoader = new GppPatchesLoader();
+            GppPatchesLoader patchesLoader = new GppPatchesLoader(Constants.DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH);
             gppPatches = patchesLoader.loadGppPatches();
         } catch (Exception e) {
             System.err.println("Failed to load GPP domain knowledge: " + e.getMessage());

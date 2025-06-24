@@ -16,18 +16,20 @@ import java.util.Objects;
  * Utility class to load GPP patches from gpp_patches_data.json.
  */
 public class GppPatchesLoader {
+    private final String filePath;
     private final ObjectMapper objectMapper;
 
-    public GppPatchesLoader() {
+    public GppPatchesLoader(String filePath) {
+        this.filePath = filePath;
         this.objectMapper = new ObjectMapper();
         this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
     public List<GppPatch> loadGppPatches() throws IOException {
         try (InputStream is = getClass().getClassLoader()
-                .getResourceAsStream(Constants.DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH)) {
+                .getResourceAsStream(filePath)) {
             Objects.requireNonNull(is,
-                    "Resource not found on classpath: " + Constants.DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH);
+                    "Resource not found on classpath: " + filePath);
             return objectMapper.readValue(is, new TypeReference<List<GppPatch>>() {
             });
         }
@@ -35,7 +37,7 @@ public class GppPatchesLoader {
 
     // Example main method for testing
     public static void main(String[] args) {
-        GppPatchesLoader loader = new GppPatchesLoader();
+        GppPatchesLoader loader = new GppPatchesLoader(Constants.DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH);
         try {
             List<GppPatch> patches = loader.loadGppPatches();
             System.out.println("Successfully loaded " + patches.size() + " GPP patches.");
