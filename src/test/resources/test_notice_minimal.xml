@@ -26,7 +26,7 @@
                 <cbc:ItemClassificationCode listName="cpv">33192000</cbc:ItemClassificationCode>
             </cac:MainCommodityClassification>
             <cac:AdditionalCommodityClassification>
-                <cbc:ItemClassificationCode listName="cpv">11110000</cbc:ItemClassificationCode>
+                <cbc:ItemClassificationCode listName="cpv">39110000</cbc:ItemClassificationCode>
             </cac:AdditionalCommodityClassification>
         </cac:ProcurementProject>
     </cac:ProcurementProjectLot>
