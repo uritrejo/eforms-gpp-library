@@ -83,20 +83,26 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
 
     // temporary for testing purposes
     public static void main(String[] args) {
-        DefaultGppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer();
-        // String noticePath = "notices_furniture/00155175_2025.xml";
-        String noticePath = "notices_furniture/dummy.xml";
-        String noticeXml = XmlUtils.getAsXmlString(noticePath);
-        Notice notice = analyzer.loadNotice(noticeXml);
-        GppAnalysisResult result = analyzer.analyzeNotice(notice);
-        System.out.println("Notice: " + notice);
-        System.out.println("Analysis Result: " + result);
+        try {
 
-        List<SuggestedGppPatch> patches = analyzer.suggestPatches(notice, result.getSuggestedGppCriteria());
-        System.out.println("Suggested Patches: " + patches);
+            DefaultGppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer();
+            // String noticePath = "notices_furniture/00155175_2025.xml";
+            String noticePath = "notices_furniture/dummy.xml";
+            String noticeXml = XmlUtils.getAsXmlString(noticePath);
+            Notice notice = analyzer.loadNotice(noticeXml);
+            GppAnalysisResult result = analyzer.analyzeNotice(notice);
+            System.out.println("Notice: " + notice);
+            System.out.println("Analysis Result: " + result);
 
-        Notice patchedNotice = analyzer.applyPatches(notice, patches);
-        noticeXml = patchedNotice.toXmlString();
-        System.out.println("Patched Notice: " + noticeXml);
+            List<SuggestedGppPatch> patches = analyzer.suggestPatches(notice, result.getSuggestedGppCriteria());
+            System.out.println("Suggested Patches: " + patches);
+
+            Notice patchedNotice = analyzer.applyPatches(notice, patches);
+            noticeXml = patchedNotice.toXmlString();
+            System.out.println("Patched Notice: " + noticeXml);
+        } catch (Exception e) {
+            System.err.println("An error occurred during analysis:");
+            e.printStackTrace();
+        }
     }
 }

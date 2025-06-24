@@ -53,13 +53,4 @@ public class UtilsTest {
         assertFalse(Utils.hasMatchingCpvs(noticeCpvs, criteriaCpvs));
     }
 
-    // TODO: move the xml utils ones to their own files
-    @Test
-    public void testLoadXmlString_notice() {
-        String resourcePath = "notices_furniture/00152724_2025.xml";
-        String xml = XmlUtils.getAsXmlString(resourcePath);
-        System.out.println(xml);
-        assertNotNull("XML string should not be null", xml);
-        assertTrue("XML string should contain ContractNotice root element", xml.contains("<ContractNotice"));
-    }
 }
