@@ -6,6 +6,7 @@ import it.polimi.gpplib.model.GppPatch;
 import it.polimi.gpplib.model.Notice;
 import it.polimi.gpplib.model.SuggestedGppCriterion;
 import it.polimi.gpplib.model.SuggestedGppPatch;
+import it.polimi.gpplib.model.Constants;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class GppDomainKnowledgeService {
 
     public GppDomainKnowledgeService() {
         try {
-            GppDocumentsLoader docsLoader = new GppDocumentsLoader();
+            GppDocumentsLoader docsLoader = new GppDocumentsLoader(Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH);
             gppDocs = docsLoader.loadGppDocuments();
 
             GppCriteriaLoader criteriaLoader = new GppCriteriaLoader();
