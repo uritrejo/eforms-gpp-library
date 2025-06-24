@@ -19,6 +19,11 @@ public class NoticeTest {
         notice = new Notice(xml);
     }
 
+    @Test(expected = XmlUtils.XmlUtilsException.class)
+    public void testConstructorInvalidXml() {
+        notice = new Notice("potato");
+    }
+
     @Test
     public void testGetProcurementProjectMainCpv() {
         String mainCpv = notice.getProcurementProjectMainCpv();
