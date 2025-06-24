@@ -43,8 +43,7 @@ public class SuggestedGppPatchTest {
                 "<cac:ProcurementAdditionalType></cac:ProcurementAdditionalType>",
                 "replace",
                 "A description",
-                "LOT-2"
-        );
+                "LOT-2");
 
         assertEquals("Green Patch", patch.getName());
         assertEquals(btIds, patch.getBtIds());
@@ -66,8 +65,7 @@ public class SuggestedGppPatchTest {
                 "<xml/>",
                 "add",
                 "desc",
-                "LOT-1"
-        );
+                "LOT-1");
         String str = patch.toString();
         assertTrue(str.contains("Patch Name"));
         assertTrue(str.contains("BT-1"));
@@ -83,14 +81,11 @@ public class SuggestedGppPatchTest {
     public void testEqualsAndHashCode() {
         List<String> btIds = Arrays.asList("BT-1", "BT-2");
         SuggestedGppPatch patch1 = new SuggestedGppPatch(
-                "Patch Name", btIds, "Depends Patch", "some/path", "<xml/>", "add", "desc", "LOT-1"
-        );
+                "Patch Name", btIds, "Depends Patch", "some/path", "<xml/>", "add", "desc", "LOT-1");
         SuggestedGppPatch patch2 = new SuggestedGppPatch(
-                "Patch Name", btIds, "Depends Patch", "some/path", "<xml/>", "add", "desc", "LOT-1"
-        );
+                "Patch Name", btIds, "Depends Patch", "some/path", "<xml/>", "add", "desc", "LOT-1");
         SuggestedGppPatch patch3 = new SuggestedGppPatch(
-                "Other Name", btIds, "Depends Patch", "some/path", "<xml/>", "add", "desc", "LOT-1"
-        );
+                "Other Name", btIds, "Depends Patch", "some/path", "<xml/>", "add", "desc", "LOT-1");
 
         assertEquals(patch1, patch2);
         assertEquals(patch1.hashCode(), patch2.hashCode());
@@ -101,8 +96,7 @@ public class SuggestedGppPatchTest {
     public void testEquals_reflexive() {
         List<String> btIds = Arrays.asList("BT-1", "BT-2");
         SuggestedGppPatch patch = new SuggestedGppPatch(
-                "Patch Name", btIds, "Depends Patch", "some/path", "<xml/>", "add", "desc", "LOT-1"
-        );
+                "Patch Name", btIds, "Depends Patch", "some/path", "<xml/>", "add", "desc", "LOT-1");
         assertEquals(patch, patch);
     }
 
@@ -110,8 +104,7 @@ public class SuggestedGppPatchTest {
     public void testEquals_null() {
         List<String> btIds = Arrays.asList("BT-1", "BT-2");
         SuggestedGppPatch patch = new SuggestedGppPatch(
-                "Patch Name", btIds, "Depends Patch", "some/path", "<xml/>", "add", "desc", "LOT-1"
-        );
+                "Patch Name", btIds, "Depends Patch", "some/path", "<xml/>", "add", "desc", "LOT-1");
         assertNotEquals(patch, null);
     }
 
@@ -119,25 +112,21 @@ public class SuggestedGppPatchTest {
     public void testEquals_differentClass() {
         List<String> btIds = Arrays.asList("BT-1", "BT-2");
         SuggestedGppPatch patch = new SuggestedGppPatch(
-                "Patch Name", btIds, "Depends Patch", "some/path", "<xml/>", "add", "desc", "LOT-1"
-        );
+                "Patch Name", btIds, "Depends Patch", "some/path", "<xml/>", "add", "desc", "LOT-1");
         assertNotEquals(patch, "some string");
     }
 
     @Test
     public void testEquals_fieldNulls() {
         SuggestedGppPatch patch1 = new SuggestedGppPatch(
-                null, null, null, null, null, null, null, null
-        );
+                null, null, null, null, null, null, null, null);
         SuggestedGppPatch patch2 = new SuggestedGppPatch(
-                null, null, null, null, null, null, null, null
-        );
+                null, null, null, null, null, null, null, null);
         assertEquals(patch1, patch2);
         assertEquals(patch1.hashCode(), patch2.hashCode());
 
         SuggestedGppPatch patch3 = new SuggestedGppPatch(
-                "Patch Name", null, null, null, null, null, null, null
-        );
+                "Patch Name", null, null, null, null, null, null, null);
         assertNotEquals(patch1, patch3);
     }
 
@@ -208,14 +197,14 @@ public class SuggestedGppPatchTest {
     }
 
     @Test
-    public void testEquals_descriptionInequality() {
+    public void testEquals_descriptionDoesNotAffectInequality() {
         SuggestedGppPatch a = new SuggestedGppPatch("N", null, null, null, null, null, "A", null);
         SuggestedGppPatch b = new SuggestedGppPatch("N", null, null, null, null, null, "B", null);
-        assertNotEquals(a, b);
+        assertEquals(a, b);
 
         SuggestedGppPatch c = new SuggestedGppPatch("N", null, null, null, null, null, null, null);
         SuggestedGppPatch d = new SuggestedGppPatch("N", null, null, null, null, null, "B", null);
-        assertNotEquals(c, d);
+        assertEquals(c, d);
     }
 
     @Test
