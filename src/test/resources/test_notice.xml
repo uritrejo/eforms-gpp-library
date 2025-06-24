@@ -161,6 +161,12 @@
             <cac:MainCommodityClassification>
                 <cbc:ItemClassificationCode listName="cpv">24210000</cbc:ItemClassificationCode>
             </cac:MainCommodityClassification>
+            <cac:AdditionalCommodityClassification>
+                <cbc:ItemClassificationCode listName="cpv">33192000</cbc:ItemClassificationCode>
+            </cac:AdditionalCommodityClassification>
+            <cac:AdditionalCommodityClassification>
+                <cbc:ItemClassificationCode listName="cpv">33190000</cbc:ItemClassificationCode>
+            </cac:AdditionalCommodityClassification>
             <cac:RealizedLocation>
                 <cac:Address>
                     <cbc:Region>anyw-cou</cbc:Region>
