@@ -19,8 +19,10 @@ import java.util.Objects; // For Objects.requireNonNull
 public class GppDocumentsLoader {
 
     private final ObjectMapper objectMapper;
+    private final String filePath;
 
-    public GppDocumentsLoader() {
+    public GppDocumentsLoader(String filePath) {
+        this.filePath = filePath;
         this.objectMapper = new ObjectMapper();
         // Configure ObjectMapper for pretty printing and handling java.time types
         this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -41,9 +43,9 @@ public class GppDocumentsLoader {
         // Get the InputStream for the resource file from the classpath
         // The path is relative to the classpath root (src/main/resources/)
         try (InputStream is = getClass().getClassLoader()
-                .getResourceAsStream(Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH)) {
+                .getResourceAsStream(filePath)) {
             // Ensure the resource was found; getResourceAsStream returns null if not
-            Objects.requireNonNull(is, "Resource not found on classpath: " + Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH);
+            Objects.requireNonNull(is, "Resource not found on classpath: " + filePath);
 
             // Read the JSON array into a List of GppDocument objects
             // TypeReference is used here because of Java's type erasure;
@@ -55,7 +57,7 @@ public class GppDocumentsLoader {
 
     // example on how to load the documents
     public static void main(String[] args) {
-        GppDocumentsLoader loader = new GppDocumentsLoader();
+        GppDocumentsLoader loader = new GppDocumentsLoader(Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH);
         try {
             List<GppDocument> documents = loader.loadGppDocuments();
             System.out.println("Successfully loaded " + documents.size() + " GPP documents.");

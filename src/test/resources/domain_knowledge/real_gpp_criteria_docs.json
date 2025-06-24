@@ -1,0 +1,114 @@
+[
+    {
+        "name": "EU GPP Criteria for Indoor Cleaning Services",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/5b86b238-9efe-47a4-8c9d-e5a19b65c863?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2018-10-11T00:00:00",
+        "relevantCpvCodes": ["90910000"],
+        "summary": null
+    },
+    {
+        "name": "EU GPP Criteria for computers, monitors, tablets and smartphones",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/6911c70e-dd5e-450f-bf7b-684a2fce9cd1?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2021-03-05T00:00:00",
+        "relevantCpvCodes": ["30200000", "32250000"],
+        "summary": null
+    },
+    {
+        "name": "EU GPP Criteria for data centres, server rooms and cloud services",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/9c925f22-deb3-427c-8a79-384c18c9792b?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2020-03-11T00:00:00",
+        "relevantCpvCodes": ["72514200", "72317000"],
+        "summary": null
+    },
+    {
+        "name": "EU GPP Criteria for electricity",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/d721ea8f-fea4-4e1e-af04-83cf5ccaf526?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "1970-01-01T00:00:00",
+        "relevantCpvCodes": [],
+        "summary": null
+    },
+    {
+        "name": "EU GPP Criteria for food, catering services and vending machines",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/7c4824a0-589d-4b41-bd62-30c439198217?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2019-09-27T00:00:00",
+        "relevantCpvCodes": [],
+        "summary": null
+    },
+    {
+        "name": "EU GPP Criteria for Furniture",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/0788fd30-083f-4f9e-ba9e-86e9e432e822?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2018-07-27T00:00:00",
+        "relevantCpvCodes": ["39100000", "45233293", "45421153", "50850000"],
+        "summary": "This document provides the EU GPP criteria developed for the product group \"Furniture\"."
+    },
+    {
+        "name": "EU GPP Criteria for imaging equipment, consumables and print services",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/bb659b8d-353e-440e-bccd-ce855c7c71e6?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2020-07-27T00:00:00",
+        "relevantCpvCodes": [],
+        "summary": null
+    },
+    {
+        "name": "EU GPP Criteria for Office Building Design, Construction and Management",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/d9bebb93-c676-4892-949d-8ea79ab7d6c3?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2016-05-20T00:00:00",
+        "relevantCpvCodes": [],
+        "summary": null
+    },
+    {
+        "name": "EU GPP Criteria for paints, varnishes and road marking",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/919d8ffb-da3b-44e9-8dd5-f6c3a7da06f0?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2017-12-20T00:00:00",
+        "relevantCpvCodes": [],
+        "summary": null
+    },
+    {
+        "name": "EU GPP Criteria for public space maintenance",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/8144675d-6032-4ca5-955f-cad7760998d8?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2019-11-13T00:00:00",
+        "relevantCpvCodes": [],
+        "summary": null
+    },
+    {
+        "name": "EU GPP Criteria for Road Design, Construction and Maintenance",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/57e2abc4-a42e-4666-8ce8-dfbc987b6f2d?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2016-06-10T00:00:00",
+        "relevantCpvCodes": [],
+        "summary": null
+    },
+    {
+        "name": "EU GPP Criteria for road lighting and traffic signals",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/bb05da46-311f-4409-a029-277ec9b09a7d?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2018-12-10T00:00:00",
+        "relevantCpvCodes": [],
+        "summary": null
+    },
+    {
+        "name": "EU GPP Criteria for road transport",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/578a3705-d0d8-4b6a-b687-0290db2f6b29?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2021-10-18T00:00:00",
+        "relevantCpvCodes": [],
+        "summary": null
+    },
+    {
+        "name": "EU GPP Criteria for textiles, products and services",
+        "source": "https://green-forum.ec.europa.eu/green-public-procurement/gpp-criteria-and-requirements_en",
+        "documentReference": "https://circabc.europa.eu/ui/group/44278090-3fae-4515-bcc2-44fd57c1d0d1/library/2ff21cac-c38b-4c2a-a666-9aa7349dcc5b?p=1&n=10&sort=modified_DESC",
+        "publicationDate": "2017-06-06T00:00:00",
+        "relevantCpvCodes": [],
+        "summary": null
+    }
+]

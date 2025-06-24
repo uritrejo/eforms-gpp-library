@@ -12,12 +12,7 @@ public class Notice {
     private Document doc;
 
     public Notice(String xmlString) {
-        try {
-            this.doc = XmlUtils.loadDocument(xmlString);
-        } catch (Exception e) {
-            System.err.println("Failed to parse XML: " + e.getMessage());
-            e.printStackTrace();
-        }
+        this.doc = XmlUtils.loadDocument(xmlString);
     }
 
     public String toXmlString() {
@@ -179,12 +174,6 @@ public class Notice {
         sb.append('}');
         return sb.toString();
     }
-
-    // TODO: add getters and setters, not exactly patch handlers...
-    // Q: for what fields?
-
-    // TODO: see gpp-tool notebook "Path definitions" to see more fields that would
-    // be useful for getters
 
     public static void main(String[] args) {
         // Example XML string (minimal, adjust as needed for real testing)

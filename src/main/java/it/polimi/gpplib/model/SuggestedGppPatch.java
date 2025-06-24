@@ -120,6 +120,8 @@ public class SuggestedGppPatch {
 
         SuggestedGppPatch that = (SuggestedGppPatch) o;
 
+        // we only care about the name, path, value, op and lotId
+
         if (name != null ? !name.equals(that.name) : that.name != null)
             return false;
         if (btIds != null ? !btIds.equals(that.btIds) : that.btIds != null)
@@ -131,8 +133,6 @@ public class SuggestedGppPatch {
         if (value != null ? !value.equals(that.value) : that.value != null)
             return false;
         if (op != null ? !op.equals(that.op) : that.op != null)
-            return false;
-        if (description != null ? !description.equals(that.description) : that.description != null)
             return false;
         return lotId != null ? lotId.equals(that.lotId) : that.lotId == null;
     }

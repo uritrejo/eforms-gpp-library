@@ -63,74 +63,101 @@ public class XmlUtils {
         }
     };
 
+    public static class XmlUtilsException extends RuntimeException {
+        public XmlUtilsException(String message, Throwable cause) {
+            super(message, cause);
+        }
+        public XmlUtilsException(String message) {
+            super(message);
+        }
+    }
+
     /**
      * Returns the content of the XML file as a String.
+     * Used mostly for testing purposes.
      */
     public static String getAsXmlString(String filePath) {
         try (java.io.InputStream is = Utils.class.getClassLoader().getResourceAsStream(filePath)) {
             if (is == null) {
-                System.err.println("Resource not found: " + filePath);
-                return null;
+                throw new XmlUtilsException("Resource not found: " + filePath);
             }
             return new String(is.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
         } catch (java.io.IOException e) {
-            System.err.println("Failed to load XML from resource: " + filePath);
-            e.printStackTrace();
-            return null;
+            throw new XmlUtilsException("Failed to load XML from resource: " + filePath, e);
         }
     }
 
+    /**
+     * Loads an XML string into a Document object.
+     * This is useful for parsing XML content from strings.
+     */
     public static Document loadDocument(String xmlString) {
         try {
             DocumentBuilder builder = docFactory.newDocumentBuilder();
-            Document doc = builder.parse(new InputSource(new StringReader(xmlString)));
-            return doc;
+            return builder.parse(new InputSource(new StringReader(xmlString)));
         } catch (Exception e) {
-            System.err.println("Failed to parse XML string");
-            e.printStackTrace();
-            return null;
+            throw new XmlUtilsException("Failed to parse XML string", e);
         }
     }
 
+    /**
+     * Returns a Node at the specified XPath from the root node.
+     * If no node is found, it logs and throws an exception.
+     */
     public static Node getNodeAtPath(Node root, String path) {
         try {
             javax.xml.xpath.XPath xpath = xpathFactory.newXPath();
             xpath.setNamespaceContext(namespaceCtx);
             return (Node) xpath.evaluate(path, root, javax.xml.xpath.XPathConstants.NODE);
         } catch (Exception e) {
-            System.err.println("Failed to evaluate XPath: " + path);
-            e.printStackTrace();
-            return null;
+            throw new XmlUtilsException("Failed to evaluate XPath: " + path, e);
         }
     }
 
+    /**
+     * Returns the text content of a Node at the specified XPath from the root node.
+     * If no node is found, it logs an error and throws an exception.
+     */
     public static String getNodeValueAtPath(Node root, String path) {
         Node node = getNodeAtPath(root, path);
         if (node != null) {
             return node.getTextContent().trim();
         } else {
-            System.err.println("Node not found at path: " + path);
-            return null;
+            throw new XmlUtilsException("Node not found at path: " + path);
         }
     }
 
+    /**
+     * Returns a NodeList at the specified XPath from the root node.
+     * If no nodes are found, it logs an error and returns null.
+     */
     public static NodeList getNodesAtPath(Node root, String path) {
         try {
             javax.xml.xpath.XPath xpath = xpathFactory.newXPath();
             xpath.setNamespaceContext(namespaceCtx);
             return (NodeList) xpath.evaluate(path, root, javax.xml.xpath.XPathConstants.NODESET);
         } catch (Exception e) {
-            System.err.println("Failed to evaluate XPath: " + path);
-            e.printStackTrace();
-            return null;
+            throw new XmlUtilsException("Failed to evaluate XPath: " + path, e);
         }
     }
 
+    /**
+     * Checks if a node exists at the specified XPath from the root node.
+     * Returns true if the node exists, false otherwise.
+     */
     public static boolean doesNodeExistAtPath(Node root, String path) {
-        Node node = getNodeAtPath(root, path);
-        return node != null;
+        try {
+            Node node = getNodeAtPath(root, path);
+            return node != null;
+        } catch (XmlUtilsException e) {
+            return false;
+        }
     }
 
+    /**
+     * Converts a Document object to an XML string.
+     * This is useful for serializing the Document back to XML format.
+     */
     public static String docToString(Document doc) {
         try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -140,23 +167,24 @@ public class XmlUtils {
             transformer.transform(new DOMSource(doc), new StreamResult(writer));
             return writer.toString();
         } catch (Exception e) {
-            System.err.println("Failed to convert Document to XML string: " + e.getMessage());
-            e.printStackTrace();
-            return null;
+            throw new XmlUtilsException("Failed to convert Document to XML string", e);
         }
     }
 
+    /**
+     * Inserts a new child node into a parent node.
+     * The new child node is imported into the parent's document context.
+     * If the parent or new child is null, it logs an error and returns.
+     */
     public static void insertIntoNode(Node parent, Node newChild) {
         if (parent == null || newChild == null) {
-            System.err.println("Parent or new child node is null");
-            return;
+            throw new XmlUtilsException("Parent or new child node is null");
         }
         try {
             Node importedNode = parent.getOwnerDocument().importNode(newChild, true);
             parent.appendChild(importedNode);
         } catch (Exception e) {
-            System.err.println("Failed to insert node into parent");
-            e.printStackTrace();
+            throw new XmlUtilsException("Failed to insert node into parent", e);
         }
     }
 

@@ -18,28 +18,29 @@ public class GppPatchApplier {
         }
 
         if (patch.getOp() == null || !patch.getOp().equalsIgnoreCase(Constants.OP_CREATE)) {
-            System.err.println("Processing invalid patch operation: " + patch.getOp());
-            return notice;
+            throw new IllegalArgumentException("Invalid patch operation: " + patch.getOp());
         }
 
         // for now we assume that every patch is a create operation at a specific path
         // in a lot
         Node lot = notice.getLotNode(patch.getLotId());
         if (lot == null) {
-            System.err.println("Lot not found for id: " + patch.getLotId());
-            return notice;
+            throw new IllegalArgumentException("Lot not found for id: " + patch.getLotId());
         }
 
         Node insertionNode = XmlUtils.getNodeAtPath(lot, patch.getPath());
         if (insertionNode == null) {
-            System.err.println("Insertion node not found at path: " + patch.getPath());
-            return notice;
+            throw new IllegalArgumentException("Invalid patch path: " + patch.getPath());
         }
 
-        Document valueDoc = XmlUtils.loadDocument(patch.getValue());
+        Document valueDoc;
+        try {
+            valueDoc = XmlUtils.loadDocument(patch.getValue());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid patch value: " + patch.getValue(), e);
+        }
         if (valueDoc == null) {
-            System.err.println("Failed to parse value document from patch: " + patch.getValue());
-            return notice;
+            throw new IllegalArgumentException("Invalid patch value: " + patch.getValue());
         }
 
         XmlUtils.insertIntoNode(insertionNode, valueDoc.getDocumentElement());

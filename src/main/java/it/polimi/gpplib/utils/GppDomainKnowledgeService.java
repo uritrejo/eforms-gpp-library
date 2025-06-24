@@ -6,6 +6,7 @@ import it.polimi.gpplib.model.GppPatch;
 import it.polimi.gpplib.model.Notice;
 import it.polimi.gpplib.model.SuggestedGppCriterion;
 import it.polimi.gpplib.model.SuggestedGppPatch;
+import it.polimi.gpplib.model.Constants;
 
 import java.util.List;
 
@@ -17,19 +18,26 @@ public class GppDomainKnowledgeService {
 
     private final GppPatchSuggester patchSuggester;
 
-    public GppDomainKnowledgeService() {
+    public GppDomainKnowledgeService(String gppDocsPath, String gppCriteriaPath, String gppPatchesPath) {
         try {
-            GppDocumentsLoader docsLoader = new GppDocumentsLoader();
+            GppDocumentsLoader docsLoader = new GppDocumentsLoader(gppDocsPath);
             gppDocs = docsLoader.loadGppDocuments();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid GPP documents file path: " + gppDocsPath, e);
+        }
 
-            GppCriteriaLoader criteriaLoader = new GppCriteriaLoader();
+        try {
+            GppCriteriaLoader criteriaLoader = new GppCriteriaLoader(gppCriteriaPath);
             gppCriteria = criteriaLoader.loadGppCriteria();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid GPP criteria file path: " + gppCriteriaPath, e);
+        }
 
-            GppPatchesLoader patchesLoader = new GppPatchesLoader();
+        try {
+            GppPatchesLoader patchesLoader = new GppPatchesLoader(gppPatchesPath);
             gppPatches = patchesLoader.loadGppPatches();
         } catch (Exception e) {
-            System.err.println("Failed to load GPP domain knowledge: " + e.getMessage());
-            e.printStackTrace();
+            throw new IllegalArgumentException("Invalid GPP patches file path: " + gppPatchesPath, e);
         }
 
         patchSuggester = new GppPatchSuggester(gppCriteria, gppPatches);
