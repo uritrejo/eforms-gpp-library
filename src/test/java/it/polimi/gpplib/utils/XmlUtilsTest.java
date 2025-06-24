@@ -37,7 +37,6 @@ public class XmlUtilsTest {
         XmlUtils.loadDocument(invalidXml);
     }
 
-    // ??++
     @Test
     public void testGetNodeAtPath_existingNode() {
         String xml = XmlUtils.getAsXmlString("test_notice.xml");
@@ -47,7 +46,6 @@ public class XmlUtilsTest {
         assertEquals("ProcurementProjectLot", node.getLocalName());
     }
 
-    // ??++ pass in a bs path...
     @Test
     public void testGetNodeAtPath_nonExistingNode() {
         String xml = XmlUtils.getAsXmlString("test_notice.xml");
