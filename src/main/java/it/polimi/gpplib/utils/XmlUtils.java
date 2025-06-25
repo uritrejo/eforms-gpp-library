@@ -32,7 +32,7 @@ public class XmlUtils {
         docFactory.setNamespaceAware(true);
     }
 
-    private static final NamespaceContext namespaceCtx = new NamespaceContext() {
+    protected static final NamespaceContext namespaceCtx = new NamespaceContext() {
         @Override
         public String getNamespaceURI(String prefix) {
             String uri = Constants.NAMESPACE_MAP.get(prefix);
@@ -67,6 +67,7 @@ public class XmlUtils {
         public XmlUtilsException(String message, Throwable cause) {
             super(message, cause);
         }
+
         public XmlUtilsException(String message) {
             super(message);
         }

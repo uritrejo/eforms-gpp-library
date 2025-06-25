@@ -135,4 +135,39 @@ public class XmlUtilsTest {
     public void testInsertIntoNode_nullParentOrChild() {
         XmlUtils.insertIntoNode(null, null);
     }
+
+    @Test
+    public void testNamespaceContext_getNamespaceURI() {
+        // Should return the correct URI for a known prefix
+        String uri = XmlUtils.namespaceCtx.getNamespaceURI("cac");
+        assertEquals(Constants.NAMESPACE_MAP.get("cac"), uri);
+
+        // Should return "" for an unknown prefix
+        String unknownUri = XmlUtils.namespaceCtx.getNamespaceURI("unknownPrefix");
+        assertEquals("", unknownUri);
+    }
+
+    @Test
+    public void testNamespaceContext_getPrefix() {
+        // Should return the correct prefix for a known URI
+        String prefix = XmlUtils.namespaceCtx.getPrefix(Constants.NAMESPACE_MAP.get("cac"));
+        assertEquals("cac", prefix);
+
+        // Should return null for an unknown URI
+        String unknownPrefix = XmlUtils.namespaceCtx.getPrefix("http://unknown/uri");
+        assertNull(unknownPrefix);
+    }
+
+    @Test
+    public void testNamespaceContext_getPrefixes() {
+        // Should return a non-empty iterator for a known URI
+        var iterator = XmlUtils.namespaceCtx.getPrefixes(Constants.NAMESPACE_MAP.get("cac"));
+        assertTrue(iterator.hasNext());
+        assertEquals("cac", iterator.next());
+
+        // Should return an empty iterator for an unknown URI
+        var emptyIterator = XmlUtils.namespaceCtx.getPrefixes("http://unknown/uri");
+        assertFalse(emptyIterator.hasNext());
+    }
+
 }

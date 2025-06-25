@@ -6,7 +6,6 @@ import it.polimi.gpplib.model.GppPatch;
 import it.polimi.gpplib.model.Notice;
 import it.polimi.gpplib.model.SuggestedGppCriterion;
 import it.polimi.gpplib.model.SuggestedGppPatch;
-import it.polimi.gpplib.model.Constants;
 
 import java.util.List;
 

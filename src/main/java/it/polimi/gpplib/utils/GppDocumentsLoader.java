@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule; // Important for java.time types like OffsetDateTime
 import com.fasterxml.jackson.core.type.TypeReference; // Essential for deserializing Lists
 
-import it.polimi.gpplib.model.Constants;
 import it.polimi.gpplib.model.GppDocument; // Your GppDocument POJO
 
 import java.io.IOException;
@@ -52,26 +51,6 @@ public class GppDocumentsLoader {
             // it tells Jackson to deserialize into a List<GppDocument> not just a raw List.
             return objectMapper.readValue(is, new TypeReference<List<GppDocument>>() {
             });
-        }
-    }
-
-    // example on how to load the documents
-    public static void main(String[] args) {
-        GppDocumentsLoader loader = new GppDocumentsLoader(Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH);
-        try {
-            List<GppDocument> documents = loader.loadGppDocuments();
-            System.out.println("Successfully loaded " + documents.size() + " GPP documents.");
-            System.out.println("First document: " + documents.get(0).getName() + " (Published: "
-                    + documents.get(0).getPublicationDate() + ")");
-
-            // You can also serialize it back to JSON to verify or for debugging:
-            String jsonOutput = loader.objectMapper.writeValueAsString(documents);
-            System.out.println("\n--- Reserialized JSON Output ---");
-            System.out.println(jsonOutput);
-
-        } catch (IOException e) {
-            System.err.println("Error loading GPP documents: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 }

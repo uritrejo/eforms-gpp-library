@@ -174,35 +174,4 @@ public class Notice {
         sb.append('}');
         return sb.toString();
     }
-
-    public static void main(String[] args) {
-        // Example XML string (minimal, adjust as needed for real testing)
-        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<ContractNotice xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:ContractNotice-2\" " +
-                "xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" " +
-                "xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\">\n" +
-                "  <cac:ProcurementProject>\n" +
-                "    <cac:MainCommodityClassification>\n" +
-                "      <cbc:ItemClassificationCode>12345678</cbc:ItemClassificationCode>\n" +
-                "    </cac:MainCommodityClassification>\n" +
-                "    <cac:AdditionalCommodityClassification>\n" +
-                "      <cbc:ItemClassificationCode>87654321</cbc:ItemClassificationCode>\n" +
-                "    </cac:AdditionalCommodityClassification>\n" +
-                "  </cac:ProcurementProject>\n" +
-                "  <cac:ProcurementProjectLot>\n" +
-                "    <cbc:ID schemeName=\"Lot\">LOT1</cbc:ID>\n" +
-                "    <cac:ProcurementProject>\n" +
-                "      <cac:MainCommodityClassification>\n" +
-                "        <cbc:ItemClassificationCode>11111111</cbc:ItemClassificationCode>\n" +
-                "      </cac:MainCommodityClassification>\n" +
-                "      <cac:AdditionalCommodityClassification>\n" +
-                "        <cbc:ItemClassificationCode>22222222</cbc:ItemClassificationCode>\n" +
-                "      </cac:AdditionalCommodityClassification>\n" +
-                "    </cac:ProcurementProject>\n" +
-                "  </cac:ProcurementProjectLot>\n" +
-                "</ContractNotice>";
-
-        Notice notice = new Notice(xml);
-        System.out.println("Notice XML:" + notice);
-    }
 }

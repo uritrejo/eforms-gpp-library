@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import it.polimi.gpplib.model.Constants;
 import it.polimi.gpplib.model.GppPatch;
 
 import java.io.IOException;
@@ -32,25 +31,6 @@ public class GppPatchesLoader {
                     "Resource not found on classpath: " + filePath);
             return objectMapper.readValue(is, new TypeReference<List<GppPatch>>() {
             });
-        }
-    }
-
-    // Example main method for testing
-    public static void main(String[] args) {
-        GppPatchesLoader loader = new GppPatchesLoader(Constants.DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH);
-        try {
-            List<GppPatch> patches = loader.loadGppPatches();
-            System.out.println("Successfully loaded " + patches.size() + " GPP patches.");
-            if (!patches.isEmpty()) {
-                System.out.println("First patch: " + patches.get(0));
-            }
-            // Serialize back to JSON for debugging
-            String jsonOutput = loader.objectMapper.writeValueAsString(patches);
-            System.out.println("\n--- Reserialized JSON Output ---");
-            System.out.println(jsonOutput);
-        } catch (IOException e) {
-            System.err.println("Error loading GPP patches: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 }
