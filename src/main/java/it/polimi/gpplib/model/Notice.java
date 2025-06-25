@@ -108,6 +108,11 @@ public class Notice {
         return lotIds;
     }
 
+    public String getEFormsSdkVersion() {
+        Node node = XmlUtils.getNodeAtPath(doc.getDocumentElement(), Constants.PATH_EFORMS_SDK_VERSION);
+        return node != null ? node.getTextContent().trim() : null;
+    }
+
     /**
      * Returns the main CPV code for the given lot ID.
      */

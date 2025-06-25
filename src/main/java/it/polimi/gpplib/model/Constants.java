@@ -12,6 +12,8 @@ public final class Constants {
     public static final String PATH_PROCUREMENT_PROJECT = "cac:ProcurementProject";
     public static final String PATH_MAIN_CPV = "cac:ProcurementProject/cac:MainCommodityClassification";
     public static final String PATH_ADDITIONAL_CPVS = "cac:ProcurementProject/cac:AdditionalCommodityClassification";
+    public static final String PATH_EFORMS_SDK_VERSION = "cbc:CustomizationID";
+
     // ND-Lot
     public static final String PATH_LOT = "cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']";
     // Q? ND or BT?

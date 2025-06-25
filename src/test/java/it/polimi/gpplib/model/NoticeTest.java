@@ -81,6 +81,12 @@ public class NoticeTest {
     }
 
     @Test
+    public void testGetEFormsSdkVersion() {
+        String eFormsSdkVersion = notice.getEFormsSdkVersion();
+        assertEquals("eforms-sdk-1.14", eFormsSdkVersion);
+    }
+
+    @Test
     public void testGetLotAdditionalCpvs() {
         List<String> additional = notice.getLotAdditionalCpvs("LOT-0001");
         assertNotNull(additional);
