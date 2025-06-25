@@ -43,25 +43,4 @@ public class GppCriteriaLoader {
             });
         }
     }
-
-    // Example main method for testing
-    public static void main(String[] args) {
-        GppCriteriaLoader loader = new GppCriteriaLoader(Constants.DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH);
-        try {
-            List<GppCriterion> criteria = loader.loadGppCriteria();
-            System.out.println("Successfully loaded " + criteria.size() + " GPP criteria.");
-            if (!criteria.isEmpty()) {
-                System.out.println("First criterion: " + criteria.get(0));
-            }
-
-            // Serialize back to JSON for debugging
-            String jsonOutput = loader.objectMapper.writeValueAsString(criteria);
-            System.out.println("\n--- Reserialized JSON Output ---");
-            // ctx: the output doesn't show the args, but it's okay, they are in the object
-            System.out.println(jsonOutput);
-        } catch (IOException e) {
-            System.err.println("Error loading GPP criteria: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
 }

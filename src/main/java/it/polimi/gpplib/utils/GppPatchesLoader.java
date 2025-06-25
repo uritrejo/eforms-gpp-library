@@ -34,23 +34,4 @@ public class GppPatchesLoader {
             });
         }
     }
-
-    // Example main method for testing
-    public static void main(String[] args) {
-        GppPatchesLoader loader = new GppPatchesLoader(Constants.DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH);
-        try {
-            List<GppPatch> patches = loader.loadGppPatches();
-            System.out.println("Successfully loaded " + patches.size() + " GPP patches.");
-            if (!patches.isEmpty()) {
-                System.out.println("First patch: " + patches.get(0));
-            }
-            // Serialize back to JSON for debugging
-            String jsonOutput = loader.objectMapper.writeValueAsString(patches);
-            System.out.println("\n--- Reserialized JSON Output ---");
-            System.out.println(jsonOutput);
-        } catch (IOException e) {
-            System.err.println("Error loading GPP patches: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
 }

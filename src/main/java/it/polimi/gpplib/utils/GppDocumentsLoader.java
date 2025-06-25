@@ -54,24 +54,4 @@ public class GppDocumentsLoader {
             });
         }
     }
-
-    // example on how to load the documents
-    public static void main(String[] args) {
-        GppDocumentsLoader loader = new GppDocumentsLoader(Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH);
-        try {
-            List<GppDocument> documents = loader.loadGppDocuments();
-            System.out.println("Successfully loaded " + documents.size() + " GPP documents.");
-            System.out.println("First document: " + documents.get(0).getName() + " (Published: "
-                    + documents.get(0).getPublicationDate() + ")");
-
-            // You can also serialize it back to JSON to verify or for debugging:
-            String jsonOutput = loader.objectMapper.writeValueAsString(documents);
-            System.out.println("\n--- Reserialized JSON Output ---");
-            System.out.println(jsonOutput);
-
-        } catch (IOException e) {
-            System.err.println("Error loading GPP documents: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
 }
