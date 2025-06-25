@@ -2,6 +2,7 @@ package it.polimi.gpplib;
 
 import it.polimi.gpplib.model.Notice;
 import it.polimi.gpplib.model.SuggestedGppCriterion;
+import it.polimi.gpplib.model.Constants;
 import it.polimi.gpplib.model.GppAnalysisResult;
 import it.polimi.gpplib.model.GppCriterion;
 import it.polimi.gpplib.model.GppDocument;
@@ -23,6 +24,16 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
 
     // TODO: eventually, this should come from a config
     private String ambitionLevel = GppCriterion.AMBITION_LEVEL_CORE;
+
+    public DefaultGppNoticeAnalyzer() {
+        try {
+            domainKnowledge = new GppDomainKnowledgeService(Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH,
+                    Constants.DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH, Constants.DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH);
+        } catch (Exception e) {
+            throw new GppInternalErrorException("Unexpected error loading domain knowledge", e);
+        }
+        patchApplier = new GppPatchApplier();
+    }
 
     // TODO: eventually you'll need to take in config params
     public DefaultGppNoticeAnalyzer(String gppDocsPath, String gppCriteriaPath, String gppPatchesPath) {

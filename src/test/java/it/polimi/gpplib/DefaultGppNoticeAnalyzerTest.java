@@ -41,11 +41,17 @@ public class DefaultGppNoticeAnalyzerTest {
     }
 
     @Test
-    public void testInit_valid() {
+    public void testInit_validWithParams() {
         String gppDocsPath = "domain_knowledge/real_gpp_criteria_docs.json";
         String gppCriteriaPath = "domain_knowledge/real_gpp_criteria.json";
         String gppPatchesPath = "domain_knowledge/real_gpp_patches_data.json";
         DefaultGppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer(gppDocsPath, gppCriteriaPath, gppPatchesPath);
+        assertNotNull(analyzer);
+    }
+
+    @Test
+    public void testInit_validNoParams() {
+        DefaultGppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer();
         assertNotNull(analyzer);
     }
 
