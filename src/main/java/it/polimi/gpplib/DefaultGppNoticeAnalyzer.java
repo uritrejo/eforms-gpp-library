@@ -2,14 +2,12 @@ package it.polimi.gpplib;
 
 import it.polimi.gpplib.model.Notice;
 import it.polimi.gpplib.model.SuggestedGppCriterion;
-import it.polimi.gpplib.model.Constants;
 import it.polimi.gpplib.model.GppAnalysisResult;
 import it.polimi.gpplib.model.GppCriterion;
 import it.polimi.gpplib.model.GppDocument;
 import it.polimi.gpplib.model.SuggestedGppPatch;
 import it.polimi.gpplib.utils.GppDomainKnowledgeService;
 import it.polimi.gpplib.utils.GppPatchApplier;
-import it.polimi.gpplib.utils.XmlUtils;
 import it.polimi.gpplib.utils.XmlUtils.XmlUtilsException;
 
 import java.util.List;

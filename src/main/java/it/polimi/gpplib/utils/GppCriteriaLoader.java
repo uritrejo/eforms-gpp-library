@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.core.type.TypeReference;
 
-import it.polimi.gpplib.model.Constants;
 import it.polimi.gpplib.model.GppCriterion;
 
 import java.io.IOException;

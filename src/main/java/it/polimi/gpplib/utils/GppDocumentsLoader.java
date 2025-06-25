@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule; // Important for java.time types like OffsetDateTime
 import com.fasterxml.jackson.core.type.TypeReference; // Essential for deserializing Lists
 
-import it.polimi.gpplib.model.Constants;
 import it.polimi.gpplib.model.GppDocument; // Your GppDocument POJO
 
 import java.io.IOException;
