@@ -166,7 +166,7 @@ open target/site/jacoco/index.html
 The library includes comprehensive domain knowledge management that bridges GPP expertise with the technical system. The domain knowledge covers:
 
 -   **🇪🇺 EU GPP Criteria** - Official European Union Green Public Procurement criteria
--   **� GPP Documents** - Metadata and references to source documents
+-   **📄 GPP Documents** - Metadata and references to source documents
 -   **🔧 eForm Field Mappings** - Technical mappings for integrating GPP data into eForms
 
 For detailed information about domain knowledge structure, management, and contribution guidelines, see the [Domain Knowledge Documentation](domain_knowledge/README.md).
