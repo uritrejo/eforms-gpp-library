@@ -203,6 +203,35 @@ The library supports different ambition levels for GPP criteria:
 -   **Core** - Basic environmental requirements suitable for most procurements
 -   **Comprehensive** - Advanced environmental requirements for ambitious green procurement
 
+### Logging
+
+The library uses SLF4J with Logback for comprehensive logging. Logs are automatically written to:
+
+-   **Console**: INFO level and above for immediate feedback
+-   **File**: `logs/gpp-library.log` with automatic rotation (daily/10MB limits)
+-   **Retention**: 30 days with 300MB total size cap
+
+**Log Configuration**: Modify `src/main/resources/logback.xml` to customize:
+
+-   Log levels (DEBUG, INFO, WARN, ERROR)
+-   Output formats and destinations
+-   File rotation and retention policies
+
+**What gets logged**:
+
+-   Analyzer initialization and domain knowledge loading
+-   Notice parsing and validation
+-   CPV analysis and criteria matching
+-   Patch suggestion and application
+-   Error handling with detailed stack traces
+
+Example log output:
+
+```
+2025-06-28 17:55:27 [main] INFO  i.p.gpplib.DefaultGppNoticeAnalyzer - Initializing DefaultGppNoticeAnalyzer with default domain knowledge paths
+2025-06-28 17:55:27 [main] INFO  i.p.g.u.GppDomainKnowledgeService - Loaded 165 GPP criteria
+```
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

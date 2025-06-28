@@ -6,6 +6,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Represents a public procurement notice with methods for extracting and
@@ -34,6 +36,8 @@ import java.util.List;
  */
 public class Notice {
 
+    private static final Logger logger = LoggerFactory.getLogger(Notice.class);
+
     /** The underlying XML document representing the procurement notice. */
     private Document doc;
 
@@ -45,7 +49,10 @@ public class Notice {
      *                                                           be parsed
      */
     public Notice(String xmlString) {
+        logger.debug("Creating Notice from XML string (length: {} characters)",
+                xmlString != null ? xmlString.length() : 0);
         this.doc = XmlUtils.loadDocument(xmlString);
+        logger.debug("Notice created successfully from XML");
     }
 
     /**
@@ -121,6 +128,7 @@ public class Notice {
             cpvs.add(mainCpv);
         }
         cpvs.addAll(getProcurementProjectAdditionalCpvs());
+        logger.debug("Found {} total CPV codes for procurement project", cpvs.size());
         return cpvs;
     }
 
@@ -172,7 +180,7 @@ public class Notice {
                 lotIds.add(id);
             }
         }
-
+        logger.debug("Found {} lots in notice", lotIds.size());
         return lotIds;
     }
 
