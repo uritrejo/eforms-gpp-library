@@ -163,23 +163,24 @@ open target/site/jacoco/index.html
 
 ## 📚 Domain Knowledge
 
-TODO: UPDATE THIS!!!
-
-The library includes comprehensive domain knowledge covering:
+The library includes comprehensive domain knowledge management that bridges GPP expertise with the technical system. The domain knowledge covers:
 
 -   **🇪🇺 EU GPP Criteria** - Official European Union Green Public Procurement criteria
--   **🔧 Ready-to-Use Patches** - Pre-built enhancements for common procurement scenarios
--   TODOOOO
+-   **� GPP Documents** - Metadata and references to source documents
+-   **🔧 eForm Field Mappings** - Technical mappings for integrating GPP data into eForms
+
+For detailed information about domain knowledge structure, management, and contribution guidelines, see the [Domain Knowledge Documentation](domain_knowledge/README.md).
 
 ### Supported Procurement Categories
 
 The library currently supports GPP enhancement for various procurement categories including:
 
 -   Furniture and refurbishment services
-<!-- -   Office equipment and supplies
--   Construction and building materials
--   Transport and logistics services
--   And many more... -->
+-   Indoor cleaning services
+-   Computers, monitors, tablets and smartphones
+-   And more categories as defined in the domain knowledge base
+
+The system uses CPV codes to automatically identify relevant GPP criteria for each procurement category.
 
 ## 🤝 Contributing
 

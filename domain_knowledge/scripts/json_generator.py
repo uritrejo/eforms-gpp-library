@@ -22,9 +22,10 @@ import openpyxl
 import json
 
 # INPUT_FILE_PATH_DOMAIN_KNOWLEDGE = 'gpp_criteria.xlsx'
-INPUT_FILE_PATH_DOMAIN_KNOWLEDGE = 'domain_knowledge/sources/domain_knowledge.xlsx'
+INPUT_FILE_PATH_DOMAIN_KNOWLEDGE = '../sources/domain_knowledge.xlsx'
 
-OUTPUT_DIR = 'src/main/resources/domain_knowledge'
+# Output relative to repository root when running from scripts directory
+OUTPUT_DIR = '../../src/main/resources/domain_knowledge'
 OUTPUT_FILE_NAME_GPP_CRITERIA = 'gpp_criteria.json'
 OUTPUT_FILE_NAME_GPP_CRITERIA_DOCS = 'gpp_criteria_docs.json'
 OUTPUT_FILE_NAME_GPP_PATCHES_DATA = 'gpp_patches_data.json'
