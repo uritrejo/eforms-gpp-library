@@ -4,26 +4,26 @@
 [![Maven](https://img.shields.io/badge/Maven-3.6+-blue.svg)](https://maven.apache.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](#license)
 
-A comprehensive Java library for analyzing and enhancing public procurement notices with **Green Public Procurement (GPP)** criteria and environmental sustainability recommendations.
+A Java library that can identify **Green Public Procurement (GPP)** criteria and apply the necessary modificatins to eForm contract notices.
+The goal is to facilitate the use of GPP in digital procurement in Europe.
 
 ## 🌱 What is Green Public Procurement?
 
 Green Public Procurement (GPP) is a process whereby public authorities seek to procure goods, services, and works with a reduced environmental impact throughout their life cycle. This library helps transform standard procurement notices into environmentally conscious ones by:
 
 -   Analyzing procurement content using **CPV codes** (Common Procurement Vocabulary)
--   Identifying relevant **EU GPP criteria** and environmental requirements
+-   Identifying relevant **GPP criteria**
 -   Suggesting concrete improvements and patches
 -   Automatically applying environmental enhancements to notices
 
 ## ✨ Key Features
 
 -   📄 **eForms Standard Support** - Load and parse procurement notices from XML (eForms standard)
--   🔍 **Smart Analysis** - Analyze notices to identify relevant GPP criteria based on CPV codes and procurement categories
--   🌿 **Environmental Enhancement** - Suggest improvements and patches for better environmental sustainability
--   🔧 **Automated Patching** - Apply patches to create enhanced notice versions with GPP compliance
+-   🔍 **Analysis** - Analyze notices to identify relevant GPP criteria based on CPV codes and procurement categories
+-   🌿 **Environmental Enhancement** - Suggest improvements and patches for better environmental sustainability indicators
+-   🔧 **Automated Patching** - Apply patches to integrate the GPP indicators directly into the notices
 -   📚 **Comprehensive Knowledge Base** - Domain knowledge management for GPP documents, criteria, and patches
 -   🎯 **Ambition Levels** - Support for Core and Comprehensive GPP criteria levels
--   🏗️ **Lot-based Analysis** - Per-lot analysis for complex multi-lot procurements
 
 ## 🚀 Quick Start
 
@@ -54,8 +54,8 @@ import it.polimi.gpplib.model.*;
 GppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer();
 
 // Load a procurement notice from XML
-String xmlString = Files.readString(Paths.get("notice.xml"));
-Notice notice = analyzer.loadNotice(xmlString);
+String noticeXml = XmlUtils.getAsXmlString("path/to/notice.xml");
+Notice notice = analyzer.loadNotice(noticeXml);
 
 // Analyze the notice
 GppAnalysisResult result = analyzer.analyzeNotice(notice);
@@ -100,7 +100,7 @@ The library examines procurement notices and extracts:
 Based on CPV codes, the system:
 
 -   Identifies relevant **EU GPP documents** (e.g., "EU GPP Criteria for Furniture")
--   Matches **environmental criteria** appropriate for the procurement category
+-   Matches **GPP criteria** appropriate for the procurement category
 -   Considers **ambition levels** (Core vs Comprehensive)
 
 ### 3. Enhancement Suggestions
@@ -111,41 +111,11 @@ The library generates:
 -   **Award criteria** for environmental performance evaluation
 -   **Selection criteria** for vendor environmental capabilities
 -   **Contract performance clauses** for ongoing environmental compliance
+-   **Strategic procurement indicators** to indicate the usage of GPP criteria and sustainable procurement practices.
 
 ### 4. Automated Patching
 
-Patches are applied to enhance the notice with:
-
--   Environmental award criteria
--   Green technical specifications
--   Sustainability requirements
--   Extended warranty periods for durable goods
-
-## 🏗️ Architecture
-
-```
-eforms-gpp-library/
-├── src/main/java/it/polimi/gpplib/
-│   ├── GppNoticeAnalyzer.java           # Main interface
-│   ├── DefaultGppNoticeAnalyzer.java    # Primary implementation
-│   ├── model/                           # Data models
-│   │   ├── Notice.java                  # Procurement notice representation
-│   │   ├── GppAnalysisResult.java       # Analysis results
-│   │   ├── SuggestedGppCriterion.java   # GPP criteria suggestions
-│   │   └── SuggestedGppPatch.java       # Enhancement patches
-│   └── utils/                           # Utility services
-│       ├── GppDomainKnowledgeService.java
-│       ├── GppPatchSuggester.java
-│       └── GppPatchApplier.java
-└── src/main/resources/
-    ├── domain_knowledge/                # GPP knowledge base
-    │   ├── gpp_criteria_docs.json      # GPP document definitions
-    │   ├── gpp_criteria.json           # Detailed criteria specifications
-    │   └── gpp_patches_data.json       # Enhancement patches
-    └── examples/                        # Sample notices
-        ├── subco_81.xml                # Real-world example
-        └── dummy.xml                   # Test example
-```
+Patches can be applied directly onto the eForm notice.
 
 ## 🛠️ Development
 
@@ -187,26 +157,25 @@ open target/site/jacoco/index.html
 
 ## 📚 Domain Knowledge
 
+TODO: UPDATE THIS!!!
+
 The library includes comprehensive domain knowledge covering:
 
 -   **🇪🇺 EU GPP Criteria** - Official European Union Green Public Procurement criteria
--   **📋 CPV Code Mapping** - Links between procurement categories and environmental criteria
--   **🎯 Ambition Levels** - Core and Comprehensive environmental requirements
 -   **🔧 Ready-to-Use Patches** - Pre-built enhancements for common procurement scenarios
+-   TODOOOO
 
 ### Supported Procurement Categories
 
 The library currently supports GPP enhancement for various procurement categories including:
 
 -   Furniture and refurbishment services
--   Office equipment and supplies
+<!-- -   Office equipment and supplies
 -   Construction and building materials
 -   Transport and logistics services
--   And many more...
+-   And many more... -->
 
 ## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
 ### Development Setup
 
@@ -218,36 +187,6 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 6. Push to the branch: `git push origin feature/amazing-feature`
 7. Open a Pull Request
 
-## 📖 Examples
-
-### Analyzing a Furniture Procurement Notice
-
-```java
-// Load a furniture procurement notice
-Notice furnitureNotice = analyzer.loadNotice(furnitureXml);
-
-// The analysis will identify relevant GPP criteria such as:
-// - Low chemical residue upholstery coverings
-// - Extended warranty periods
-// - Refurbishment requirements
-// - Sustainable material specifications
-
-GppAnalysisResult result = analyzer.analyzeNotice(furnitureNotice);
-```
-
-### Working with Multi-Lot Procurements
-
-```java
-// For notices with multiple lots, analysis is performed per-lot
-Notice multiLotNotice = analyzer.loadNotice(complexNoticeXml);
-GppAnalysisResult result = analyzer.analyzeNotice(multiLotNotice);
-
-// Each suggested criterion includes lot-specific information
-for (SuggestedGppCriterion criterion : result.getSuggestedGppCriteria()) {
-    System.out.println("Lot " + criterion.getLotId() + ": " + criterion.getName());
-}
-```
-
 ## 🔧 Configuration
 
 ### Ambition Levels
@@ -257,18 +196,6 @@ The library supports different ambition levels for GPP criteria:
 -   **Core** - Basic environmental requirements suitable for most procurements
 -   **Comprehensive** - Advanced environmental requirements for ambitious green procurement
 
-### Custom Domain Knowledge
-
-You can provide custom domain knowledge files:
-
-```java
-DefaultGppNoticeAnalyzer analyzer = new DefaultGppNoticeAnalyzer(
-    "custom/gpp_documents.json",     // Custom GPP documents
-    "custom/gpp_criteria.json",      // Custom criteria definitions
-    "custom/gpp_patches.json"        // Custom enhancement patches
-);
-```
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -276,13 +203,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🎓 Academic Context
 
 This library was developed as part of research at **Politecnico di Milano** focusing on the digitalization and automation of Green Public Procurement processes. It aims to bridge the gap between environmental policy and practical procurement implementation.
-
-## 📞 Support
-
--   📧 **Issues**: [GitHub Issues](https://github.com/your-org/eforms-gpp-library/issues)
--   📖 **Documentation**: [API Documentation](target/site/apidocs/index.html)
--   🎓 **Academic**: Contact Politecnico di Milano
-
----
 
 _Making public procurement greener, one notice at a time_ 🌱
