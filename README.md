@@ -7,6 +7,12 @@
 A Java library that can identify **Green Public Procurement (GPP)** criteria and apply the necessary modificatins to eForm contract notices.
 The goal is to facilitate the use of GPP in digital procurement in Europe.
 
+For examples on usage of this library, please look at the [GPP Service](https://github.com/uritrejo/eforms-gpp-service) and the [GPP UI](https://github.com/uritrejo/eforms-gpp-ui)
+
+## High-level architecture diagram of solution surrounding the GPP Library
+
+![Architecture Diagram](docs/images/system-arch-diagram.png)
+
 ## 🌱 What is Green Public Procurement?
 
 Green Public Procurement (GPP) is a process whereby public authorities seek to procure goods, services, and works with a reduced environmental impact throughout their life cycle. This library helps transform standard procurement notices into environmentally conscious ones by:
