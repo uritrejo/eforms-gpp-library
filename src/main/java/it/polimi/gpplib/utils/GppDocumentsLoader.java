@@ -11,11 +11,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Objects; // For Objects.requireNonNull
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Utility class to load GPP document data from a JSON file in resources.
  */
 public class GppDocumentsLoader {
+
+    private static final Logger logger = LoggerFactory.getLogger(GppDocumentsLoader.class);
 
     private final ObjectMapper objectMapper;
     private final String filePath;
@@ -39,6 +43,8 @@ public class GppDocumentsLoader {
      *                     JSON parsing.
      */
     public List<GppDocument> loadGppDocuments() throws IOException {
+        logger.debug("Loading GPP documents from resource: {}", filePath);
+
         // Get the InputStream for the resource file from the classpath
         // The path is relative to the classpath root (src/main/resources/)
         try (InputStream is = getClass().getClassLoader()
@@ -49,8 +55,14 @@ public class GppDocumentsLoader {
             // Read the JSON array into a List of GppDocument objects
             // TypeReference is used here because of Java's type erasure;
             // it tells Jackson to deserialize into a List<GppDocument> not just a raw List.
-            return objectMapper.readValue(is, new TypeReference<List<GppDocument>>() {
+            List<GppDocument> documents = objectMapper.readValue(is, new TypeReference<List<GppDocument>>() {
             });
+
+            logger.debug("Successfully loaded {} GPP documents from {}", documents.size(), filePath);
+            return documents;
+        } catch (IOException e) {
+            logger.error("Failed to load GPP documents from resource: {}", filePath, e);
+            throw e;
         }
     }
 }

@@ -24,8 +24,12 @@ import org.w3c.dom.NodeList;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class XmlUtils {
+
+    private static final Logger logger = LoggerFactory.getLogger(XmlUtils.class);
     private static final XPathFactory xpathFactory = XPathFactory.newInstance();
     private static final DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
     static {
@@ -93,10 +97,15 @@ public class XmlUtils {
      * This is useful for parsing XML content from strings.
      */
     public static Document loadDocument(String xmlString) {
+        logger.debug("Loading XML document from string (length: {} characters)",
+                xmlString != null ? xmlString.length() : 0);
         try {
             DocumentBuilder builder = docFactory.newDocumentBuilder();
-            return builder.parse(new InputSource(new StringReader(xmlString)));
+            Document document = builder.parse(new InputSource(new StringReader(xmlString)));
+            logger.debug("Successfully loaded XML document");
+            return document;
         } catch (Exception e) {
+            logger.error("Failed to parse XML string", e);
             throw new XmlUtilsException("Failed to parse XML string", e);
         }
     }
@@ -106,11 +115,19 @@ public class XmlUtils {
      * If no node is found, it logs and throws an exception.
      */
     public static Node getNodeAtPath(Node root, String path) {
+        logger.debug("Evaluating XPath: {} from root node", path);
         try {
             javax.xml.xpath.XPath xpath = xpathFactory.newXPath();
             xpath.setNamespaceContext(namespaceCtx);
-            return (Node) xpath.evaluate(path, root, javax.xml.xpath.XPathConstants.NODE);
+            Node result = (Node) xpath.evaluate(path, root, javax.xml.xpath.XPathConstants.NODE);
+            if (result != null) {
+                logger.debug("Found node at XPath: {}", path);
+            } else {
+                logger.debug("No node found at XPath: {}", path);
+            }
+            return result;
         } catch (Exception e) {
+            logger.error("Failed to evaluate XPath: {}", path, e);
             throw new XmlUtilsException("Failed to evaluate XPath: " + path, e);
         }
     }
@@ -178,13 +195,17 @@ public class XmlUtils {
      * If the parent or new child is null, it logs an error and returns.
      */
     public static void insertIntoNode(Node parent, Node newChild) {
+        logger.debug("Inserting node '{}' into parent node", newChild != null ? newChild.getNodeName() : "null");
         if (parent == null || newChild == null) {
+            logger.error("Cannot insert node: parent or new child node is null");
             throw new XmlUtilsException("Parent or new child node is null");
         }
         try {
             Node importedNode = parent.getOwnerDocument().importNode(newChild, true);
             parent.appendChild(importedNode);
+            logger.debug("Successfully inserted node '{}' into parent", newChild.getNodeName());
         } catch (Exception e) {
+            logger.error("Failed to insert node '{}' into parent", newChild.getNodeName(), e);
             throw new XmlUtilsException("Failed to insert node into parent", e);
         }
     }
