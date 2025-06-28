@@ -21,6 +21,14 @@ This is a helper tool to convert the google sheets values into a json config tha
 import openpyxl
 import json
 
+# INPUT_FILE_PATH_DOMAIN_KNOWLEDGE = 'gpp_criteria.xlsx'
+INPUT_FILE_PATH_DOMAIN_KNOWLEDGE = 'domain_knowledge/sources/domain-knowledge.xlsx'
+
+OUTPUT_FILE_PATH_GPP_CRITERIA = 'gpp_criteria.json'
+OUTPUT_FILE_PATH_GPP_CRITERIA_DOCS = 'gpp_criteria_docs.json'
+OUTPUT_FILE_PATH_GPP_PATCHES_DATA = 'gpp_patches_data.json'
+
+
 """### Load Excel Data
 
 Here we load the sheets containing:
@@ -39,8 +47,7 @@ def load_workbook(filepath):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-gpp_sheets_filepath = 'gpp_criteria.xlsx'
-workbook = load_workbook(gpp_sheets_filepath)
+workbook = load_workbook(INPUT_FILE_PATH_DOMAIN_KNOWLEDGE)
 print(f"Available sheets: {workbook.sheetnames}")
 
 """#### GPP Criteria Documents"""
@@ -96,8 +103,9 @@ def load_gpp_criteria_docs(sheet):
     return gpp_criteria_docs
 
 gpp_criteria_docs = load_gpp_criteria_docs(workbook['GPP Criteria Docs'])
-gpp_criteria_docs[0].show()
 
+# debugging
+gpp_criteria_docs[0].show()
 gpp_criteria_docs[0].to_dict()
 
 """#### GPP Criteria"""
@@ -182,8 +190,9 @@ def load_gpp_criteria(sheet):
     return gpp_criteria
 
 gpp_criteria = load_gpp_criteria(workbook['All Criteria'])
-gpp_criteria[14].show()
 
+# debugging
+gpp_criteria[14].show()
 gpp_criteria[14].to_dict()
 
 """#### Patches Data"""
@@ -243,6 +252,8 @@ def load_gpp_patches_data(sheet):
     return gpp_patches_data
 
 gpp_patches_data = load_gpp_patches_data(workbook['Patches'])
+
+# debugging
 gpp_patches_data[0].show()
 
 """### Create JSON files
@@ -257,19 +268,17 @@ We'll now create JSON files that can be easily processed by our application.
 """
 
 gpp_criteria_docs_json = [doc.to_dict() for doc in gpp_criteria_docs]
-with open('gpp_criteria_docs.json', 'w') as f:
+with open(OUTPUT_FILE_PATH_GPP_CRITERIA_DOCS, 'w') as f:
     json.dump(gpp_criteria_docs_json, f, indent=2)
 print("Created gpp_criteria_docs.json")
 
 gpp_criteria_json = [criterion.to_dict() for criterion in gpp_criteria]
-with open('gpp_criteria.json', 'w') as f:
+with open(OUTPUT_FILE_PATH_GPP_CRITERIA, 'w') as f:
     json.dump(gpp_criteria_json, f, indent=2)
 print("Created gpp_criteria.json")
 
 gpp_patches_data_json = [patch.to_dict() for patch in gpp_patches_data]
-with open('gpp_patches_data.json', 'w') as f:
+with open(OUTPUT_FILE_PATH_GPP_PATCHES_DATA, 'w') as f:
     json.dump(gpp_patches_data_json, f, indent=2)
 print("Created gpp_patches_data.json")
-
-
 
