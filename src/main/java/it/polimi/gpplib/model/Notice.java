@@ -7,21 +7,62 @@ import org.w3c.dom.NodeList;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a public procurement notice with methods for extracting and
+ * manipulating
+ * procurement-related information such as CPV codes, lot details, and tender
+ * specifications.
+ * 
+ * <p>
+ * This class wraps an XML document containing a procurement notice and provides
+ * convenient methods to access various elements of the notice structure,
+ * including:
+ * <ul>
+ * <li>Procurement project information and CPV codes</li>
+ * <li>Lot-specific details and classifications</li>
+ * <li>Tender requirements and criteria</li>
+ * <li>XML manipulation capabilities for applying patches</li>
+ * </ul>
+ * 
+ * <p>
+ * The underlying XML structure follows the eForms standard for public
+ * procurement notices.
+ * 
+ * @author Politecnico di Milano
+ * @version 1.0
+ * @since 1.0
+ */
 public class Notice {
 
+    /** The underlying XML document representing the procurement notice. */
     private Document doc;
 
+    /**
+     * Creates a new Notice by parsing the provided XML string.
+     * 
+     * @param xmlString the XML representation of the procurement notice
+     * @throws it.polimi.gpplib.utils.XmlUtils.XmlUtilsException if the XML cannot
+     *                                                           be parsed
+     */
     public Notice(String xmlString) {
         this.doc = XmlUtils.loadDocument(xmlString);
     }
 
+    /**
+     * Converts the notice back to an XML string representation.
+     * 
+     * @return the XML string representation of this notice
+     */
     public String toXmlString() {
         return XmlUtils.docToString(doc);
     }
 
-    /*
-     * Gives access to the underlying Document object.
-     * (Moslty intended for the patch handlers to access the XML structure)
+    /**
+     * Provides access to the underlying Document object.
+     * This method is mostly intended for patch handlers to access the XML structure
+     * directly.
+     * 
+     * @return the underlying XML Document object
      */
     public Document getDoc() {
         return doc;
@@ -29,6 +70,14 @@ public class Notice {
 
     /**
      * Returns the main CPV code of the ProcurementProject.
+     * 
+     * <p>
+     * The Common Procurement Vocabulary (CPV) code identifies the subject matter
+     * of the procurement contract. The main CPV code represents the primary
+     * category
+     * of goods, services, or works being procured.
+     * 
+     * @return the main CPV code as a string, or null if not found
      */
     public String getProcurementProjectMainCpv() {
         Node node = XmlUtils.getNodeAtPath(doc.getDocumentElement(), Constants.PATH_MAIN_CPV);
@@ -37,6 +86,13 @@ public class Notice {
 
     /**
      * Returns the additional CPV codes of the ProcurementProject.
+     * 
+     * <p>
+     * Additional CPV codes provide supplementary classification for
+     * procurement that involves multiple categories or subcategories of
+     * goods, services, or works.
+     * 
+     * @return a list of additional CPV codes, empty if none are found
      */
     public List<String> getProcurementProjectAdditionalCpvs() {
         List<String> cpvs = new ArrayList<>();
@@ -50,7 +106,13 @@ public class Notice {
     /**
      * Returns a list of all CPV codes (main and additional) for the
      * ProcurementProject.
-     * The returned list is in the order: [main, additional...].
+     * 
+     * <p>
+     * This is a convenience method that combines the main CPV code with all
+     * additional CPV codes into a single list. This is useful for comprehensive
+     * analysis of all procurement categories covered by the project.
+     * 
+     * @return a list containing all CPV codes in the order: [main, additional...]
      */
     public List<String> getAllProcurementProjectCpvs() {
         List<String> cpvs = new ArrayList<>();
@@ -64,8 +126,14 @@ public class Notice {
 
     /**
      * Finds the ProcurementProjectLot node for a given lot ID.
-     * This version finds all lots, checks their ID child, and returns the matching
-     * lot node.
+     * 
+     * <p>
+     * This method searches through all procurement lots in the notice,
+     * checks their ID elements, and returns the XML node of the lot that
+     * matches the specified lot ID. The comparison is case-insensitive.
+     * 
+     * @param lotId the ID of the lot to find
+     * @return the XML Node representing the lot, or null if not found
      */
     public Node getLotNode(String lotId) {
         NodeList lots = XmlUtils.getNodesAtPath(doc.getDocumentElement(), Constants.PATH_LOT);

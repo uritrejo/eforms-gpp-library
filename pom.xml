@@ -95,6 +95,10 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <plugin>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.6.3</version>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -113,6 +117,36 @@
             <phase>test</phase>
             <goals>
               <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.6.3</version>
+        <configuration>
+          <source>21</source>
+          <target>21</target>
+          <show>private</show>
+          <nohelp>true</nohelp>
+          <failOnError>false</failOnError>
+          <additionalJOptions>
+            <additionalJOption>-Xdoclint:none</additionalJOption>
+          </additionalJOptions>
+          <windowTitle>eforms-gpp-library ${project.version} API</windowTitle>
+          <doctitle>eforms-gpp-library ${project.version} API</doctitle>
+          <bottom>
+            <![CDATA[
+              Copyright &#169; 2025 Politecnico di Milano. All rights reserved.
+            ]]>
+          </bottom>
+        </configuration>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
             </goals>
           </execution>
         </executions>
