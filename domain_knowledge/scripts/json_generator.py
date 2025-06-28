@@ -22,11 +22,12 @@ import openpyxl
 import json
 
 # INPUT_FILE_PATH_DOMAIN_KNOWLEDGE = 'gpp_criteria.xlsx'
-INPUT_FILE_PATH_DOMAIN_KNOWLEDGE = 'domain_knowledge/sources/domain-knowledge.xlsx'
+INPUT_FILE_PATH_DOMAIN_KNOWLEDGE = 'domain_knowledge/sources/domain_knowledge.xlsx'
 
-OUTPUT_FILE_PATH_GPP_CRITERIA = 'gpp_criteria.json'
-OUTPUT_FILE_PATH_GPP_CRITERIA_DOCS = 'gpp_criteria_docs.json'
-OUTPUT_FILE_PATH_GPP_PATCHES_DATA = 'gpp_patches_data.json'
+OUTPUT_DIR = 'src/main/resources/domain_knowledge'
+OUTPUT_FILE_NAME_GPP_CRITERIA = 'gpp_criteria.json'
+OUTPUT_FILE_NAME_GPP_CRITERIA_DOCS = 'gpp_criteria_docs.json'
+OUTPUT_FILE_NAME_GPP_PATCHES_DATA = 'gpp_patches_data.json'
 
 
 """### Load Excel Data
@@ -38,6 +39,7 @@ Here we load the sheets containing:
 - Patches
 """
 
+
 def load_workbook(filepath):
     try:
         workbook = openpyxl.load_workbook(filepath, data_only=True)
@@ -47,10 +49,12 @@ def load_workbook(filepath):
     except Exception as e:
         print(f"An error occurred: {e}")
 
+
 workbook = load_workbook(INPUT_FILE_PATH_DOMAIN_KNOWLEDGE)
 print(f"Available sheets: {workbook.sheetnames}")
 
 """#### GPP Criteria Documents"""
+
 
 class GppCriteriaDoc():
     def __init__(self, row):
@@ -83,9 +87,10 @@ class GppCriteriaDoc():
             'source': self.source,
             'documentReference': self.document_reference,
             'publicationDate': self.publication_date.isoformat(),
-            'relevantCpvCodes': self.relevant_cpv_codes, # this one could be computed from the "All Criteria" sheet
+            'relevantCpvCodes': self.relevant_cpv_codes,  # this one will soon be removed
             'summary': self.summary
         }
+
 
 def load_gpp_criteria_docs(sheet):
     gpp_criteria_docs = []
@@ -102,6 +107,7 @@ def load_gpp_criteria_docs(sheet):
         gpp_criteria_docs.append(gpp_criteria_doc)
     return gpp_criteria_docs
 
+
 gpp_criteria_docs = load_gpp_criteria_docs(workbook['GPP Criteria Docs'])
 
 # debugging
@@ -109,6 +115,7 @@ gpp_criteria_docs[0].show()
 gpp_criteria_docs[0].to_dict()
 
 """#### GPP Criteria"""
+
 
 class GppCriterion():
     def __init__(self, row):
@@ -136,7 +143,6 @@ class GppCriterion():
 
         self.environmental_impact_type = row[8].value.strip()
 
-
         self.description = row[9].value.strip()
 
         # can be non-existent
@@ -144,7 +150,6 @@ class GppCriterion():
             self.selection_criterion_type = row[10].value.strip()
         else:
             self.selection_criterion_type = None
-
 
     def show(self):
         print('GPP Document: ', self.gpp_document)
@@ -174,6 +179,7 @@ class GppCriterion():
             'selectionCriterionType': self.selection_criterion_type,
         }
 
+
 def load_gpp_criteria(sheet):
     gpp_criteria = []
     first_row = True
@@ -185,17 +191,19 @@ def load_gpp_criteria(sheet):
         # break once the name is None
         if row[0].value is None:
             break
-        gpp_criterion = GppCriterionNew(row)
+        gpp_criterion = GppCriterion(row)
         gpp_criteria.append(gpp_criterion)
     return gpp_criteria
 
-gpp_criteria = load_gpp_criteria(workbook['All Criteria'])
+
+gpp_criteria = load_gpp_criteria(workbook['GPP Criteria ENG'])
 
 # debugging
 gpp_criteria[14].show()
 gpp_criteria[14].to_dict()
 
 """#### Patches Data"""
+
 
 class GppPatchData():
     def __init__(self, row):
@@ -251,6 +259,7 @@ def load_gpp_patches_data(sheet):
         gpp_patches_data.append(gpp_patch_data)
     return gpp_patches_data
 
+
 gpp_patches_data = load_gpp_patches_data(workbook['Patches'])
 
 # debugging
@@ -268,17 +277,16 @@ We'll now create JSON files that can be easily processed by our application.
 """
 
 gpp_criteria_docs_json = [doc.to_dict() for doc in gpp_criteria_docs]
-with open(OUTPUT_FILE_PATH_GPP_CRITERIA_DOCS, 'w') as f:
+with open(OUTPUT_DIR + '/' + OUTPUT_FILE_NAME_GPP_CRITERIA_DOCS, 'w') as f:
     json.dump(gpp_criteria_docs_json, f, indent=2)
 print("Created gpp_criteria_docs.json")
 
 gpp_criteria_json = [criterion.to_dict() for criterion in gpp_criteria]
-with open(OUTPUT_FILE_PATH_GPP_CRITERIA, 'w') as f:
+with open(OUTPUT_DIR + '/' + OUTPUT_FILE_NAME_GPP_CRITERIA, 'w') as f:
     json.dump(gpp_criteria_json, f, indent=2)
 print("Created gpp_criteria.json")
 
 gpp_patches_data_json = [patch.to_dict() for patch in gpp_patches_data]
-with open(OUTPUT_FILE_PATH_GPP_PATCHES_DATA, 'w') as f:
+with open(OUTPUT_DIR + '/' + OUTPUT_FILE_NAME_GPP_PATCHES_DATA, 'w') as f:
     json.dump(gpp_patches_data_json, f, indent=2)
 print("Created gpp_patches_data.json")
-

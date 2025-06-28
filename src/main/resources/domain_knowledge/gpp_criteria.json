@@ -722,40 +722,6 @@
   {
     "gppDocument": "EU GPP Criteria for Furniture",
     "gppSource": "eu",
-    "category": "Procurement of new furniture",
-    "criterionType": "Selection criteria",
-    "ambitionLevel": "Core",
-    "id": "SC1",
-    "name": "Fake Name Unicorn",
-    "relevantCpvCodes": [
-      "39100000",
-      "45233293",
-      "45421153"
-    ],
-    "environmentalImpactType": "biodiv-eco",
-    "description": "Temporary description for SC1: Fake Name Unicorn, a criterion of type Selection criteria, of ambition level Core, coming from document EU GPP Criteria for Furniture",
-    "selectionCriterionType": "slc-abil-mgmt-env"
-  },
-  {
-    "gppDocument": "EU GPP Criteria for Furniture",
-    "gppSource": "eu",
-    "category": "Procurement of new furniture",
-    "criterionType": "Selection criteria",
-    "ambitionLevel": "Core",
-    "id": "SC2",
-    "name": "Fake Name Pony",
-    "relevantCpvCodes": [
-      "39100000",
-      "45233293",
-      "45421153"
-    ],
-    "environmentalImpactType": "clim-mitig",
-    "description": "Temporary description for SC2: Fake Name Pony, a criterion of type Selection criteria, of ambition level Core, coming from document EU GPP Criteria for Furniture",
-    "selectionCriterionType": "slc-abil-mgmt-env"
-  },
-  {
-    "gppDocument": "EU GPP Criteria for Furniture",
-    "gppSource": "eu",
     "category": "Procurement of furniture End-of-Life services",
     "criterionType": "Technical specification",
     "ambitionLevel": "Core",

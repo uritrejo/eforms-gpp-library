@@ -123,7 +123,7 @@
     ],
     "dependsOn": "Award Criteria",
     "pathInLot": "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion[cac:SubordinateAwardingCriterion/cbc:Name='{arg0}']",
-    "value": "<!-- Award Criteria Complicated (BT-543-Lot) -->\n<cbc:CalculationExpression languageID=\"{language}\" xmlns:cbc=\"{cbc}\">{arg6}</cbc:CalculationExpression>"
+    "value": "<!-- Award Criteria Complicated (BT-543-Lot) -->\n<cbc:CalculationExpression languageID=\"{language}\" xmlns:cbc=\"{cbc}\">{arg0}</cbc:CalculationExpression>"
   },
   {
     "name": "Contract Performance Clause",
