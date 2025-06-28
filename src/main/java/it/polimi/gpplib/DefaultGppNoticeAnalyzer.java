@@ -142,7 +142,7 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
             throw new GppBadRequestException("Invalid notice xml string: " + e.getMessage(), e);
         } catch (Exception e) {
             logger.error("Unexpected error loading notice: {}", e.getMessage(), e);
-            throw new GppBadRequestException("Unexpecter error loading notice: " + e.getMessage(), e);
+            throw new GppBadRequestException("Unexpected error loading notice: " + e.getMessage(), e);
         }
 
         // TODO: add some notice validation (e.g. noticeType, version, language, etc.)
