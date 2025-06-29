@@ -9,6 +9,10 @@ public final class Constants {
     public static final String DOMAIN_KNOWLEDGE_GPP_DOCS_PATH = "domain_knowledge/gpp_criteria_docs.json";
     public static final String DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH = "domain_knowledge/gpp_patches_data.json";
 
+    // eForms SDK paths
+    public static final String EFORMS_SDK_UBL_COMMON_AGGREGATE_COMPONENTS_XSD_PATH = "eForms-SDK/v1.13/schemas/common/UBL-CommonAggregateComponents-2.3.xsd";
+    public static final String TYPE_NAME_PROCUREMENT_PROJECT = "ProcurementProjectType";
+
     public static final String PATH_PROCUREMENT_PROJECT = "cac:ProcurementProject";
     public static final String PATH_MAIN_CPV = "cac:ProcurementProject/cac:MainCommodityClassification";
     public static final String PATH_ADDITIONAL_CPVS = "cac:ProcurementProject/cac:AdditionalCommodityClassification";

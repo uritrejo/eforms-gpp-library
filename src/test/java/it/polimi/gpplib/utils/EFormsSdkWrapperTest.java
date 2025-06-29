@@ -13,7 +13,8 @@ public class EFormsSdkWrapperTest {
     @Test
     public void testGetProcurementProjectTypeSequenceRefs() {
         // Test that we can successfully read the ProcurementProjectType sequence refs
-        List<String> refElements = EFormsSdkWrapper.getProcurementProjectTypeSchema();
+        EFormsSdkWrapper wrapper = new EFormsSdkWrapper();
+        List<String> refElements = wrapper.getProcurementProjectTypeSchema();
 
         // Verify that we got some results
         assertNotNull("Ref elements list should not be null", refElements);
@@ -43,7 +44,8 @@ public class EFormsSdkWrapperTest {
     @Test
     public void testRefElementsCount() {
         // Test that we get the expected number of elements
-        List<String> refElements = EFormsSdkWrapper.getProcurementProjectTypeSchema();
+        EFormsSdkWrapper wrapper = new EFormsSdkWrapper();
+        List<String> refElements = wrapper.getProcurementProjectTypeSchema();
 
         // Based on the XSD content we examined, there should be around 22 elements
         assertTrue("Should have at least 20 ref elements, got: " + refElements.size(),
@@ -67,5 +69,43 @@ public class EFormsSdkWrapperTest {
         } catch (Exception e) {
             fail("Should not throw exception for non-existent complex type: " + e.getMessage());
         }
+    }
+
+    @Test
+    public void testDefaultConstructor() {
+        // Test the default constructor that uses Constants path
+        EFormsSdkWrapper wrapper = new EFormsSdkWrapper();
+        List<String> refElements = wrapper.getProcurementProjectTypeSchema();
+
+        assertNotNull("Ref elements should not be null", refElements);
+        assertFalse("Ref elements should not be empty", refElements.isEmpty());
+        assertEquals("Should have exactly 21 elements", 21, refElements.size());
+    }
+
+    @Test
+    public void testCustomPathConstructor() {
+        // Test the constructor with custom path
+        EFormsSdkWrapper wrapper = new EFormsSdkWrapper(
+                "eForms-SDK/v1.13/schemas/common/UBL-CommonAggregateComponents-2.3.xsd");
+        List<String> refElements = wrapper.getProcurementProjectTypeSchema();
+
+        assertNotNull("Ref elements should not be null", refElements);
+        assertFalse("Ref elements should not be empty", refElements.isEmpty());
+        assertEquals("Should have exactly 21 elements", 21, refElements.size());
+    }
+
+    @Test
+    public void testMultipleInstancesReturnSameData() {
+        // Test that multiple instances return the same data
+        EFormsSdkWrapper wrapper1 = new EFormsSdkWrapper();
+        EFormsSdkWrapper wrapper2 = new EFormsSdkWrapper();
+
+        List<String> refElements1 = wrapper1.getProcurementProjectTypeSchema();
+        List<String> refElements2 = wrapper2.getProcurementProjectTypeSchema();
+
+        assertEquals("Both instances should return same number of elements",
+                refElements1.size(), refElements2.size());
+        assertTrue("Both instances should contain same elements",
+                refElements1.containsAll(refElements2) && refElements2.containsAll(refElements1));
     }
 }
