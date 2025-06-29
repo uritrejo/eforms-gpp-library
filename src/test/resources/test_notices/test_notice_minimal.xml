@@ -17,6 +17,7 @@
                 <cbc:ItemClassificationCode listName="cpv">33192000</cbc:ItemClassificationCode>
             </cac:AdditionalCommodityClassification>
         </cac:ProcurementProject>
+        <cac:TenderingTerms></cac:TenderingTerms>
     </cac:ProcurementProjectLot>
 
     <cac:ProcurementProjectLot>
@@ -29,6 +30,9 @@
                 <cbc:ItemClassificationCode listName="cpv">39110000</cbc:ItemClassificationCode>
             </cac:AdditionalCommodityClassification>
         </cac:ProcurementProject>
+        <cac:TenderingTerms></cac:TenderingTerms>
     </cac:ProcurementProjectLot>
+
+    <cbc:NoticeLanguageCode listID="eu-official-language">SPA</cbc:NoticeLanguageCode>
 
 </ContractNotice>

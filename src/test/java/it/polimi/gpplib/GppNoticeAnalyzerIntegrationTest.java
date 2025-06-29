@@ -37,16 +37,18 @@ public class GppNoticeAnalyzerIntegrationTest {
     @Test
     public void testCompleteGppAnalysisWorkflow() throws Exception {
         // Step 1: Load notice from XML
-        String noticeXml = XmlUtils.getAsXmlString("test_notices/test_notice.xml");
+        String noticeXml = XmlUtils.getAsXmlString("test_notices/test_notice_minimal.xml");
         Notice notice = analyzer.loadNotice(noticeXml);
         assertNotNull("Notice should be loaded from XML", notice);
 
         // Step 2: Analyze the notice to get GPP suggestions
         GppAnalysisResult analysisResult = analyzer.analyzeNotice(notice);
         assertNotNull("Analysis result should not be null", analysisResult);
+        assertTrue(analysisResult.getRelevantGppDocuments().size() > 0);
 
         List<SuggestedGppCriterion> suggestedCriteria = analysisResult.getSuggestedGppCriteria();
         assertNotNull("Suggested criteria list should not be null", suggestedCriteria);
+        assertTrue(suggestedCriteria.size() > 0);
 
         // Log some information about the analysis
         System.out.println("Analysis completed for notice with " + suggestedCriteria.size() + " suggested criteria");
@@ -54,6 +56,7 @@ public class GppNoticeAnalyzerIntegrationTest {
         // Step 3: Suggest patches based on the criteria (if any were found)
         List<SuggestedGppPatch> patches = analyzer.suggestPatches(notice, suggestedCriteria);
         assertNotNull("Patches list should not be null", patches);
+        assertTrue(patches.size() > 0);
 
         System.out.println("Found " + patches.size() + " suggested patches");
 
@@ -61,8 +64,10 @@ public class GppNoticeAnalyzerIntegrationTest {
         Notice improvedNotice = analyzer.applyPatches(notice, patches);
         assertNotNull("Improved notice should not be null", improvedNotice);
 
+        // TODO: verify that the indicators have been added, also the Award Criteria
         // Verify basic workflow completion - the key is that all steps executed without
         // exception
+        // TODO: would be good to verify it against an "expected" notice XML in a file
         assertTrue("Analysis workflow should complete successfully", true);
 
         // Log whether any actual changes were made
