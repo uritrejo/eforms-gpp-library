@@ -23,6 +23,9 @@ public final class Constants {
     // ND-LotAdditionalClassification
     public static final String PATH_IN_LOT_ADDITIONAL_CPVS = "cac:ProcurementProject/cac:AdditionalCommodityClassification";
 
+    // BT-702
+    public static final String PATH_NOTICE_LANGUAGE = "cbc:NoticeLanguageCode";
+
     public static final String AMBITION_LEVEL_CORE = "core";
     public static final String AMBITION_LEVEL_COMPREHENSIVE = "comprehensive";
     public static final String AMBITION_LEVEL_BOTH = "both";

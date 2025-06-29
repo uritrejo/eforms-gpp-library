@@ -15,7 +15,7 @@ public class NoticeTest {
 
     @Before
     public void setUp() {
-        String xml = XmlUtils.getAsXmlString("test_notice.xml");
+        String xml = XmlUtils.getAsXmlString("test_notices/test_notice.xml");
         notice = new Notice(xml);
     }
 
@@ -114,5 +114,12 @@ public class NoticeTest {
         assertNotNull(str);
         assertTrue(str.contains("mainCpv='24000000'"));
         assertTrue(str.contains("lots=[{id='LOT-0001'"));
+    }
+
+    @Test
+    public void testGetNoticeLanguage() {
+        // The test_notice.xml doesn't contain a NoticeLanguageCode element
+        String language = notice.getNoticeLanguage();
+        assertEquals("ENG", language);
     }
 }

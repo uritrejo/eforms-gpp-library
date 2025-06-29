@@ -20,7 +20,7 @@ public class GppPatchSuggesterTest {
         List<GppCriterion> gppCriteria = new ArrayList<>();
         List<GppPatch> gppPatches = new ArrayList<>();
         GppPatchSuggester suggester = new GppPatchSuggester(gppCriteria, gppPatches);
-        String noticeXmlString = XmlUtils.getAsXmlString("test_notice_minimal.xml");
+        String noticeXmlString = XmlUtils.getAsXmlString("test_notices/test_notice_minimal.xml");
         Notice notice = new Notice(noticeXmlString);
         List<SuggestedGppCriterion> suggestedCriteria = new ArrayList<>();
         List<SuggestedGppPatch> suggestedPatches = suggester.suggestGppPatches(notice, suggestedCriteria);
@@ -57,7 +57,7 @@ public class GppPatchSuggesterTest {
         List<GppPatch> gppPatches = patchesLoader.loadGppPatches();
 
         GppPatchSuggester suggester = new GppPatchSuggester(gppCriteria, gppPatches);
-        String noticeXmlString = XmlUtils.getAsXmlString("test_notice_minimal.xml");
+        String noticeXmlString = XmlUtils.getAsXmlString("test_notices/test_notice_minimal.xml");
         Notice notice = new Notice(noticeXmlString);
         // we basically suggest all the criteria we have
         List<SuggestedGppCriterion> suggestedCriteria = new ArrayList<>();

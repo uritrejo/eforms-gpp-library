@@ -174,6 +174,10 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
      */
     @Override
     public GppAnalysisResult analyzeNotice(Notice notice) {
+        if (notice == null) {
+            throw new GppBadRequestException("Notice must not be null");
+        }
+
         logger.info("Starting analysis of notice with {} lots", notice.getLotIds().size());
         try {
             // TODO: verify that the documents can't be duplicated
@@ -233,7 +237,11 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
      */
     @Override
     public List<SuggestedGppPatch> suggestPatches(Notice notice, List<SuggestedGppCriterion> suggestedCriteria) {
+        if (suggestedCriteria == null || notice == null) {
+            throw new GppBadRequestException("Notice and suggested criteria must not be null");
+        }
         logger.info("Suggesting patches for {} criteria", suggestedCriteria.size());
+
         // TODO: validate suggestedCriteria & return a GppBadRequestException if invalid
         try {
             List<SuggestedGppPatch> patches = domainKnowledge.suggestGppPatches(notice, suggestedCriteria);

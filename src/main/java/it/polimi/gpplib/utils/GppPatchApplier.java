@@ -17,13 +17,13 @@ public class GppPatchApplier {
     }
 
     public Notice applyPatch(Notice notice, SuggestedGppPatch patch) {
-        logger.debug("Applying patch '{}' to lot '{}' at path '{}'", patch.getName(), patch.getLotId(),
-                patch.getPath());
-
         if (notice == null || patch == null) {
             logger.error("Notice and patch must not be null");
             throw new IllegalArgumentException("Notice and patch must not be null");
         }
+
+        logger.debug("Applying patch '{}' to lot '{}' at path '{}'", patch.getName(), patch.getLotId(),
+                patch.getPath());
 
         if (patch.getOp() == null || !patch.getOp().equalsIgnoreCase(Constants.OP_CREATE)) {
             logger.error("Invalid patch operation: {}", patch.getOp());

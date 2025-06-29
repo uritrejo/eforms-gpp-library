@@ -6,6 +6,7 @@
     xmlns:efext="http://data.europa.eu/p27/eforms-ubl-extensions/1"
     xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
     xmlns="urn:oasis:names:specification:ubl:schema:xsd:ContractNotice-2">
+    <cbc:NoticeLanguageCode listID="eu-official-language">ENG</cbc:NoticeLanguageCode>
     <cac:ProcurementProject>
         <cbc:ID schemeName="InternalID">Internal identifier (BT-22-Procedure)</cbc:ID>
         <cbc:Name languageID="ENG">Title (BT-21-Procedure)</cbc:Name>

@@ -76,6 +76,21 @@ public class Notice {
     }
 
     /**
+     * Returns the language code of the notice.
+     * 
+     * <p>
+     * The notice language code indicates the language in which the procurement
+     * notice is published (e.g., "ENG" for English, "ITA" for Italian, "SPA" for
+     * Spanish).
+     * 
+     * @return the notice language code as a string, or null if not found
+     */
+    public String getNoticeLanguage() {
+        Node node = XmlUtils.getNodeAtPath(doc.getDocumentElement(), Constants.PATH_NOTICE_LANGUAGE);
+        return node != null ? node.getTextContent().trim() : null;
+    }
+
+    /**
      * Returns the main CPV code of the ProcurementProject.
      * 
      * <p>
