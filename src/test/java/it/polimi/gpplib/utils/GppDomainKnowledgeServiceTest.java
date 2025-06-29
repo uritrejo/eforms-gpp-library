@@ -123,7 +123,7 @@ public class GppDomainKnowledgeServiceTest {
         String gppCriteriaPath = "domain_knowledge/test_gpp_criteria.json";
         String gppPatchesPath = "domain_knowledge/test_gpp_patches_data.json";
         GppDomainKnowledgeService service = new GppDomainKnowledgeService(gppDocsPath, gppCriteriaPath, gppPatchesPath);
-        String noticeXmlString = XmlUtils.getAsXmlString("test_notice_minimal.xml");
+        String noticeXmlString = XmlUtils.getAsXmlString("test_notices/test_notice_minimal.xml");
         Notice notice = new Notice(noticeXmlString);
         List<SuggestedGppCriterion> suggestedCriteria = new ArrayList<>();
         List<SuggestedGppPatch> suggestedPatches = service.suggestGppPatches(notice, suggestedCriteria);

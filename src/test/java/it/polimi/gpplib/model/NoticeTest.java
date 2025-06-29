@@ -15,7 +15,7 @@ public class NoticeTest {
 
     @Before
     public void setUp() {
-        String xml = XmlUtils.getAsXmlString("test_notice.xml");
+        String xml = XmlUtils.getAsXmlString("test_notices/test_notice.xml");
         notice = new Notice(xml);
     }
 

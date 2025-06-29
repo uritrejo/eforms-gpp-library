@@ -67,7 +67,7 @@ public class DefaultGppNoticeAnalyzerTest {
 
     @Test
     public void testLoadNotice_validNotice() {
-        String noticeXml = XmlUtils.getAsXmlString("test_notice_minimal.xml");
+        String noticeXml = XmlUtils.getAsXmlString("test_notices/test_notice_minimal.xml");
         Notice notice = analyzer.loadNotice(noticeXml);
         assertNotNull(notice);
         assertEquals("ContractNotice", notice.getDoc().getDocumentElement().getLocalName());
@@ -78,16 +78,16 @@ public class DefaultGppNoticeAnalyzerTest {
         try {
             analyzer.analyzeNotice(null);
             fail("Expected GppInternalErrorException");
-        } catch (GppInternalErrorException ex) {
+        } catch (GppBadRequestException ex) {
             assertEquals(
-                    "Unexpected error during notice analysis: Cannot invoke \"it.polimi.gpplib.model.Notice.getAllProcurementProjectCpvs()\" because \"notice\" is null",
+                    "Notice must not be null",
                     ex.getMessage());
         }
     }
 
     @Test
     public void testAnalyzeNotice() {
-        String noticeXml = XmlUtils.getAsXmlString("test_notice_minimal.xml");
+        String noticeXml = XmlUtils.getAsXmlString("test_notices/test_notice_minimal.xml");
         Notice notice = analyzer.loadNotice(noticeXml);
         GppAnalysisResult result = analyzer.analyzeNotice(notice);
         assertEquals(result.getRelevantGppDocuments().get(0).getName(), "EU GPP Criteria for Furniture");
@@ -105,16 +105,16 @@ public class DefaultGppNoticeAnalyzerTest {
         try {
             analyzer.suggestPatches(null, null);
             fail("Expected GppInternalErrorException");
-        } catch (GppInternalErrorException ex) {
+        } catch (GppBadRequestException ex) {
             assertEquals(
-                    "Unexpected error during patch suggestion: Cannot invoke \"java.util.List.iterator()\" because \"suggestedCriteria\" is null",
+                    "Notice and suggested criteria must not be null",
                     ex.getMessage());
         }
     }
 
     @Test
     public void testSuggestPatches() {
-        String noticeXml = XmlUtils.getAsXmlString("test_notice_minimal.xml");
+        String noticeXml = XmlUtils.getAsXmlString("test_notices/test_notice_minimal.xml");
         Notice notice = analyzer.loadNotice(noticeXml);
         List<SuggestedGppCriterion> suggestedCriteria = List.of(
                 new SuggestedGppCriterion("EU GPP Criteria for Furniture",
@@ -134,7 +134,7 @@ public class DefaultGppNoticeAnalyzerTest {
     @Test
     public void testApplyPatches_invalidPatch() {
         try {
-            String noticeXml = XmlUtils.getAsXmlString("test_notice_minimal.xml");
+            String noticeXml = XmlUtils.getAsXmlString("test_notices/test_notice_minimal.xml");
             Notice notice = analyzer.loadNotice(noticeXml);
             List<SuggestedGppPatch> patches = List.of(new SuggestedGppPatch("invalidPatch", null, null,
                     Constants.PATH_PROCUREMENT_PROJECT, "<value>test</value>", "invalidOp", "Test patch", "LOT-0001"));
@@ -149,7 +149,7 @@ public class DefaultGppNoticeAnalyzerTest {
 
     @Test
     public void testApplyPatches() {
-        String noticeXml = XmlUtils.getAsXmlString("test_notice_minimal.xml");
+        String noticeXml = XmlUtils.getAsXmlString("test_notices/test_notice_minimal.xml");
         Notice notice = analyzer.loadNotice(noticeXml);
         List<SuggestedGppPatch> patches = List.of(
                 new SuggestedGppPatch("add potato", null, null,
