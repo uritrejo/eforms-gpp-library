@@ -170,4 +170,119 @@ public class XmlUtilsTest {
         assertFalse(emptyIterator.hasNext());
     }
 
+    @Test
+    public void testRemoveNodeAtPath_existingNode() {
+        // Create a test document with a removable node
+        String testXml = "<root><parent><child>content</child></parent></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Verify the node exists before removal
+        Node childNode = XmlUtils.getNodeAtPath(doc.getDocumentElement(), "parent/child");
+        assertNotNull("Child node should exist before removal", childNode);
+
+        // Remove the node
+        boolean removed = XmlUtils.removeNodeAtPath(doc.getDocumentElement(), "parent/child");
+        assertTrue("Should return true when node is successfully removed", removed);
+
+        // Verify the node no longer exists
+        Node removedNode = XmlUtils.getNodeAtPath(doc.getDocumentElement(), "parent/child");
+        assertNull("Child node should not exist after removal", removedNode);
+
+        // Verify parent still exists
+        Node parentNode = XmlUtils.getNodeAtPath(doc.getDocumentElement(), "parent");
+        assertNotNull("Parent node should still exist after child removal", parentNode);
+    }
+
+    @Test
+    public void testRemoveNodeAtPath_nonExistingNode() {
+        String testXml = "<root><parent><child>content</child></parent></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Try to remove a non-existing node
+        boolean removed = XmlUtils.removeNodeAtPath(doc.getDocumentElement(), "parent/nonexistent");
+        assertFalse("Should return false when no node is found to remove", removed);
+    }
+
+    @Test
+    public void testRemoveNodeAtPath_detachedContextNode() {
+        String testXml = "<root><child>content</child></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Get a child node and detach it from its parent
+        Node childNode = XmlUtils.getNodeAtPath(doc.getDocumentElement(), "child");
+        Node parentNode = childNode.getParentNode();
+        parentNode.removeChild(childNode); // Now childNode has no parent and is detached
+
+        // Try to search for something from this detached node context
+        boolean removed = XmlUtils.removeNodeAtPath(childNode, "nonexistent");
+        assertFalse("Should return false when no node is found", removed);
+    }
+
+    @Test
+    public void testRemoveNodeAtPath_successfulRemoval() {
+        String testXml = "<root><child>content</child></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Test normal successful removal
+        boolean removed = XmlUtils.removeNodeAtPath(doc.getDocumentElement(), "child");
+        assertTrue("Should successfully remove child node", removed);
+
+        // Verify removal
+        Node removedChild = XmlUtils.getNodeAtPath(doc.getDocumentElement(), "child");
+        assertNull("Child should no longer exist", removedChild);
+    }
+
+    @Test
+    public void testRemoveNodeAtPath_rootElementFromDocument() {
+        String testXml = "<root><child>content</child></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Remove root element from document context - this should work since Document
+        // is parent of root
+        boolean removed = XmlUtils.removeNodeAtPath(doc, "root");
+        assertTrue("Should successfully remove root element from document", removed);
+
+        // Verify the document no longer has the root element
+        assertNull("Document should no longer have root element", doc.getDocumentElement());
+    }
+
+    @Test(expected = XmlUtils.XmlUtilsException.class)
+    public void testRemoveNodeAtPath_nullRoot() {
+        XmlUtils.removeNodeAtPath(null, "some/path");
+    }
+
+    @Test
+    public void testRemoveNodeAtPath_withNamespaces() {
+        // Load the actual test notice which has namespaces
+        String xml = XmlUtils.getAsXmlString("test_notices/test_notice.xml");
+        Document doc = XmlUtils.loadDocument(xml);
+
+        // First verify a lot exists
+        Node lotNode = XmlUtils.getNodeAtPath(doc.getDocumentElement(), Constants.PATH_LOT);
+        assertNotNull("Lot node should exist before removal", lotNode);
+
+        // Remove the lot node
+        boolean removed = XmlUtils.removeNodeAtPath(doc.getDocumentElement(), Constants.PATH_LOT);
+        assertTrue("Should successfully remove the lot node", removed);
+
+        // Verify it's gone
+        Node removedLotNode = XmlUtils.getNodeAtPath(doc.getDocumentElement(), Constants.PATH_LOT);
+        assertNull("Lot node should not exist after removal", removedLotNode);
+    }
+
+    @Test
+    public void testRemoveNodeAtPath_multipleMatches() {
+        // Create XML with multiple child nodes of same name
+        String testXml = "<root><parent><item>1</item><item>2</item><item>3</item></parent></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Remove first item (XPath should match the first one)
+        boolean removed = XmlUtils.removeNodeAtPath(doc.getDocumentElement(), "parent/item");
+        assertTrue("Should successfully remove first matching node", removed);
+
+        // Verify there are still item nodes left
+        NodeList remainingItems = XmlUtils.getNodesAtPath(doc.getDocumentElement(), "parent/item");
+        assertEquals("Should have 2 item nodes remaining", 2, remainingItems.getLength());
+    }
+
 }
