@@ -93,7 +93,8 @@ public class GppPatchSuggester {
             return patches;
         }
 
-        Map<String, String> variables = buildPatchVariables(criterion);
+        // TODO: eventually, the criterion should also account for the notice language
+        Map<String, String> variables = buildPatchVariables(criterion, notice.getNoticeLanguage());
 
         String parsedValue = parseValue(gppPatch.getValue(), variables);
         String description = String.format(
@@ -121,14 +122,20 @@ public class GppPatchSuggester {
         return patches;
     }
 
+    // ??++
     /**
      * Builds the variable map for patch value substitution from a GppCriterion.
      * The mapping of this depends on the arguments included in the GppPatch data
      * domain knowledge file.
      */
-    private Map<String, String> buildPatchVariables(GppCriterion criterion) {
+    private Map<String, String> buildPatchVariables(GppCriterion criterion, String language) {
         Map<String, String> variables = new HashMap<>(Constants.NAMESPACE_MAP);
-        variables.put(Constants.TAG_LANGUAGE, Constants.TAG_ENGLISH);
+
+        if (language == null || language.isEmpty()) {
+            language = Constants.TAG_ENGLISH; // Default to English if not provided
+        }
+
+        variables.put(Constants.TAG_LANGUAGE, language);
 
         switch (criterion.getCriterionType().toLowerCase()) {
             case Constants.CRITERION_TYPE_TECHNICAL_SPECIFICATION:
