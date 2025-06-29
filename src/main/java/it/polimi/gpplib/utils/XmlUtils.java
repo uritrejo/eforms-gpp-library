@@ -111,6 +111,27 @@ public class XmlUtils {
     }
 
     /**
+     * Loads an XML/XSD file from the classpath resources and returns it as a
+     * Document.
+     * This is useful for loading schema files and other XML resources.
+     */
+    public static Document loadDocumentFromResource(String resourcePath) {
+        logger.debug("Loading XML document from resource: {}", resourcePath);
+        try (java.io.InputStream is = XmlUtils.class.getClassLoader().getResourceAsStream(resourcePath)) {
+            if (is == null) {
+                throw new XmlUtilsException("Resource not found: " + resourcePath);
+            }
+            DocumentBuilder builder = docFactory.newDocumentBuilder();
+            Document document = builder.parse(is);
+            logger.debug("Successfully loaded XML document from resource: {}", resourcePath);
+            return document;
+        } catch (Exception e) {
+            logger.error("Failed to load XML from resource: {}", resourcePath, e);
+            throw new XmlUtilsException("Failed to load XML from resource: " + resourcePath, e);
+        }
+    }
+
+    /**
      * Returns a Node at the specified XPath from the root node.
      * If no node is found, it logs and throws an exception.
      */
@@ -245,6 +266,52 @@ public class XmlUtils {
         } catch (Exception e) {
             logger.error("Failed to remove node at XPath: {}", path, e);
             throw new XmlUtilsException("Failed to remove node at XPath: " + path, e);
+        }
+    }
+
+    /**
+     * Extracts all ref attributes from xsd:element elements within a specific
+     * xsd:complexType's sequence.
+     * This is useful for analyzing XSD schema structure.
+     * 
+     * @param xsdDocument     The XSD document to search in
+     * @param complexTypeName The name of the complexType to look for
+     * @return List of ref attribute values from elements in the sequence, or empty
+     *         list if not found
+     */
+    public static List<String> extractSequenceRefElements(Document xsdDocument, String complexTypeName) {
+        logger.debug("Extracting sequence ref elements from complexType: {}", complexTypeName);
+        List<String> refElements = new ArrayList<>();
+
+        try {
+            javax.xml.xpath.XPath xpath = xpathFactory.newXPath();
+            xpath.setNamespaceContext(namespaceCtx);
+
+            // XPath to find the complexType with the specified name and its sequence
+            // elements with ref attributes
+            String xpathExpression = String.format(
+                    "//xsd:complexType[@name='%s']/xsd:sequence/xsd:element[@ref]/@ref",
+                    complexTypeName);
+
+            NodeList refNodes = (NodeList) xpath.evaluate(xpathExpression, xsdDocument,
+                    javax.xml.xpath.XPathConstants.NODESET);
+
+            for (int i = 0; i < refNodes.getLength(); i++) {
+                Node refNode = refNodes.item(i);
+                String refValue = refNode.getNodeValue();
+                if (refValue != null && !refValue.trim().isEmpty()) {
+                    refElements.add(refValue.trim());
+                    logger.debug("Found ref element: {}", refValue);
+                }
+            }
+
+            logger.debug("Extracted {} ref elements from complexType: {}", refElements.size(), complexTypeName);
+            return refElements;
+
+        } catch (Exception e) {
+            logger.error("Failed to extract sequence ref elements from complexType: {}", complexTypeName, e);
+            throw new XmlUtilsException("Failed to extract sequence ref elements from complexType: " + complexTypeName,
+                    e);
         }
     }
 
