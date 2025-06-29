@@ -10,6 +10,8 @@ public final class Constants {
     public static final String DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH = "domain_knowledge/gpp_patches_data.json";
 
     // eForms SDK paths
+    public static final String EFORMS_SDK_UBL_COMMON_AGGREGATE_COMPONENTS_XSD_PATH_TEMPLATE = "eForms-SDK/v{version}/schemas/common/UBL-CommonAggregateComponents-2.3.xsd";
+    public static final String EFORMS_SDK_DEFAULT_VERSION = "1.13";
     public static final String EFORMS_SDK_UBL_COMMON_AGGREGATE_COMPONENTS_XSD_PATH = "eForms-SDK/v1.13/schemas/common/UBL-CommonAggregateComponents-2.3.xsd";
     public static final String TYPE_NAME_PROCUREMENT_PROJECT = "ProcurementProjectType";
 

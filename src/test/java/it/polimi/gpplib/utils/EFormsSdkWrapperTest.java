@@ -83,10 +83,21 @@ public class EFormsSdkWrapperTest {
     }
 
     @Test
+    public void testVersionConstructor() {
+        // Test the constructor with version parameter
+        EFormsSdkWrapper wrapper = new EFormsSdkWrapper("1.13");
+        List<String> refElements = wrapper.getProcurementProjectTypeSchema();
+
+        assertNotNull("Ref elements should not be null", refElements);
+        assertFalse("Ref elements should not be empty", refElements.isEmpty());
+        assertEquals("Should have exactly 21 elements", 21, refElements.size());
+    }
+
+    @Test
     public void testCustomPathConstructor() {
         // Test the constructor with custom path
         EFormsSdkWrapper wrapper = new EFormsSdkWrapper(
-                "eForms-SDK/v1.13/schemas/common/UBL-CommonAggregateComponents-2.3.xsd");
+                "eForms-SDK/v1.13/schemas/common/UBL-CommonAggregateComponents-2.3.xsd", true);
         List<String> refElements = wrapper.getProcurementProjectTypeSchema();
 
         assertNotNull("Ref elements should not be null", refElements);
@@ -107,5 +118,32 @@ public class EFormsSdkWrapperTest {
                 refElements1.size(), refElements2.size());
         assertTrue("Both instances should contain same elements",
                 refElements1.containsAll(refElements2) && refElements2.containsAll(refElements1));
+    }
+
+    @Test
+    public void testVersionTemplateBuilding() {
+        // Test that version constructor builds correct paths
+        // We can't directly test the private method, but we can test the behavior
+
+        // These should work if the resources exist, otherwise will throw exceptions
+        try {
+            EFormsSdkWrapper wrapper113 = new EFormsSdkWrapper("1.13");
+            List<String> elements113 = wrapper113.getProcurementProjectTypeSchema();
+            assertNotNull("Version 1.13 should load successfully", elements113);
+            assertFalse("Version 1.13 should not be empty", elements113.isEmpty());
+        } catch (Exception e) {
+            // Expected if the specific version doesn't exist in resources
+            assertTrue("Should be XmlUtilsException for missing resource",
+                    e instanceof XmlUtils.XmlUtilsException);
+        }
+
+        // Test default version behavior
+        EFormsSdkWrapper defaultWrapper = new EFormsSdkWrapper();
+        EFormsSdkWrapper explicitVersionWrapper = new EFormsSdkWrapper("1.13");
+
+        // Both should have same size since default should be 1.13
+        assertEquals("Default and explicit v1.13 should have same number of elements",
+                defaultWrapper.getProcurementProjectTypeSchema().size(),
+                explicitVersionWrapper.getProcurementProjectTypeSchema().size());
     }
 }

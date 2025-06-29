@@ -31,7 +31,25 @@ public class EFormsSdkWrapper {
      *                                    XSD file
      */
     public EFormsSdkWrapper() {
-        this(Constants.EFORMS_SDK_UBL_COMMON_AGGREGATE_COMPONENTS_XSD_PATH);
+        this(Constants.EFORMS_SDK_DEFAULT_VERSION);
+    }
+
+    /**
+     * Constructor that uses a specific eForms SDK version.
+     * Loads the UBL Common Aggregate Components XSD file for the specified version
+     * and extracts the ProcurementProjectType schema on construction.
+     * 
+     * @param version The eForms SDK version (e.g., "1.13", "1.12")
+     * @throws XmlUtils.XmlUtilsException if there's an error reading or parsing the
+     *                                    XSD file
+     */
+    public EFormsSdkWrapper(String version) {
+        logger.debug("Initializing EFormsSdkWrapper with eForms SDK version: {}", version);
+        String xsdFilePath = buildXsdPathFromVersion(version);
+        logger.debug("Using XSD file path: {}", xsdFilePath);
+        this.procurementProjectTypeSchema = loadProcurementProjectTypeSchema(xsdFilePath);
+        logger.info("EFormsSdkWrapper initialized successfully with {} schema elements",
+                this.procurementProjectTypeSchema.size());
     }
 
     /**
@@ -40,10 +58,13 @@ public class EFormsSdkWrapper {
      * on construction.
      * 
      * @param xsdFilePath Path to the UBL Common Aggregate Components XSD file
+     * @param isFilePath  A marker parameter to distinguish this constructor from
+     *                    the
+     *                    version constructor (pass true)
      * @throws XmlUtils.XmlUtilsException if there's an error reading or parsing the
      *                                    XSD file
      */
-    public EFormsSdkWrapper(String xsdFilePath) {
+    public EFormsSdkWrapper(String xsdFilePath, boolean isFilePath) {
         logger.debug("Initializing EFormsSdkWrapper with XSD file: {}", xsdFilePath);
         this.procurementProjectTypeSchema = loadProcurementProjectTypeSchema(xsdFilePath);
         logger.info("EFormsSdkWrapper initialized successfully with {} schema elements",
@@ -61,6 +82,19 @@ public class EFormsSdkWrapper {
      */
     public List<String> getProcurementProjectTypeSchema() {
         return this.procurementProjectTypeSchema;
+    }
+
+    /**
+     * Helper method to build the XSD file path from an eForms SDK version.
+     * Uses the template from Constants to create the path with the specified
+     * version.
+     * 
+     * @param version The eForms SDK version (e.g., "1.13", "1.12")
+     * @return The complete XSD file path for the specified version
+     */
+    private static String buildXsdPathFromVersion(String version) {
+        return Constants.EFORMS_SDK_UBL_COMMON_AGGREGATE_COMPONENTS_XSD_PATH_TEMPLATE
+                .replace("{version}", version);
     }
 
     /**
