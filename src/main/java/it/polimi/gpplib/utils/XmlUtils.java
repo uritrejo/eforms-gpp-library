@@ -210,4 +210,42 @@ public class XmlUtils {
         }
     }
 
+    /**
+     * Removes a node at the specified XPath from the given root node.
+     * If the node is found, it will be removed from its parent.
+     * If no node is found at the specified path, it logs a warning.
+     * 
+     * @param root The root node to search from
+     * @param path The XPath expression to locate the node to remove
+     * @return true if a node was found and removed, false if no node was found
+     */
+    public static boolean removeNodeAtPath(Node root, String path) {
+        logger.debug("Attempting to remove node at XPath: {}", path);
+        if (root == null) {
+            logger.error("Cannot remove node: root node is null");
+            throw new XmlUtilsException("Root node is null");
+        }
+
+        try {
+            Node nodeToRemove = getNodeAtPath(root, path);
+            if (nodeToRemove != null) {
+                Node parentNode = nodeToRemove.getParentNode();
+                if (parentNode != null) {
+                    parentNode.removeChild(nodeToRemove);
+                    logger.debug("Successfully removed node '{}' at XPath: {}", nodeToRemove.getNodeName(), path);
+                    return true;
+                } else {
+                    logger.warn("Cannot remove node at XPath '{}': node has no parent", path);
+                    return false;
+                }
+            } else {
+                logger.warn("No node found to remove at XPath: {}", path);
+                return false;
+            }
+        } catch (Exception e) {
+            logger.error("Failed to remove node at XPath: {}", path, e);
+            throw new XmlUtilsException("Failed to remove node at XPath: " + path, e);
+        }
+    }
+
 }
