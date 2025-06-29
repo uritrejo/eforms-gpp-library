@@ -57,7 +57,7 @@
     "btIds": [],
     "dependsOn": "Tendering Terms",
     "pathInLot": "cac:TenderingTerms",
-    "value": "<ext:UBLExtensions xlmns:ext=\"{ext}\" xlmns:efext=\"{efext}\">\n    <ext:UBLExtension>\n        <ext:ExtensionContent>\n            <efext:EformsExtension>\n            </efext:EformsExtension>\n        </ext:ExtensionContent>\n    </ext:UBLExtension>\n</ext:UBLExtensions>"
+    "value": "<ext:UBLExtensions xmlns:ext=\"{ext}\" xmlns:efext=\"{efext}\">\n    <ext:UBLExtension>\n        <ext:ExtensionContent>\n            <efext:EformsExtension>\n            </efext:EformsExtension>\n        </ext:ExtensionContent>\n    </ext:UBLExtension>\n</ext:UBLExtensions>"
   },
   {
     "name": "Selection Criteria",
