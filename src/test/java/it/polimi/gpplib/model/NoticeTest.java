@@ -115,4 +115,11 @@ public class NoticeTest {
         assertTrue(str.contains("mainCpv='24000000'"));
         assertTrue(str.contains("lots=[{id='LOT-0001'"));
     }
+
+    @Test
+    public void testGetNoticeLanguage() {
+        // The test_notice.xml doesn't contain a NoticeLanguageCode element
+        String language = notice.getNoticeLanguage();
+        assertEquals("ENG", language);
+    }
 }
