@@ -482,16 +482,40 @@ public class GppPatchSuggester {
         for (int i = 0; i < awardCriterionNodes.getLength(); i++) {
             Node awardCriterionNode = awardCriterionNodes.item(i);
 
-            // Extract information from the existing node
-            String existingType = XmlUtils.getNodeValueAtPath(awardCriterionNode,
-                    Constants.PATH_IN_AWARD_CRITERION_TYPE);
-            String existingName = XmlUtils.getNodeValueAtPath(awardCriterionNode,
-                    Constants.PATH_IN_AWARD_CRITERION_NAME);
-            String existingDescription = XmlUtils.getNodeValueAtPath(awardCriterionNode,
-                    Constants.PATH_IN_AWARD_CRITERION_DESCRIPTION);
+            // Extract information from the existing node, handling potential null values
+            String existingType = null;
+            String existingName = null;
+            String existingDescription = "";
 
-            if (existingName == null || existingName.trim().isEmpty()) {
-                continue; // Skip nodes without names
+            try {
+                existingType = XmlUtils.getNodeValueAtPath(awardCriterionNode,
+                        Constants.PATH_IN_AWARD_CRITERION_TYPE);
+            } catch (Exception e) {
+                // Type not available, will be handled below
+            }
+
+            try {
+                existingName = XmlUtils.getNodeValueAtPath(awardCriterionNode,
+                        Constants.PATH_IN_AWARD_CRITERION_NAME);
+            } catch (Exception e) {
+                // Name not available, will use type instead
+            }
+
+            try {
+                existingDescription = XmlUtils.getNodeValueAtPath(awardCriterionNode,
+                        Constants.PATH_IN_AWARD_CRITERION_DESCRIPTION);
+                if (existingDescription == null) {
+                    existingDescription = "";
+                }
+            } catch (Exception e) {
+                // Description not available, use empty string
+                existingDescription = "";
+            }
+
+            // Skip if both name and type are not available
+            if ((existingName == null || existingName.trim().isEmpty()) &&
+                    (existingType == null || existingType.trim().isEmpty())) {
+                continue;
             }
 
             // Get the patch template for award criteria
@@ -508,14 +532,27 @@ public class GppPatchSuggester {
 
             // Create the update patch
             String parsedValue = parseValue(gppPatch.getValue(), variables);
-            String patchPath = Constants.PATH_AWARD_CRITERION_NODE_TEMPLATE.replace("{arg0}", existingName);
+
+            // Determine patch path and identifier based on what's available
+            String patchPath;
+            String identifier;
+
+            if (existingName != null && !existingName.trim().isEmpty()) {
+                // Use name-based template
+                patchPath = Constants.PATH_AWARD_CRITERION_NODE_NAME_TEMPLATE.replace("{arg0}", existingName);
+                identifier = existingName;
+            } else {
+                // Use type-based template
+                patchPath = Constants.PATH_AWARD_CRITERION_NODE_TYPE_TEMPLATE.replace("{arg0}", existingType);
+                identifier = existingType;
+            }
 
             String description = String.format(
                     "Updates existing award criterion '%s' to adjust for the insertion of other award criteria",
-                    existingName);
+                    identifier);
 
             SuggestedGppPatch suggestedPatch = new SuggestedGppPatch(
-                    "Update Award Criterion: " + existingName,
+                    "Update Award Criterion: " + identifier,
                     gppPatch.getBtIds(),
                     gppPatch.getDependsOn(),
                     patchPath,

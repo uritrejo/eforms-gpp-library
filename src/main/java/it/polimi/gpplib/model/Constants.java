@@ -24,7 +24,8 @@ public final class Constants {
     public static final String PATH_STRATEGIC_PROCUREMENT_ENV_IMP = "cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement' and cbc:ProcurementTypeCode='env-imp']";
 
     // ??++
-    public static final String PATH_AWARD_CRITERION_NODE_TEMPLATE = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion[cbc:Name='{arg0}']";
+    public static final String PATH_AWARD_CRITERION_NODE_NAME_TEMPLATE = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion[cbc:Name='{arg0}']";
+    public static final String PATH_AWARD_CRITERION_NODE_TYPE_TEMPLATE = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion[cbc:AwardingCriterionTypeCode='{arg0}']";
 
     public static final String PATH_AWARD_CRITERION = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion";
     public static final String PATH_AWARD_CRITERION_TYPE = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']";
