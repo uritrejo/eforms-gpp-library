@@ -162,9 +162,9 @@ public class GppPatchSuggester {
                 // TODO: Maybe just remove them or add a minimum or something similar
                 // since you send the patch suggestions before even knowing how many will be
                 // added
-                variables.put(Constants.TAG_ARG0, "number-weight");
-                variables.put(Constants.TAG_ARG1, "per-exa");
-                variables.put(Constants.TAG_ARG2, "100");
+                variables.put(Constants.TAG_ARG0, Constants.AWARD_CRITERION_WEIGHT_CODE_IDENTIFIER);
+                variables.put(Constants.TAG_ARG1, Constants.AWARD_CRITERION_WEIGHT_CODE);
+                variables.put(Constants.TAG_ARG2, Constants.PLACEHOLDER_WEIGHT);
                 variables.put(Constants.TAG_ARG3, Constants.AWARD_CRITERIA_TYPE_QUALITY);
                 variables.put(Constants.TAG_ARG4, formattedName);
                 variables.put(Constants.TAG_ARG5, criterion.getDescription());
