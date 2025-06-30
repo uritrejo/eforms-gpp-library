@@ -2,6 +2,7 @@ package it.polimi.gpplib.utils;
 
 import org.apache.commons.text.StringSubstitutor;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import java.util.HashMap;
 import java.util.List;
@@ -76,6 +77,11 @@ public class GppPatchSuggester {
                 }
             }
         }
+
+        // Suggest updates for existing award criteria
+        List<SuggestedGppPatch> existingAwardCriteriaUpdates = suggestExistingAwardCriteriaUpdatePatches(notice, lotId,
+                lotCriteria, notice.getNoticeLanguage());
+        suggestedPatches.addAll(existingAwardCriteriaUpdates);
 
         return suggestedPatches;
     }
@@ -444,6 +450,109 @@ public class GppPatchSuggester {
         }
         StringSubstitutor sub = new StringSubstitutor(variables, "{", "}");
         return sub.replace(value);
+    }
+
+    /**
+     * Suggests update patches for existing award criteria in the notice.
+     * This method looks for existing SubordinateAwardingCriterion nodes and
+     * suggests
+     * updates to incorporate GPP criteria structure.
+     */
+    private List<SuggestedGppPatch> suggestExistingAwardCriteriaUpdatePatches(Notice notice, String lotId,
+            List<GppCriterion> lotCriteria, String language) {
+        List<SuggestedGppPatch> patches = new java.util.ArrayList<>();
+
+        // Check if there are any award criteria in the lot criteria
+        boolean hasAwardCriteria = lotCriteria.stream()
+                .anyMatch(criterion -> Constants.CRITERION_TYPE_AWARD_CRITERIA
+                        .equals(criterion.getCriterionType().toLowerCase()));
+
+        if (!hasAwardCriteria) {
+            return patches; // No award criteria to update
+        }
+
+        Node lot = notice.getLotNode(lotId);
+        if (lot == null) {
+            return patches;
+        }
+
+        // Find all existing SubordinateAwardingCriterion nodes
+        NodeList awardCriterionNodes = XmlUtils.getNodesAtPath(lot, Constants.PATH_AWARD_CRITERION);
+
+        for (int i = 0; i < awardCriterionNodes.getLength(); i++) {
+            Node awardCriterionNode = awardCriterionNodes.item(i);
+
+            // Extract information from the existing node
+            String existingType = XmlUtils.getNodeValueAtPath(awardCriterionNode,
+                    Constants.PATH_IN_AWARD_CRITERION_TYPE);
+            String existingName = XmlUtils.getNodeValueAtPath(awardCriterionNode,
+                    Constants.PATH_IN_AWARD_CRITERION_NAME);
+            String existingDescription = XmlUtils.getNodeValueAtPath(awardCriterionNode,
+                    Constants.PATH_IN_AWARD_CRITERION_DESCRIPTION);
+
+            if (existingName == null || existingName.trim().isEmpty()) {
+                continue; // Skip nodes without names
+            }
+
+            // Get the patch template for award criteria
+            String patchName = Constants.CRITERION_TYPE_TO_PATCH_NAME.get(Constants.CRITERION_TYPE_AWARD_CRITERIA);
+            GppPatch gppPatch = findGppPatchByName(patchName);
+            if (gppPatch == null) {
+                System.err.println("GPP Patch not found: " + patchName);
+                continue;
+            }
+
+            // Build variables for the patch
+            Map<String, String> variables = buildExistingAwardCriterionPatchVariables(
+                    existingType, existingName, existingDescription, language);
+
+            // Create the update patch
+            String parsedValue = parseValue(gppPatch.getValue(), variables);
+            String patchPath = Constants.PATH_AWARD_CRITERION_NODE_TEMPLATE.replace("{arg0}", existingName);
+
+            String description = String.format(
+                    "Updates existing award criterion '%s' to adjust for the insertion of other award criteria",
+                    existingName);
+
+            SuggestedGppPatch suggestedPatch = new SuggestedGppPatch(
+                    "Update Award Criterion: " + existingName,
+                    gppPatch.getBtIds(),
+                    gppPatch.getDependsOn(),
+                    patchPath,
+                    parsedValue,
+                    Constants.OP_UPDATE,
+                    description,
+                    lotId);
+            patches.add(suggestedPatch);
+        }
+
+        return patches;
+    }
+
+    /**
+     * Builds variables for updating existing award criteria with GPP structure.
+     */
+    private Map<String, String> buildExistingAwardCriterionPatchVariables(
+            String existingType, String existingName, String existingDescription, String language) {
+        Map<String, String> variables = new HashMap<>(Constants.NAMESPACE_MAP);
+
+        if (language == null || language.isEmpty()) {
+            language = Constants.TAG_ENGLISH; // Default to English if not provided
+        }
+
+        variables.put(Constants.TAG_LANGUAGE, language);
+
+        // Use the same structure as award criteria patches
+        variables.put(Constants.TAG_ARG0, Constants.AWARD_CRITERION_WEIGHT_CODE_IDENTIFIER);
+        variables.put(Constants.TAG_ARG1, Constants.AWARD_CRITERION_WEIGHT_CODE);
+        variables.put(Constants.TAG_ARG2, Constants.PLACEHOLDER_WEIGHT);
+
+        // Use existing values from the node, or defaults
+        variables.put(Constants.TAG_ARG3, existingType != null ? existingType : Constants.AWARD_CRITERIA_TYPE_QUALITY);
+        variables.put(Constants.TAG_ARG4, existingName != null ? existingName : "");
+        variables.put(Constants.TAG_ARG5, existingDescription != null ? existingDescription : "");
+
+        return variables;
     }
 
 }
