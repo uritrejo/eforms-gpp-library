@@ -26,11 +26,18 @@ public final class Constants {
     // ??++
     public static final String PATH_AWARD_CRITERION_NODE_TEMPLATE = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion[cbc:Name='{arg0}']";
 
+    public static final String PATH_AWARD_CRITERION = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion";
     public static final String PATH_AWARD_CRITERION_TYPE = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']";
     public static final String PATH_AWARD_CRITERION_NAME = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:Name";
     public static final String PATH_AWARD_CRITERION_DESCRIPTION = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:Description";
-    public static final String PATH_AWARD_CRITERION_WEIGHT_CODE = "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-weight']/efbc:ParameterCode";
-    public static final String PATH_AWARD_CRITERION_WEIGHT = "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-weight']/efbc:ParameterNumeric";
+    public static final String PATH_AWARD_CRITERION_WEIGHT_CODE = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-weight']/efbc:ParameterCode";
+    public static final String PATH_AWARD_CRITERION_WEIGHT = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-weight']/efbc:ParameterNumeric";
+
+    public static final String PATH_IN_AWARD_CRITERION_TYPE = "cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']";
+    public static final String PATH_IN_AWARD_CRITERION_NAME = "cbc:Name";
+    public static final String PATH_IN_AWARD_CRITERION_DESCRIPTION = "cbc:Description";
+    public static final String PATH_IN_AWARD_CRITERION_WEIGHT_CODE = "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-weight']/efbc:ParameterCode";
+    public static final String PATH_IN_AWARD_CRITERION_WEIGHT = "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-weight']/efbc:ParameterNumeric";
 
     public static final String AWARD_CRITERION_WEIGHT_CODE_IDENTIFIER = "number-weight";
     public static final String AWARD_CRITERION_WEIGHT_CODE = "per-exa";
