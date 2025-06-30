@@ -10,6 +10,7 @@ import it.polimi.gpplib.model.SuggestedGppPatch;
 import it.polimi.gpplib.utils.GppDomainKnowledgeService;
 import it.polimi.gpplib.utils.GppPatchApplier;
 import it.polimi.gpplib.utils.XmlUtils.XmlUtilsException;
+import it.polimi.gpplib.utils.EFormsSdkWrapper;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -59,6 +60,8 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
 
     private final GppPatchApplier patchApplier;
 
+    private final EFormsSdkWrapper eFormsSdkWrapper;
+
     // TODO: eventually, this should come from a config
     /**
      * The ambition level for GPP criteria selection. Currently set to CORE level.
@@ -74,7 +77,7 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
      * @throws GppInternalErrorException if the domain knowledge cannot be loaded
      */
     public DefaultGppNoticeAnalyzer() {
-        logger.info("Initializing DefaultGppNoticeAnalyzer with default domain knowledge paths");
+        logger.info("Initializing DefaultGppNoticeAnalyzer with default values");
         try {
             domainKnowledge = new GppDomainKnowledgeService(Constants.DOMAIN_KNOWLEDGE_GPP_DOCS_PATH,
                     Constants.DOMAIN_KNOWLEDGE_GPP_CRITERIA_PATH, Constants.DOMAIN_KNOWLEDGE_GPP_PATCHES_PATH);
@@ -83,7 +86,16 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
             logger.error("Failed to load domain knowledge from default paths", e);
             throw new GppInternalErrorException("Unexpected error loading domain knowledge", e);
         }
-        patchApplier = new GppPatchApplier();
+
+        try {
+            eFormsSdkWrapper = new EFormsSdkWrapper(Constants.EFORMS_SDK_DEFAULT_VERSION);
+            logger.info("Successfully loaded the default version of the eForms SDK");
+        } catch (Exception e) {
+            logger.error("Failed to load the eForms SDK", e);
+            throw new GppInternalErrorException("Unexpected error loading eForms SDK", e);
+        }
+
+        patchApplier = new GppPatchApplier(eFormsSdkWrapper);
         logger.debug("DefaultGppNoticeAnalyzer initialization completed");
     }
 
@@ -112,7 +124,8 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
             logger.error("Unexpected error loading domain knowledge from custom paths", e);
             throw new GppInternalErrorException("Unexpected error loading domain knowledge", e);
         }
-        patchApplier = new GppPatchApplier();
+        eFormsSdkWrapper = new EFormsSdkWrapper();
+        patchApplier = new GppPatchApplier(eFormsSdkWrapper);
         logger.debug("DefaultGppNoticeAnalyzer initialization completed with custom paths");
     }
 

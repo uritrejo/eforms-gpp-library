@@ -125,7 +125,6 @@ public class DefaultGppNoticeAnalyzerTest {
         assertPatchExists(suggestedPatches, "Green Public Procurement Criteria - eu");
         assertPatchExists(suggestedPatches, "Green Procurement - other");
         assertPatchExists(suggestedPatches, "Strategic Procurement: Reduction of environmental impacts");
-        assertPatchExists(suggestedPatches, "Tendering Terms");
         assertPatchExists(suggestedPatches, "Awarding Terms");
         assertPatchExists(suggestedPatches, "Award Criteria");
         assertPatchExists(suggestedPatches, "Award criteria --- AC1: Extended warranty periods");

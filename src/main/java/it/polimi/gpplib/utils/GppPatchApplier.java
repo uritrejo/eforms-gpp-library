@@ -4,6 +4,7 @@ import it.polimi.gpplib.model.Constants;
 import it.polimi.gpplib.model.Notice;
 import it.polimi.gpplib.model.SuggestedGppPatch;
 
+import java.util.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.slf4j.Logger;
@@ -13,7 +14,16 @@ public class GppPatchApplier {
 
     private static final Logger logger = LoggerFactory.getLogger(GppPatchApplier.class);
 
-    public GppPatchApplier() {
+    private final EFormsSdkWrapper eFormsSdkWrapper;
+
+    /**
+     * Creates a new GppPatchApplier with the specified EFormsSdkWrapper.
+     * 
+     * @param eFormsSdkWrapper the EFormsSdkWrapper to use for schema validation and
+     *                         processing
+     */
+    public GppPatchApplier(EFormsSdkWrapper eFormsSdkWrapper) {
+        this.eFormsSdkWrapper = eFormsSdkWrapper;
     }
 
     public Notice applyPatch(Notice notice, SuggestedGppPatch patch) {
@@ -56,7 +66,35 @@ public class GppPatchApplier {
             throw new IllegalArgumentException("Invalid patch value: " + patch.getValue());
         }
 
-        XmlUtils.insertIntoNode(insertionNode, valueDoc.getDocumentElement());
+        // TODO: if more complex patches are needed, we can extend this logic to cover
+        // other paths / parents
+        if (patch.getPath().equals(Constants.PATH_PROCUREMENT_PROJECT)) {
+            // Extract the root element name from the patch value
+            String patchElementName = valueDoc.getDocumentElement().getNodeName();
+            logger.debug("Patch element name: {}", patchElementName);
+
+            // Get the full schema list
+            List<String> fullSchema = eFormsSdkWrapper.getProcurementProjectTypeSchema();
+
+            // Find the index of our patch element in the schema
+            int patchElementIndex = fullSchema.indexOf(patchElementName);
+
+            if (patchElementIndex >= 0 && patchElementIndex < fullSchema.size() - 1) {
+                // Get only the elements that come after our patch element
+                List<String> elementsAfter = fullSchema.subList(patchElementIndex + 1, fullSchema.size());
+                logger.debug("Elements to insert before: {}", elementsAfter);
+                XmlUtils.insertIntoNodeBefore(insertionNode, valueDoc.getDocumentElement(), elementsAfter);
+            } else {
+                // If not found in schema or is the last element, append at the end
+                logger.debug("Patch element '{}' not found in schema or is last element, appending at end",
+                        patchElementName);
+                XmlUtils.insertIntoNode(insertionNode, valueDoc.getDocumentElement());
+            }
+
+        } else {
+            XmlUtils.insertIntoNode(insertionNode, valueDoc.getDocumentElement());
+        }
+
         logger.debug("Successfully applied patch '{}' to lot '{}'", patch.getName(), patch.getLotId());
 
         return notice;
