@@ -350,4 +350,146 @@ public class GppPatchApplierTest {
             assertTrue("Should mention node not found", ex.getMessage().contains("Node not found at path"));
         }
     }
+
+    @Test
+    public void testApplyPatch_updateOperation_invalidXmlValue() {
+        // First create a simple node to update
+        String simpleNode = "<cac:TestNode xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\"><cbc:Name>Test</cbc:Name></cac:TestNode>";
+        SuggestedGppPatch setupPatch = new SuggestedGppPatch("setupPatch", Collections.emptyList(), null,
+                Constants.PATH_PROCUREMENT_PROJECT, simpleNode, "create", "Setup patch", "LOT-0001");
+        notice = patchApplier.applyPatch(notice, setupPatch);
+
+        // Try to update with invalid XML
+        String invalidXml = "<invalid-xml-content";
+        String updatePath = "cac:ProcurementProject/cac:TestNode";
+
+        SuggestedGppPatch updatePatch = new SuggestedGppPatch("updatePatch", Collections.emptyList(), null,
+                updatePath, invalidXml, "update", "Update with invalid XML", "LOT-0001");
+
+        try {
+            patchApplier.applyPatch(notice, updatePatch);
+            fail("Expected IllegalArgumentException for invalid XML");
+        } catch (IllegalArgumentException ex) {
+            assertTrue("Should mention invalid patch value", ex.getMessage().contains("Invalid patch value"));
+        }
+    }
+
+    @Test
+    public void testApplyPatch_updateOperation_maintainsElementOrder() {
+        // Create a structure with multiple siblings to test order preservation
+        String multipleNodes = "<cac:TestParent xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\">"
+                + "<cac:FirstChild><cbc:Name>First</cbc:Name></cac:FirstChild>"
+                + "<cac:TargetChild><cbc:Name>Target</cbc:Name><cbc:Description>Original</cbc:Description></cac:TargetChild>"
+                + "<cac:LastChild><cbc:Name>Last</cbc:Name></cac:LastChild>"
+                + "</cac:TestParent>";
+
+        SuggestedGppPatch setupPatch = new SuggestedGppPatch("setupPatch", Collections.emptyList(), null,
+                Constants.PATH_PROCUREMENT_PROJECT, multipleNodes, "create", "Setup patch", "LOT-0001");
+        notice = patchApplier.applyPatch(notice, setupPatch);
+
+        // Update the middle child
+        String updatedChild = "<cac:TargetChild xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\">"
+                + "<cbc:Name>Target</cbc:Name>"
+                + "<cbc:Description>Updated description</cbc:Description>"
+                + "<cbc:NewField>Added field</cbc:NewField>"
+                + "</cac:TargetChild>";
+
+        String updatePath = "cac:ProcurementProject/cac:TestParent/cac:TargetChild";
+        SuggestedGppPatch updatePatch = new SuggestedGppPatch("updatePatch", Collections.emptyList(), null,
+                updatePath, updatedChild, "update", "Update middle child", "LOT-0001");
+
+        // Apply the update
+        Notice updatedNotice = patchApplier.applyPatch(notice, updatePatch);
+        Node updatedLot = updatedNotice.getLotNode("LOT-0001");
+
+        // Verify the update was successful
+        String updatedDescription = XmlUtils.getNodeValueAtPath(updatedLot, updatePath + "/cbc:Description");
+        assertEquals("Updated description", updatedDescription);
+
+        String newField = XmlUtils.getNodeValueAtPath(updatedLot, updatePath + "/cbc:NewField");
+        assertEquals("Added field", newField);
+
+        // Verify order is maintained - check that siblings are still in correct order
+        Node parentNode = XmlUtils.getNodeAtPath(updatedLot, "cac:ProcurementProject/cac:TestParent");
+        assertNotNull("Parent node should exist", parentNode);
+
+        // Verify FirstChild comes before TargetChild and TargetChild comes before
+        // LastChild
+        boolean foundFirst = false, foundTarget = false, foundLast = false;
+        for (int i = 0; i < parentNode.getChildNodes().getLength(); i++) {
+            Node child = parentNode.getChildNodes().item(i);
+            if (child.getNodeType() == Node.ELEMENT_NODE) {
+                String nodeName = child.getNodeName();
+                if ("cac:FirstChild".equals(nodeName)) {
+                    foundFirst = true;
+                    assertFalse("FirstChild should come before TargetChild", foundTarget);
+                    assertFalse("FirstChild should come before LastChild", foundLast);
+                } else if ("cac:TargetChild".equals(nodeName)) {
+                    foundTarget = true;
+                    assertTrue("TargetChild should come after FirstChild", foundFirst);
+                    assertFalse("TargetChild should come before LastChild", foundLast);
+                } else if ("cac:LastChild".equals(nodeName)) {
+                    foundLast = true;
+                    assertTrue("LastChild should come after FirstChild", foundFirst);
+                    assertTrue("LastChild should come after TargetChild", foundTarget);
+                }
+            }
+        }
+
+        assertTrue("All three children should be found", foundFirst && foundTarget && foundLast);
+    }
+
+    @Test
+    public void testApplyPatch_updateOperation_withComplexPath() {
+        // Test updating a node with a complex XPath that includes predicates
+        String complexStructure = "<cac:TenderingTerms xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\">"
+                + "<cac:AwardingTerms>"
+                + "<cac:AwardingCriterion>"
+                + "<cac:SubordinateAwardingCriterion>"
+                + "<cbc:Name languageID=\"EN\">Quality Criterion</cbc:Name>"
+                + "<cbc:Description languageID=\"EN\">Original quality description</cbc:Description>"
+                + "</cac:SubordinateAwardingCriterion>"
+                + "<cac:SubordinateAwardingCriterion>"
+                + "<cbc:Name languageID=\"EN\">Price Criterion</cbc:Name>"
+                + "<cbc:Description languageID=\"EN\">Price description</cbc:Description>"
+                + "</cac:SubordinateAwardingCriterion>"
+                + "</cac:AwardingCriterion>"
+                + "</cac:AwardingTerms>"
+                + "</cac:TenderingTerms>";
+
+        SuggestedGppPatch setupPatch = new SuggestedGppPatch("setupPatch", Collections.emptyList(), null,
+                Constants.PATH_PROCUREMENT_PROJECT, complexStructure, "create", "Setup patch", "LOT-0001");
+        notice = patchApplier.applyPatch(notice, setupPatch);
+
+        // Update specifically the Quality Criterion using XPath predicate
+        String updatedQualityCriterion = "<cac:SubordinateAwardingCriterion xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\">"
+                + "<cbc:Name languageID=\"EN\">Quality Criterion</cbc:Name>"
+                + "<cbc:Description languageID=\"EN\">Enhanced GPP quality description with environmental factors</cbc:Description>"
+                + "<cbc:Weight>40</cbc:Weight>"
+                + "</cac:SubordinateAwardingCriterion>";
+
+        String complexUpdatePath = "cac:ProcurementProject/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion[cbc:Name='Quality Criterion']";
+        SuggestedGppPatch updatePatch = new SuggestedGppPatch("updatePatch", Collections.emptyList(), null,
+                complexUpdatePath, updatedQualityCriterion, "update", "Update quality criterion", "LOT-0001");
+
+        // Apply the update
+        Notice updatedNotice = patchApplier.applyPatch(notice, updatePatch);
+        Node updatedLot = updatedNotice.getLotNode("LOT-0001");
+
+        // Verify the quality criterion was updated
+        String updatedDescription = XmlUtils.getNodeValueAtPath(updatedLot, complexUpdatePath + "/cbc:Description");
+        assertEquals("Enhanced GPP quality description with environmental factors", updatedDescription);
+
+        String weight = XmlUtils.getNodeValueAtPath(updatedLot, complexUpdatePath + "/cbc:Weight");
+        assertEquals("40", weight);
+
+        // Verify the price criterion was not affected
+        String priceUpdatePath = "cac:ProcurementProject/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion[cbc:Name='Price Criterion']";
+        String priceDescription = XmlUtils.getNodeValueAtPath(updatedLot, priceUpdatePath + "/cbc:Description");
+        assertEquals("Price description", priceDescription);
+
+        // Verify no weight was added to price criterion
+        Node priceWeightNode = XmlUtils.getNodeAtPath(updatedLot, priceUpdatePath + "/cbc:Weight");
+        assertNull("Price criterion should not have weight", priceWeightNode);
+    }
 }
