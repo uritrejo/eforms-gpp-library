@@ -285,4 +285,225 @@ public class XmlUtilsTest {
         assertEquals("Should have 2 item nodes remaining", 2, remainingItems.getLength());
     }
 
+    @Test
+    public void testInsertIntoNodeBefore_withExistingReferenceNode() {
+        // Create a test document with ordered elements
+        String testXml = "<root><a>A</a><d>D</d><e>E</e></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Create a new node to insert
+        Document newDoc = XmlUtils.loadDocument("<c>C</c>");
+        Node newNode = newDoc.getDocumentElement();
+
+        // Insert before d or e (d should be found first)
+        java.util.List<String> before = java.util.Arrays.asList("d", "e");
+        XmlUtils.insertIntoNodeBefore(doc.getDocumentElement(), newNode, before);
+
+        // Verify the order is now a, c, d, e
+        NodeList children = doc.getDocumentElement().getChildNodes();
+        java.util.List<String> actualOrder = new java.util.ArrayList<>();
+        for (int i = 0; i < children.getLength(); i++) {
+            Node child = children.item(i);
+            if (child.getNodeType() == Node.ELEMENT_NODE) {
+                actualOrder.add(child.getLocalName());
+            }
+        }
+
+        assertEquals("Should have 4 elements", 4, actualOrder.size());
+        assertEquals("First element should be 'a'", "a", actualOrder.get(0));
+        assertEquals("Second element should be 'c' (inserted)", "c", actualOrder.get(1));
+        assertEquals("Third element should be 'd'", "d", actualOrder.get(2));
+        assertEquals("Fourth element should be 'e'", "e", actualOrder.get(3));
+    }
+
+    @Test
+    public void testInsertIntoNodeBefore_withSecondReferenceNode() {
+        // Create a test document where first reference doesn't exist
+        String testXml = "<root><a>A</a><e>E</e></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Create a new node to insert
+        Document newDoc = XmlUtils.loadDocument("<c>C</c>");
+        Node newNode = newDoc.getDocumentElement();
+
+        // Insert before d or e (d doesn't exist, so should insert before e)
+        java.util.List<String> before = java.util.Arrays.asList("d", "e");
+        XmlUtils.insertIntoNodeBefore(doc.getDocumentElement(), newNode, before);
+
+        // Verify the order is now a, c, e
+        NodeList children = doc.getDocumentElement().getChildNodes();
+        java.util.List<String> actualOrder = new java.util.ArrayList<>();
+        for (int i = 0; i < children.getLength(); i++) {
+            Node child = children.item(i);
+            if (child.getNodeType() == Node.ELEMENT_NODE) {
+                actualOrder.add(child.getLocalName());
+            }
+        }
+
+        assertEquals("Should have 3 elements", 3, actualOrder.size());
+        assertEquals("First element should be 'a'", "a", actualOrder.get(0));
+        assertEquals("Second element should be 'c' (inserted)", "c", actualOrder.get(1));
+        assertEquals("Third element should be 'e'", "e", actualOrder.get(2));
+    }
+
+    @Test
+    public void testInsertIntoNodeBefore_noReferenceNodesExist() {
+        // Create a test document with some elements
+        String testXml = "<root><a>A</a><b>B</b></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Create a new node to insert
+        Document newDoc = XmlUtils.loadDocument("<c>C</c>");
+        Node newNode = newDoc.getDocumentElement();
+
+        // Insert before non-existing elements (should append at end)
+        java.util.List<String> before = java.util.Arrays.asList("x", "y", "z");
+        XmlUtils.insertIntoNodeBefore(doc.getDocumentElement(), newNode, before);
+
+        // Verify the order is now a, b, c (appended at end)
+        NodeList children = doc.getDocumentElement().getChildNodes();
+        java.util.List<String> actualOrder = new java.util.ArrayList<>();
+        for (int i = 0; i < children.getLength(); i++) {
+            Node child = children.item(i);
+            if (child.getNodeType() == Node.ELEMENT_NODE) {
+                actualOrder.add(child.getLocalName());
+            }
+        }
+
+        assertEquals("Should have 3 elements", 3, actualOrder.size());
+        assertEquals("First element should be 'a'", "a", actualOrder.get(0));
+        assertEquals("Second element should be 'b'", "b", actualOrder.get(1));
+        assertEquals("Third element should be 'c' (appended)", "c", actualOrder.get(2));
+    }
+
+    @Test
+    public void testInsertIntoNodeBefore_emptyBeforeList() {
+        // Create a test document
+        String testXml = "<root><a>A</a><b>B</b></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Create a new node to insert
+        Document newDoc = XmlUtils.loadDocument("<c>C</c>");
+        Node newNode = newDoc.getDocumentElement();
+
+        // Insert with empty before list (should append at end)
+        java.util.List<String> before = new java.util.ArrayList<>();
+        XmlUtils.insertIntoNodeBefore(doc.getDocumentElement(), newNode, before);
+
+        // Verify the order is now a, b, c (appended at end)
+        NodeList children = doc.getDocumentElement().getChildNodes();
+        java.util.List<String> actualOrder = new java.util.ArrayList<>();
+        for (int i = 0; i < children.getLength(); i++) {
+            Node child = children.item(i);
+            if (child.getNodeType() == Node.ELEMENT_NODE) {
+                actualOrder.add(child.getLocalName());
+            }
+        }
+
+        assertEquals("Should have 3 elements", 3, actualOrder.size());
+        assertEquals("Third element should be 'c' (appended)", "c", actualOrder.get(2));
+    }
+
+    @Test
+    public void testInsertIntoNodeBefore_nullBeforeList() {
+        // Create a test document
+        String testXml = "<root><a>A</a><b>B</b></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Create a new node to insert
+        Document newDoc = XmlUtils.loadDocument("<c>C</c>");
+        Node newNode = newDoc.getDocumentElement();
+
+        // Insert with null before list (should append at end)
+        XmlUtils.insertIntoNodeBefore(doc.getDocumentElement(), newNode, null);
+
+        // Verify the node was inserted at the end
+        NodeList children = doc.getDocumentElement().getChildNodes();
+        java.util.List<String> actualOrder = new java.util.ArrayList<>();
+        for (int i = 0; i < children.getLength(); i++) {
+            Node child = children.item(i);
+            if (child.getNodeType() == Node.ELEMENT_NODE) {
+                actualOrder.add(child.getLocalName());
+            }
+        }
+
+        assertEquals("Should have 3 elements", 3, actualOrder.size());
+        assertEquals("Third element should be 'c' (appended)", "c", actualOrder.get(2));
+    }
+
+    @Test
+    public void testInsertIntoNodeBefore_withXPathExpressions() {
+        // Create a more complex test document with nested structure
+        String testXml = "<root><section><item id='1'>Item 1</item><item id='3'>Item 3</item></section></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Create a new node to insert
+        Document newDoc = XmlUtils.loadDocument("<item id='2'>Item 2</item>");
+        Node newNode = newDoc.getDocumentElement();
+
+        // Get the section node to insert into
+        Node sectionNode = XmlUtils.getNodeAtPath(doc.getDocumentElement(), "section");
+
+        // Insert before item with id='3' using XPath relative to section
+        java.util.List<String> before = java.util.Arrays.asList("item[@id='3']", "item[@id='4']");
+        XmlUtils.insertIntoNodeBefore(sectionNode, newNode, before);
+
+        // Verify the insertion happened in the section
+        NodeList items = XmlUtils.getNodesAtPath(doc.getDocumentElement(), "section/item");
+        assertEquals("Should have 3 items in section", 3, items.getLength());
+
+        // Verify the order by checking id attributes
+        Node secondItem = items.item(1);
+        assertEquals("Second item should have id='2'", "2",
+                secondItem.getAttributes().getNamedItem("id").getNodeValue());
+    }
+
+    @Test(expected = XmlUtils.XmlUtilsException.class)
+    public void testInsertIntoNodeBefore_nullParent() {
+        Document newDoc = XmlUtils.loadDocument("<c>C</c>");
+        Node newNode = newDoc.getDocumentElement();
+        java.util.List<String> before = java.util.Arrays.asList("d");
+
+        XmlUtils.insertIntoNodeBefore(null, newNode, before);
+    }
+
+    @Test(expected = XmlUtils.XmlUtilsException.class)
+    public void testInsertIntoNodeBefore_nullNewChild() {
+        String testXml = "<root><a>A</a></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+        java.util.List<String> before = java.util.Arrays.asList("d");
+
+        XmlUtils.insertIntoNodeBefore(doc.getDocumentElement(), null, before);
+    }
+
+    @Test
+    public void testInsertIntoNodeBefore_insertAtBeginning() {
+        // Create a test document
+        String testXml = "<root><b>B</b><c>C</c></root>";
+        Document doc = XmlUtils.loadDocument(testXml);
+
+        // Create a new node to insert
+        Document newDoc = XmlUtils.loadDocument("<a>A</a>");
+        Node newNode = newDoc.getDocumentElement();
+
+        // Insert before b (should be at the beginning)
+        java.util.List<String> before = java.util.Arrays.asList("b");
+        XmlUtils.insertIntoNodeBefore(doc.getDocumentElement(), newNode, before);
+
+        // Verify the order is now a, b, c
+        NodeList children = doc.getDocumentElement().getChildNodes();
+        java.util.List<String> actualOrder = new java.util.ArrayList<>();
+        for (int i = 0; i < children.getLength(); i++) {
+            Node child = children.item(i);
+            if (child.getNodeType() == Node.ELEMENT_NODE) {
+                actualOrder.add(child.getLocalName());
+            }
+        }
+
+        assertEquals("Should have 3 elements", 3, actualOrder.size());
+        assertEquals("First element should be 'a' (inserted)", "a", actualOrder.get(0));
+        assertEquals("Second element should be 'b'", "b", actualOrder.get(1));
+        assertEquals("Third element should be 'c'", "c", actualOrder.get(2));
+    }
+
 }
