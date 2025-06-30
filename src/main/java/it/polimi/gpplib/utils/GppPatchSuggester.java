@@ -50,13 +50,15 @@ public class GppPatchSuggester {
 
         List<SuggestedGppPatch> suggestedPatches = new java.util.ArrayList<>();
 
-        List<SuggestedGppPatch> gppCriteriaSourcePatches = suggestGppCriteriaSourcePatches(lotId, lotCriteria);
+        List<SuggestedGppPatch> gppCriteriaSourcePatches = suggestGppCriteriaSourcePatches(lotId, lotCriteria,
+                notice.getNoticeLanguage());
         suggestedPatches.addAll(gppCriteriaSourcePatches);
 
-        List<SuggestedGppPatch> environmentalImpactPatches = suggestEnvironmentalImpactPatches(lotId, lotCriteria);
+        List<SuggestedGppPatch> environmentalImpactPatches = suggestEnvironmentalImpactPatches(lotId, lotCriteria,
+                notice.getNoticeLanguage());
         suggestedPatches.addAll(environmentalImpactPatches);
 
-        suggestedPatches.add(suggestStrategicProcurementPatch(lotId, lotCriteria));
+        suggestedPatches.add(suggestStrategicProcurementPatch(lotId, lotCriteria, notice.getNoticeLanguage()));
 
         // add the direct patches for each of the criteria (e.g. AC, SC, TS, CPC)
         for (GppCriterion criterion : lotCriteria) {
@@ -231,7 +233,7 @@ public class GppPatchSuggester {
     }
 
     private List<SuggestedGppPatch> suggestGppCriteriaSourcePatches(String lotId,
-            List<GppCriterion> lotCriteria) {
+            List<GppCriterion> lotCriteria, String language) {
         List<SuggestedGppPatch> patches = new java.util.ArrayList<>();
         GppPatch gppCriteriaPatch = findGppPatchByName(Constants.PATCH_NAME_GPP_CRITERIA_SOURCE);
         if (gppCriteriaPatch == null) {
@@ -239,10 +241,14 @@ public class GppPatchSuggester {
             return patches; // No patches to suggest
         }
 
+        if (language == null || language.isEmpty()) {
+            language = Constants.TAG_ENGLISH; // Default to English if not provided
+        }
+
         List<String> gppSources = getGppSources(lotCriteria);
         for (String source : gppSources) {
             Map<String, String> variables = new HashMap<>(Constants.NAMESPACE_MAP);
-            variables.put(Constants.TAG_LANGUAGE, Constants.TAG_ENGLISH);
+            variables.put(Constants.TAG_LANGUAGE, language);
             variables.put(Constants.TAG_ARG0, source);
             String parsedValue = parseValue(gppCriteriaPatch.getValue(), variables);
 
@@ -261,7 +267,7 @@ public class GppPatchSuggester {
     }
 
     private List<SuggestedGppPatch> suggestEnvironmentalImpactPatches(String lotId,
-            List<GppCriterion> lotCriteria) {
+            List<GppCriterion> lotCriteria, String language) {
         List<SuggestedGppPatch> patches = new java.util.ArrayList<>();
         GppPatch envImpactPatch = findGppPatchByName(Constants.PATCH_NAME_ENVIRONMENTAL_IMPACT);
         if (envImpactPatch == null) {
@@ -269,10 +275,14 @@ public class GppPatchSuggester {
             return patches; // No patches to suggest
         }
 
+        if (language == null || language.isEmpty()) {
+            language = Constants.TAG_ENGLISH; // Default to English if not provided
+        }
+
         List<String> environmentalImpacts = getEnvironmentalImpacts(lotCriteria);
         for (String impact : environmentalImpacts) {
             Map<String, String> variables = new HashMap<>(Constants.NAMESPACE_MAP);
-            variables.put(Constants.TAG_LANGUAGE, Constants.TAG_ENGLISH);
+            variables.put(Constants.TAG_LANGUAGE, language);
             variables.put(Constants.TAG_ARG0, impact);
             String parsedValue = parseValue(envImpactPatch.getValue(), variables);
             SuggestedGppPatch patch = new SuggestedGppPatch(
@@ -291,7 +301,7 @@ public class GppPatchSuggester {
     }
 
     private SuggestedGppPatch suggestStrategicProcurementPatch(String lotId,
-            List<GppCriterion> lotCriteria) {
+            List<GppCriterion> lotCriteria, String language) {
         GppPatch envImpactPatch = findGppPatchByName(Constants.PATCH_NAME_STRATEGIC_PROCUREMENT);
         if (envImpactPatch == null) {
             System.err.println(
@@ -299,8 +309,12 @@ public class GppPatchSuggester {
             return null;
         }
 
+        if (language == null || language.isEmpty()) {
+            language = Constants.TAG_ENGLISH; // Default to English if not provided
+        }
+
         Map<String, String> variables = new HashMap<>(Constants.NAMESPACE_MAP);
-        variables.put(Constants.TAG_LANGUAGE, Constants.TAG_ENGLISH);
+        variables.put(Constants.TAG_LANGUAGE, language);
         variables.put(Constants.TAG_ARG0, Constants.PATCH_DESCRIPTION_STRATEGIC_PROCUREMENT);
         String parsedValue = parseValue(envImpactPatch.getValue(), variables);
         return new SuggestedGppPatch(
