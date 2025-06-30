@@ -146,4 +146,5 @@ public class EFormsSdkWrapperTest {
                                 defaultWrapper.getProcurementProjectTypeSchema().size(),
                                 explicitVersionWrapper.getProcurementProjectTypeSchema().size());
         }
+
 }
