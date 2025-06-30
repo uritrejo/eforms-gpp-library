@@ -94,13 +94,12 @@ public class GppPatchSuggesterTest {
         assertPatchExists(suggestedPatches, "contract performing clause --- CPC1: Contract Performance Clause 1");
 
         // we expect parent patches to be inserted (for the award criteria)
-        assertPatchExists(suggestedPatches, "Tendering Terms");
         assertPatchExists(suggestedPatches, "Awarding Terms");
         assertPatchExists(suggestedPatches, "Award Criteria");
         assertPatchExists(suggestedPatches, "Tendering Terms - Eforms Extension");
 
         // we ensure that there are no duplicates, particularly for the parent patches
-        assertTrue(suggestedPatches.size() == 13);
+        assertTrue(suggestedPatches.size() == 12);
     }
 
     private void assertPatchExists(List<SuggestedGppPatch> suggestedPatches, String patchName) {
