@@ -41,7 +41,7 @@ public class GppPatchApplierTest {
             patchApplier.applyPatch(notice, patch);
             fail("Expected IllegalArgumentException");
         } catch (IllegalArgumentException ex) {
-            assertEquals("Invalid patch operation: potato", ex.getMessage());
+            assertEquals("Unsupported patch operation: potato", ex.getMessage());
         }
     }
 

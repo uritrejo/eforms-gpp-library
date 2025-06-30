@@ -141,7 +141,7 @@ public class DefaultGppNoticeAnalyzerTest {
             fail("Expected GppBadRequestException");
         } catch (GppBadRequestException ex) {
             assertEquals(
-                    "Invalid patch: Invalid patch operation: invalidOp",
+                    "Invalid patch: Unsupported patch operation: invalidOp",
                     ex.getMessage());
         }
     }
