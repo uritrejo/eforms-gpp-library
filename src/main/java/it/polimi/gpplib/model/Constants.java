@@ -20,6 +20,9 @@ public final class Constants {
     public static final String PATH_ADDITIONAL_CPVS = "cac:ProcurementProject/cac:AdditionalCommodityClassification";
     public static final String PATH_EFORMS_SDK_VERSION = "cbc:CustomizationID";
 
+    public static final String PATH_STRATEGIC_PROCUREMENT_NONE = "cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement' and cbc:ProcurementTypeCode='none']/cbc:ProcurementTypeCode";
+    public static final String PATH_STRATEGIC_PROCUREMENT_ENV_IMP = "cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement' and cbc:ProcurementTypeCode='env-imp']/cbc:ProcurementTypeCode";
+
     // ND-Lot
     public static final String PATH_LOT = "cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']";
     // Q? ND or BT?

@@ -122,4 +122,18 @@ public class NoticeTest {
         String language = notice.getNoticeLanguage();
         assertEquals("ENG", language);
     }
+
+    @Test
+    public void testRandomStuff_me() {
+
+        Notice notice = new Notice(XmlUtils.getAsXmlString("test_notices/german_furniture.xml"));
+
+        Boolean hasStrategicProcurementNone = XmlUtils.doesNodeExistAtPath(notice.getLotNode("LOT-0001"),
+                Constants.PATH_STRATEGIC_PROCUREMENT_NONE);
+        assertTrue(hasStrategicProcurementNone);
+
+        Boolean hasStrategicProcurementEnvImp = XmlUtils.doesNodeExistAtPath(notice.getLotNode("LOT-0001"),
+                Constants.PATH_STRATEGIC_PROCUREMENT_ENV_IMP);
+        assertFalse(hasStrategicProcurementEnvImp);
+    }
 }
