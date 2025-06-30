@@ -135,5 +135,9 @@ public class NoticeTest {
         Boolean hasStrategicProcurementEnvImp = XmlUtils.doesNodeExistAtPath(notice.getLotNode("LOT-0001"),
                 Constants.PATH_STRATEGIC_PROCUREMENT_ENV_IMP);
         assertFalse(hasStrategicProcurementEnvImp);
+
+        Node none = XmlUtils.getNodeAtPath(notice.getLotNode("LOT-0001"), Constants.PATH_STRATEGIC_PROCUREMENT_NONE);
+        String noneAsString = XmlUtils.docToString(none.getOwnerDocument());
+        assertNotNull(noneAsString);
     }
 }

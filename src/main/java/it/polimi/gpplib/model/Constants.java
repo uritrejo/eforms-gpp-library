@@ -20,8 +20,8 @@ public final class Constants {
     public static final String PATH_ADDITIONAL_CPVS = "cac:ProcurementProject/cac:AdditionalCommodityClassification";
     public static final String PATH_EFORMS_SDK_VERSION = "cbc:CustomizationID";
 
-    public static final String PATH_STRATEGIC_PROCUREMENT_NONE = "cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement' and cbc:ProcurementTypeCode='none']/cbc:ProcurementTypeCode";
-    public static final String PATH_STRATEGIC_PROCUREMENT_ENV_IMP = "cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement' and cbc:ProcurementTypeCode='env-imp']/cbc:ProcurementTypeCode";
+    public static final String PATH_STRATEGIC_PROCUREMENT_NONE = "cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement' and cbc:ProcurementTypeCode='none']";
+    public static final String PATH_STRATEGIC_PROCUREMENT_ENV_IMP = "cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement' and cbc:ProcurementTypeCode='env-imp']";
 
     // ND-Lot
     public static final String PATH_LOT = "cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']";
@@ -41,6 +41,7 @@ public final class Constants {
 
     public static final String OP_CREATE = "create";
     public static final String OP_UPDATE = "update";
+    public static final String OP_REMOVE = "remove";
 
     // notice these are lowercase
     public static final String CRITERION_TYPE_AWARD_CRITERIA = "award criteria";
@@ -52,7 +53,8 @@ public final class Constants {
     // TODO: rename this one to env impact in the sheet
     public static final String PATCH_NAME_ENVIRONMENTAL_IMPACT = "Green Procurement";
     // TODO: define better the expected description for this patch
-    public static final String PATCH_NAME_STRATEGIC_PROCUREMENT = "Strategic Procurement: Reduction of environmental impacts";
+    public static final String PATCH_NAME_STRATEGIC_PROCUREMENT_ENV_IMP = "Strategic Procurement: Reduction of environmental impacts";
+    public static final String PATCH_NAME_STRATEGIC_PROCUREMENT_NONE = "Strategic Procurement: None";
 
     public static final String PATCH_NAME_AWARD_CRITERION = "Award Criterion";
     public static final String PATCH_NAME_SELECTION_CRITERIA = "Selection Criteria";
