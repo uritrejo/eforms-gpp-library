@@ -13,6 +13,8 @@ public class GppPatchApplier {
 
     private static final Logger logger = LoggerFactory.getLogger(GppPatchApplier.class);
 
+    // private final EFormsSdkWrapper eFormsSdkWrapper;
+
     public GppPatchApplier() {
     }
 
