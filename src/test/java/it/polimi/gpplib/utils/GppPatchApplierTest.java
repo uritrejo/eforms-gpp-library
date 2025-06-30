@@ -13,13 +13,14 @@ import static org.junit.Assert.*;
 
 public class GppPatchApplierTest {
 
-    private GppPatchApplier patchApplier = new GppPatchApplier();
+    private GppPatchApplier patchApplier;
     private Notice notice;
 
     @org.junit.Before
     public void setUp() {
         String noticeXmlString = XmlUtils.getAsXmlString("test_notices/test_notice_minimal.xml");
         notice = new Notice(noticeXmlString);
+        patchApplier = new GppPatchApplier(new EFormsSdkWrapper());
     }
 
     @Test

@@ -13,9 +13,16 @@ public class GppPatchApplier {
 
     private static final Logger logger = LoggerFactory.getLogger(GppPatchApplier.class);
 
-    // private final EFormsSdkWrapper eFormsSdkWrapper;
+    private final EFormsSdkWrapper eFormsSdkWrapper;
 
-    public GppPatchApplier() {
+    /**
+     * Creates a new GppPatchApplier with the specified EFormsSdkWrapper.
+     * 
+     * @param eFormsSdkWrapper the EFormsSdkWrapper to use for schema validation and
+     *                         processing
+     */
+    public GppPatchApplier(EFormsSdkWrapper eFormsSdkWrapper) {
+        this.eFormsSdkWrapper = eFormsSdkWrapper;
     }
 
     public Notice applyPatch(Notice notice, SuggestedGppPatch patch) {
