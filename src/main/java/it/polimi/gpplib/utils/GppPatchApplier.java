@@ -53,6 +53,8 @@ public class GppPatchApplier {
             handleCreateOperation(patch, lot);
         } else if (patch.getOp().equalsIgnoreCase(Constants.OP_REMOVE)) {
             handleRemoveOperation(patch, lot);
+        } else if (patch.getOp().equalsIgnoreCase(Constants.OP_UPDATE)) {
+            handleUpdateOperation(patch, lot);
         } else {
             logger.error("Unsupported patch operation: {}", patch.getOp());
             throw new IllegalArgumentException("Unsupported patch operation: " + patch.getOp());
@@ -128,4 +130,59 @@ public class GppPatchApplier {
         }
     }
 
+    /**
+     * Handles update operations by replacing existing nodes in the lot.
+     * This method finds the node at the specified path, stores its parent,
+     * removes the old node, and then inserts the new value.
+     */
+    private void handleUpdateOperation(SuggestedGppPatch patch, Node lot) {
+        logger.debug("Handling update operation for patch '{}'", patch.getName());
+
+        // Find the node to be updated
+        Node nodeToUpdate = XmlUtils.getNodeAtPath(lot, patch.getPath());
+        if (nodeToUpdate == null) {
+            logger.error("Node not found at path '{}' for lot '{}'", patch.getPath(), patch.getLotId());
+            throw new IllegalArgumentException("Node not found at path: " + patch.getPath());
+        }
+
+        // Get the parent node before removing the old node
+        Node parentNode = nodeToUpdate.getParentNode();
+        if (parentNode == null) {
+            logger.error("Parent node not found for node at path '{}' for lot '{}'", patch.getPath(), patch.getLotId());
+            throw new IllegalArgumentException("Parent node not found for path: " + patch.getPath());
+        }
+
+        // Parse the new value
+        Document valueDoc;
+        try {
+            valueDoc = XmlUtils.loadDocument(patch.getValue());
+        } catch (Exception e) {
+            logger.error("Failed to parse patch value as XML: {}", patch.getValue(), e);
+            throw new IllegalArgumentException("Invalid patch value: " + patch.getValue(), e);
+        }
+        if (valueDoc == null) {
+            logger.error("Patch value resulted in null document: {}", patch.getValue());
+            throw new IllegalArgumentException("Invalid patch value: " + patch.getValue());
+        }
+
+        // Store the next sibling to maintain order
+        Node nextSibling = nodeToUpdate.getNextSibling();
+
+        // Remove the old node
+        parentNode.removeChild(nodeToUpdate);
+        logger.debug("Removed old node at path '{}'", patch.getPath());
+
+        // Import and insert the new node
+        Node newNode = parentNode.getOwnerDocument().importNode(valueDoc.getDocumentElement(), true);
+
+        if (nextSibling != null) {
+            // Insert before the next sibling to maintain order
+            parentNode.insertBefore(newNode, nextSibling);
+        } else {
+            // Append at the end if there's no next sibling
+            parentNode.appendChild(newNode);
+        }
+
+        logger.debug("Successfully updated node at path '{}' with new value", patch.getPath());
+    }
 }

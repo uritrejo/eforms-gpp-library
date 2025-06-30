@@ -257,4 +257,97 @@ public class GppPatchApplierTest {
         assertTrue("ID element should be found", foundId);
         assertTrue("MainCommodityClassification should be found", foundMainClassification);
     }
+
+    @Test
+    public void testApplyPatch_updateOperation() {
+        // First, create an award criterion to update
+        String initialAwardCriterion = "<cac:SubordinateAwardingCriterion xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\">"
+                + "<cbc:AwardingCriterionTypeCode listName=\"award-criterion-type\">quality</cbc:AwardingCriterionTypeCode>"
+                + "<cbc:Name languageID=\"EN\">Original Award Criterion</cbc:Name>"
+                + "<cbc:Description languageID=\"EN\">Original description</cbc:Description>"
+                + "</cac:SubordinateAwardingCriterion>";
+
+        // Create the award criteria structure first
+        String awardingTermsValue = "<cac:AwardingTerms xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\">"
+                + "<cac:AwardingCriterion>" + initialAwardCriterion + "</cac:AwardingCriterion>"
+                + "</cac:AwardingTerms>";
+
+        String tenderingTermsValue = "<cac:TenderingTerms xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\">"
+                + awardingTermsValue + "</cac:TenderingTerms>";
+
+        // Insert the tendering terms structure
+        SuggestedGppPatch setupPatch = new SuggestedGppPatch("setupPatch", Collections.emptyList(), null,
+                Constants.PATH_PROCUREMENT_PROJECT, tenderingTermsValue, "create", "Setup patch", "LOT-0001");
+        notice = patchApplier.applyPatch(notice, setupPatch);
+
+        // Verify the initial structure exists
+        Node lot = notice.getLotNode("LOT-0001");
+        Node originalNode = XmlUtils.getNodeAtPath(lot,
+                "cac:ProcurementProject/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion[cbc:Name='Original Award Criterion']");
+        assertNotNull("Original award criterion should exist", originalNode);
+
+        // Now test the UPDATE operation
+        String updatedAwardCriterion = "<cac:SubordinateAwardingCriterion xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\" xmlns:ext=\"urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2\" xmlns:efext=\"http://data.europa.eu/p27/eforms-ubl-extensions/1\" xmlns:efac=\"http://data.europa.eu/p27/eforms-ubl-extension-aggregate-components/1\" xmlns:efbc=\"http://data.europa.eu/p27/eforms-ubl-extension-basic-components/1\">"
+                + "<ext:UBLExtensions>"
+                + "<ext:UBLExtension>"
+                + "<ext:ExtensionContent>"
+                + "<efext:EformsExtension>"
+                + "<efac:AwardCriterionParameter>"
+                + "<efbc:ParameterCode listName=\"number-weight\">per-exa</efbc:ParameterCode>"
+                + "<efbc:ParameterNumeric>20</efbc:ParameterNumeric>"
+                + "</efac:AwardCriterionParameter>"
+                + "</efext:EformsExtension>"
+                + "</ext:ExtensionContent>"
+                + "</ext:UBLExtension>"
+                + "</ext:UBLExtensions>"
+                + "<cbc:AwardingCriterionTypeCode listName=\"award-criterion-type\">quality</cbc:AwardingCriterionTypeCode>"
+                + "<cbc:Name languageID=\"EN\">Original Award Criterion</cbc:Name>"
+                + "<cbc:Description languageID=\"EN\">Updated GPP description with environmental criteria</cbc:Description>"
+                + "</cac:SubordinateAwardingCriterion>";
+
+        String updatePath = "cac:ProcurementProject/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion[cbc:Name='Original Award Criterion']";
+        SuggestedGppPatch updatePatch = new SuggestedGppPatch("updatePatch", Collections.emptyList(), null,
+                updatePath, updatedAwardCriterion, "update", "Update award criterion with GPP structure", "LOT-0001");
+
+        // Apply the update
+        Notice updatedNotice = patchApplier.applyPatch(notice, updatePatch);
+        Node updatedLot = updatedNotice.getLotNode("LOT-0001");
+
+        // Verify the update was successful
+        Node updatedNode = XmlUtils.getNodeAtPath(updatedLot, updatePath);
+        assertNotNull("Updated award criterion should exist", updatedNode);
+
+        // Verify the description was updated
+        String updatedDescription = XmlUtils.getNodeValueAtPath(updatedLot, updatePath + "/cbc:Description");
+        assertEquals("Updated GPP description with environmental criteria", updatedDescription);
+
+        // Verify the new GPP structure was added
+        Node parameterNode = XmlUtils.getNodeAtPath(updatedLot, updatePath
+                + "/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter");
+        assertNotNull("GPP parameter structure should exist", parameterNode);
+
+        String parameterCode = XmlUtils.getNodeValueAtPath(updatedLot, updatePath
+                + "/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterCode");
+        assertEquals("per-exa", parameterCode);
+
+        String parameterValue = XmlUtils.getNodeValueAtPath(updatedLot, updatePath
+                + "/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter/efbc:ParameterNumeric");
+        assertEquals("20", parameterValue);
+    }
+
+    @Test
+    public void testApplyPatch_updateOperation_nodeNotFound() {
+        String updateValue = "<cac:SubordinateAwardingCriterion xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\"><cbc:Name>Test</cbc:Name></cac:SubordinateAwardingCriterion>";
+        String nonExistentPath = "cac:ProcurementProject/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion[cbc:Name='NonExistent']";
+
+        SuggestedGppPatch updatePatch = new SuggestedGppPatch("updatePatch", Collections.emptyList(), null,
+                nonExistentPath, updateValue, "update", "Update non-existent node", "LOT-0001");
+
+        try {
+            patchApplier.applyPatch(notice, updatePatch);
+            fail("Expected IllegalArgumentException for non-existent node");
+        } catch (IllegalArgumentException ex) {
+            assertTrue("Should mention node not found", ex.getMessage().contains("Node not found at path"));
+        }
+    }
 }
