@@ -1,6 +1,8 @@
 package it.polimi.gpplib.utils;
 
 import org.apache.commons.text.StringSubstitutor;
+import org.w3c.dom.Node;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,7 +60,12 @@ public class GppPatchSuggester {
                 notice.getNoticeLanguage());
         suggestedPatches.addAll(environmentalImpactPatches);
 
-        suggestedPatches.add(suggestStrategicProcurementPatch(lotId, lotCriteria, notice.getNoticeLanguage()));
+        // suggestStrategicProcurementPatches
+
+        List<SuggestedGppPatch> strategicProcurementPatches = suggestStrategicProcurementPatches(notice, lotId,
+                lotCriteria,
+                notice.getNoticeLanguage());
+        suggestedPatches.addAll(strategicProcurementPatches);
 
         // add the direct patches for each of the criteria (e.g. AC, SC, TS, CPC)
         for (GppCriterion criterion : lotCriteria) {
@@ -300,12 +307,29 @@ public class GppPatchSuggester {
         return patches;
     }
 
-    private SuggestedGppPatch suggestStrategicProcurementPatch(String lotId,
+    private List<SuggestedGppPatch> suggestStrategicProcurementPatches(Notice notice, String lotId,
             List<GppCriterion> lotCriteria, String language) {
-        GppPatch envImpactPatch = findGppPatchByName(Constants.PATCH_NAME_STRATEGIC_PROCUREMENT);
+
+        List<SuggestedGppPatch> patches = new java.util.ArrayList<>();
+        Node lot = notice.getLotNode(lotId);
+
+        if (!XmlUtils.doesNodeExistAtPath(lot, Constants.PATH_STRATEGIC_PROCUREMENT_ENV_IMP)) {
+            patches.add(createStrategicProcurementForEnvImpPatch(lotId, lotCriteria, notice.getNoticeLanguage()));
+        }
+
+        if (XmlUtils.doesNodeExistAtPath(lot, Constants.PATH_STRATEGIC_PROCUREMENT_NONE)) {
+            patches.add(createRemovalPatchStrategicProcurementNone(lotId));
+        }
+
+        return patches;
+    }
+
+    private SuggestedGppPatch createStrategicProcurementForEnvImpPatch(String lotId,
+            List<GppCriterion> lotCriteria, String language) {
+        GppPatch envImpactPatch = findGppPatchByName(Constants.PATCH_NAME_STRATEGIC_PROCUREMENT_ENV_IMP);
         if (envImpactPatch == null) {
             System.err.println(
-                    "Strategic Procurement Patch not found: " + Constants.PATCH_NAME_STRATEGIC_PROCUREMENT);
+                    "Strategic Procurement Patch not found: " + Constants.PATCH_NAME_STRATEGIC_PROCUREMENT_ENV_IMP);
             return null;
         }
 
@@ -318,7 +342,7 @@ public class GppPatchSuggester {
         variables.put(Constants.TAG_ARG0, Constants.PATCH_DESCRIPTION_STRATEGIC_PROCUREMENT);
         String parsedValue = parseValue(envImpactPatch.getValue(), variables);
         return new SuggestedGppPatch(
-                Constants.PATCH_NAME_STRATEGIC_PROCUREMENT,
+                Constants.PATCH_NAME_STRATEGIC_PROCUREMENT_ENV_IMP,
                 envImpactPatch.getBtIds(),
                 envImpactPatch.getDependsOn(),
                 envImpactPatch.getPathInLot(),
@@ -326,6 +350,19 @@ public class GppPatchSuggester {
                 Constants.OP_CREATE,
                 "Indicates a strategic procurement for the reduction of environmental impacts", // Placeholder
                 lotId);
+    }
+
+    private SuggestedGppPatch createRemovalPatchStrategicProcurementNone(String lotId) {
+        SuggestedGppPatch patch = new SuggestedGppPatch(
+                "Removal of: " + Constants.PATCH_NAME_STRATEGIC_PROCUREMENT_NONE,
+                List.of(),
+                "",
+                Constants.PATH_STRATEGIC_PROCUREMENT_NONE,
+                "",
+                Constants.OP_REMOVE,
+                "Removes the indication that no strategic procurement is used for this notice",
+                lotId);
+        return patch;
     }
 
     private GppPatch findGppPatchByName(String name) {

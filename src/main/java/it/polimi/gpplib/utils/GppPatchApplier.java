@@ -35,18 +35,38 @@ public class GppPatchApplier {
         logger.debug("Applying patch '{}' to lot '{}' at path '{}'", patch.getName(), patch.getLotId(),
                 patch.getPath());
 
-        if (patch.getOp() == null || !patch.getOp().equalsIgnoreCase(Constants.OP_CREATE)) {
-            logger.error("Invalid patch operation: {}", patch.getOp());
-            throw new IllegalArgumentException("Invalid patch operation: " + patch.getOp());
+        // Validate operation
+        if (patch.getOp() == null) {
+            logger.error("Patch operation is null");
+            throw new IllegalArgumentException("Patch operation cannot be null");
         }
 
-        // for now we assume that every patch is a create operation at a specific path
-        // in a lot
+        // Get the lot node
         Node lot = notice.getLotNode(patch.getLotId());
         if (lot == null) {
             logger.error("Lot not found for id: {}", patch.getLotId());
             throw new IllegalArgumentException("Lot not found for id: " + patch.getLotId());
         }
+
+        // Handle different operations
+        if (patch.getOp().equalsIgnoreCase(Constants.OP_CREATE)) {
+            handleCreateOperation(patch, lot);
+        } else if (patch.getOp().equalsIgnoreCase(Constants.OP_REMOVE)) {
+            handleRemoveOperation(patch, lot);
+        } else {
+            logger.error("Unsupported patch operation: {}", patch.getOp());
+            throw new IllegalArgumentException("Unsupported patch operation: " + patch.getOp());
+        }
+
+        logger.debug("Successfully applied patch '{}' to lot '{}'", patch.getName(), patch.getLotId());
+        return notice;
+    }
+
+    /**
+     * Handles create operations by inserting new nodes into the lot.
+     */
+    private void handleCreateOperation(SuggestedGppPatch patch, Node lot) {
+        logger.debug("Handling create operation for patch '{}'", patch.getName());
 
         Node insertionNode = XmlUtils.getNodeAtPath(lot, patch.getPath());
         if (insertionNode == null) {
@@ -94,10 +114,18 @@ public class GppPatchApplier {
         } else {
             XmlUtils.insertIntoNode(insertionNode, valueDoc.getDocumentElement());
         }
+    }
 
-        logger.debug("Successfully applied patch '{}' to lot '{}'", patch.getName(), patch.getLotId());
+    /**
+     * Handles remove operations by removing nodes from the lot.
+     */
+    private void handleRemoveOperation(SuggestedGppPatch patch, Node lot) {
+        logger.debug("Handling remove operation for patch '{}'", patch.getName());
 
-        return notice;
+        boolean removed = XmlUtils.removeNodeAtPath(lot, patch.getPath());
+        if (!removed) {
+            logger.warn("No node was removed at path '{}' for lot '{}'", patch.getPath(), patch.getLotId());
+        }
     }
 
 }
