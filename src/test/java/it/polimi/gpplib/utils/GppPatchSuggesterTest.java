@@ -86,7 +86,8 @@ public class GppPatchSuggesterTest {
 
         // we expect one strategic procurement patch
         assertPatchExists(suggestedPatches, "Strategic Procurement: Reduction of environmental impacts");
-        assertPatchExists(suggestedPatches, "Removal of: Strategic Procurement: None");
+        // assertPatchExists(suggestedPatches, "Removal of: Strategic Procurement:
+        // None");
 
         // we expect one patch for each criterion
         assertPatchExists(suggestedPatches, "award criteria --- AC1: Award Criterion 1");
@@ -100,7 +101,7 @@ public class GppPatchSuggesterTest {
         assertPatchExists(suggestedPatches, "Tendering Terms - Eforms Extension");
 
         // we ensure that there are no duplicates, particularly for the parent patches
-        assertTrue(suggestedPatches.size() == 13);
+        assertTrue(suggestedPatches.size() == 12);
     }
 
     private void assertPatchExists(List<SuggestedGppPatch> suggestedPatches, String patchName) {

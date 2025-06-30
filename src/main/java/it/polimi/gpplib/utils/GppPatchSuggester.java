@@ -317,7 +317,7 @@ public class GppPatchSuggester {
             patches.add(createStrategicProcurementForEnvImpPatch(lotId, lotCriteria, notice.getNoticeLanguage()));
         }
 
-        if (!XmlUtils.doesNodeExistAtPath(lot, Constants.PATH_STRATEGIC_PROCUREMENT_NONE)) {
+        if (XmlUtils.doesNodeExistAtPath(lot, Constants.PATH_STRATEGIC_PROCUREMENT_NONE)) {
             patches.add(createRemovalPatchStrategicProcurementNone(lotId));
         }
 
