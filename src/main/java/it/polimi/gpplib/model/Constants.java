@@ -23,6 +23,26 @@ public final class Constants {
     public static final String PATH_STRATEGIC_PROCUREMENT_NONE = "cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement' and cbc:ProcurementTypeCode='none']";
     public static final String PATH_STRATEGIC_PROCUREMENT_ENV_IMP = "cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='strategic-procurement' and cbc:ProcurementTypeCode='env-imp']";
 
+    // ??++
+    public static final String PATH_AWARD_CRITERION_NODE_NAME_TEMPLATE = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion[cbc:Name='{arg0}']";
+    public static final String PATH_AWARD_CRITERION_NODE_TYPE_TEMPLATE = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion[cbc:AwardingCriterionTypeCode='{arg0}']";
+
+    public static final String PATH_AWARD_CRITERION = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion";
+    public static final String PATH_AWARD_CRITERION_TYPE = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']";
+    public static final String PATH_AWARD_CRITERION_NAME = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:Name";
+    public static final String PATH_AWARD_CRITERION_DESCRIPTION = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/cbc:Description";
+    public static final String PATH_AWARD_CRITERION_WEIGHT_CODE = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-weight']/efbc:ParameterCode";
+    public static final String PATH_AWARD_CRITERION_WEIGHT = "cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-weight']/efbc:ParameterNumeric";
+
+    public static final String PATH_IN_AWARD_CRITERION_TYPE = "cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']";
+    public static final String PATH_IN_AWARD_CRITERION_NAME = "cbc:Name";
+    public static final String PATH_IN_AWARD_CRITERION_DESCRIPTION = "cbc:Description";
+    public static final String PATH_IN_AWARD_CRITERION_WEIGHT_CODE = "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-weight']/efbc:ParameterCode";
+    public static final String PATH_IN_AWARD_CRITERION_WEIGHT = "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-weight']/efbc:ParameterNumeric";
+
+    public static final String AWARD_CRITERION_WEIGHT_CODE_IDENTIFIER = "number-weight";
+    public static final String AWARD_CRITERION_WEIGHT_CODE = "per-exa";
+
     // ND-Lot
     public static final String PATH_LOT = "cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']";
     // Q? ND or BT?
@@ -73,10 +93,14 @@ public final class Constants {
     public static final String TAG_LANGUAGE = "language";
     public static final String TAG_ENGLISH = "EN";
 
+    public static final String PLACEHOLDER_WEIGHT = "{dynamic-weight}";
+
     public static final String AWARD_CRITERIA_TYPE_QUALITY = "quality";
 
     public static final String TENDERER_REQ_CODE_ENV_MANAGEMENT = "slc-abil-mgmt-env";
     public static final String TENDERER_REQ_CODE_ENV_CERTIFICATE = "slc-sche-env-cert-indep";
+
+    public static final int DEFAULT_WEIGHT_GPP_CRITERIA = 15;
 
     public static final Map<String, String> NAMESPACE_MAP;
     static {

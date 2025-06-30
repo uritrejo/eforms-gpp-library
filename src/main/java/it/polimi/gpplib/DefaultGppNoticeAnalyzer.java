@@ -285,6 +285,9 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
     public Notice applyPatches(Notice notice, List<SuggestedGppPatch> patches) {
         logger.info("Applying {} patches to notice", patches.size());
         try {
+            // Store the original notice before applying patches for weight calculation
+            Notice originalNotice = new Notice(notice.toXmlString());
+
             int appliedPatches = 0;
             for (SuggestedGppPatch patch : patches) {
                 if (patch == null) {
@@ -296,6 +299,10 @@ public class DefaultGppNoticeAnalyzer implements GppNoticeAnalyzer {
                 appliedPatches++;
             }
             logger.info("Successfully applied {} out of {} patches", appliedPatches, patches.size());
+
+            // Update award criteria weights after all patches have been applied
+            patchApplier.updateAwardCriteriaWeights(notice, originalNotice);
+
             return notice;
         } catch (IllegalArgumentException e) {
             logger.error("Invalid patch encountered: {}", e.getMessage(), e);

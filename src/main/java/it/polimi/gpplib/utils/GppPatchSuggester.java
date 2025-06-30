@@ -2,6 +2,7 @@ package it.polimi.gpplib.utils;
 
 import org.apache.commons.text.StringSubstitutor;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import java.util.HashMap;
 import java.util.List;
@@ -76,6 +77,11 @@ public class GppPatchSuggester {
                 }
             }
         }
+
+        // Suggest updates for existing award criteria
+        List<SuggestedGppPatch> existingAwardCriteriaUpdates = suggestExistingAwardCriteriaUpdatePatches(notice, lotId,
+                lotCriteria, notice.getNoticeLanguage());
+        suggestedPatches.addAll(existingAwardCriteriaUpdates);
 
         return suggestedPatches;
     }
@@ -156,18 +162,18 @@ public class GppPatchSuggester {
                         criterion.getName(),
                         criterion.getFormattedAmbitionLevel(),
                         criterion.getGppDocument());
-                variables.put(Constants.TAG_ARG0, Constants.AWARD_CRITERIA_TYPE_QUALITY);
-                variables.put(Constants.TAG_ARG1, formattedName);
-                variables.put(Constants.TAG_ARG2, criterion.getDescription());
 
                 // TODO: this has to be dynamic according to the other award criteria in the
                 // notice!!!
                 // TODO: Maybe just remove them or add a minimum or something similar
                 // since you send the patch suggestions before even knowing how many will be
                 // added
-                variables.put(Constants.TAG_ARG3, "number-weight");
-                variables.put(Constants.TAG_ARG4, "per-exa");
-                variables.put(Constants.TAG_ARG5, "100");
+                variables.put(Constants.TAG_ARG0, Constants.AWARD_CRITERION_WEIGHT_CODE_IDENTIFIER);
+                variables.put(Constants.TAG_ARG1, Constants.AWARD_CRITERION_WEIGHT_CODE);
+                variables.put(Constants.TAG_ARG2, Constants.PLACEHOLDER_WEIGHT);
+                variables.put(Constants.TAG_ARG3, Constants.AWARD_CRITERIA_TYPE_QUALITY);
+                variables.put(Constants.TAG_ARG4, formattedName);
+                variables.put(Constants.TAG_ARG5, criterion.getDescription());
                 break;
             case Constants.CRITERION_TYPE_SELECTION_CRITERIA:
                 formattedName = String.format(
@@ -444,6 +450,146 @@ public class GppPatchSuggester {
         }
         StringSubstitutor sub = new StringSubstitutor(variables, "{", "}");
         return sub.replace(value);
+    }
+
+    /**
+     * Suggests update patches for existing award criteria in the notice.
+     * This method looks for existing SubordinateAwardingCriterion nodes and
+     * suggests
+     * updates to incorporate GPP criteria structure.
+     */
+    private List<SuggestedGppPatch> suggestExistingAwardCriteriaUpdatePatches(Notice notice, String lotId,
+            List<GppCriterion> lotCriteria, String language) {
+        List<SuggestedGppPatch> patches = new java.util.ArrayList<>();
+
+        // Check if there are any award criteria in the lot criteria
+        boolean hasAwardCriteria = lotCriteria.stream()
+                .anyMatch(criterion -> Constants.CRITERION_TYPE_AWARD_CRITERIA
+                        .equals(criterion.getCriterionType().toLowerCase()));
+
+        if (!hasAwardCriteria) {
+            return patches; // No award criteria to update
+        }
+
+        Node lot = notice.getLotNode(lotId);
+        if (lot == null) {
+            return patches;
+        }
+
+        // Find all existing SubordinateAwardingCriterion nodes
+        NodeList awardCriterionNodes = XmlUtils.getNodesAtPath(lot, Constants.PATH_AWARD_CRITERION);
+
+        for (int i = 0; i < awardCriterionNodes.getLength(); i++) {
+            Node awardCriterionNode = awardCriterionNodes.item(i);
+
+            // Extract information from the existing node, handling potential null values
+            String existingType = null;
+            String existingName = null;
+            String existingDescription = "";
+
+            try {
+                existingType = XmlUtils.getNodeValueAtPath(awardCriterionNode,
+                        Constants.PATH_IN_AWARD_CRITERION_TYPE);
+            } catch (Exception e) {
+                // Type not available, will be handled below
+            }
+
+            try {
+                existingName = XmlUtils.getNodeValueAtPath(awardCriterionNode,
+                        Constants.PATH_IN_AWARD_CRITERION_NAME);
+            } catch (Exception e) {
+                // Name not available, will use type instead
+            }
+
+            try {
+                existingDescription = XmlUtils.getNodeValueAtPath(awardCriterionNode,
+                        Constants.PATH_IN_AWARD_CRITERION_DESCRIPTION);
+                if (existingDescription == null) {
+                    existingDescription = "";
+                }
+            } catch (Exception e) {
+                // Description not available, use empty string
+                existingDescription = "";
+            }
+
+            // Skip if both name and type are not available
+            if ((existingName == null || existingName.trim().isEmpty()) &&
+                    (existingType == null || existingType.trim().isEmpty())) {
+                continue;
+            }
+
+            // Get the patch template for award criteria
+            String patchName = Constants.CRITERION_TYPE_TO_PATCH_NAME.get(Constants.CRITERION_TYPE_AWARD_CRITERIA);
+            GppPatch gppPatch = findGppPatchByName(patchName);
+            if (gppPatch == null) {
+                System.err.println("GPP Patch not found: " + patchName);
+                continue;
+            }
+
+            // Build variables for the patch
+            Map<String, String> variables = buildExistingAwardCriterionPatchVariables(
+                    existingType, existingName, existingDescription, language);
+
+            // Create the update patch
+            String parsedValue = parseValue(gppPatch.getValue(), variables);
+
+            // Determine patch path and identifier based on what's available
+            String patchPath;
+            String identifier;
+
+            if (existingName != null && !existingName.trim().isEmpty()) {
+                // Use name-based template
+                patchPath = Constants.PATH_AWARD_CRITERION_NODE_NAME_TEMPLATE.replace("{arg0}", existingName);
+                identifier = existingName;
+            } else {
+                // Use type-based template
+                patchPath = Constants.PATH_AWARD_CRITERION_NODE_TYPE_TEMPLATE.replace("{arg0}", existingType);
+                identifier = existingType;
+            }
+
+            String description = String.format(
+                    "Updates existing award criterion '%s' to adjust for the insertion of other award criteria",
+                    identifier);
+
+            SuggestedGppPatch suggestedPatch = new SuggestedGppPatch(
+                    "Update Award Criterion: " + identifier,
+                    gppPatch.getBtIds(),
+                    gppPatch.getDependsOn(),
+                    patchPath,
+                    parsedValue,
+                    Constants.OP_UPDATE,
+                    description,
+                    lotId);
+            patches.add(suggestedPatch);
+        }
+
+        return patches;
+    }
+
+    /**
+     * Builds variables for updating existing award criteria with GPP structure.
+     */
+    private Map<String, String> buildExistingAwardCriterionPatchVariables(
+            String existingType, String existingName, String existingDescription, String language) {
+        Map<String, String> variables = new HashMap<>(Constants.NAMESPACE_MAP);
+
+        if (language == null || language.isEmpty()) {
+            language = Constants.TAG_ENGLISH; // Default to English if not provided
+        }
+
+        variables.put(Constants.TAG_LANGUAGE, language);
+
+        // Use the same structure as award criteria patches
+        variables.put(Constants.TAG_ARG0, Constants.AWARD_CRITERION_WEIGHT_CODE_IDENTIFIER);
+        variables.put(Constants.TAG_ARG1, Constants.AWARD_CRITERION_WEIGHT_CODE);
+        variables.put(Constants.TAG_ARG2, Constants.PLACEHOLDER_WEIGHT);
+
+        // Use existing values from the node, or defaults
+        variables.put(Constants.TAG_ARG3, existingType != null ? existingType : Constants.AWARD_CRITERIA_TYPE_QUALITY);
+        variables.put(Constants.TAG_ARG4, existingName != null ? existingName : "");
+        variables.put(Constants.TAG_ARG5, existingDescription != null ? existingDescription : "");
+
+        return variables;
     }
 
 }
