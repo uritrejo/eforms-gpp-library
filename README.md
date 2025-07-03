@@ -137,6 +137,9 @@ mvn test
 # Build JAR file
 mvn package
 
+# Install to local Maven repository
+mvn clean install
+
 # Generate complete documentation
 mvn site
 ```
